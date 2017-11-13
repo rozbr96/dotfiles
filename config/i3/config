@@ -159,7 +159,7 @@ bar {
 gaps inner 3
 gaps outer 2
 
-exec_always feh --bg-fill ~/Pictures/bgs/wood_trees_gloomy_fog_haze_darkness_50175_1920x1080.jpg
+exec_always feh --bg-fill $HOME/Pictures/bgs/wood_trees_gloomy_fog_haze_darkness_50175_1920x1080.jpg
 
 new_window none
 new_float none
