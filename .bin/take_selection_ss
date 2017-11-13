@@ -1,0 +1,3 @@
+
+exec maim -s "$HOME/Pictures/shots/`date "+%B %d, %Y %T "`.png" &
+

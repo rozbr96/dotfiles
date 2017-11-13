@@ -1,0 +1,5 @@
+
+mocp -S
+mocp -o shuffle
+mocp -p
+

@@ -156,6 +156,8 @@ bar {
 }
 
 ## MISC Configs
+set $BINPATH ~/.bin
+
 gaps inner 3
 gaps outer 2
 
@@ -186,13 +188,14 @@ bindsym $mod+Shift+e exec "terminator -e ranger"
 bindsym XF86AudioMute exec "pamixer --toggle-mute"
 bindsym XF86AudioLowerVolume exec "pamixer -d 1 --allow-boost"
 bindsym XF86AudioRaiseVolume exec "pamixer -i 1 --allow-boost"
-bindsym XF86AudioNext exec "cmus-remote --next"
-bindsym XF86AudioPlay exec "cmus-remote --pause"
-bindsym XF86AudioPrev exec "cmus-remote --prev"
-bindsym XF86MonBrightnessDown exec ~/.bin/bright_control -d
-bindsym XF86MonBrightnessUp exec ~/.bin/bright_control -i
-bindsym Print exec ~/.bin/take_full_ss
-bindsym Shift+Print exec ~/.bin/take_selection_ss
+bindsym XF86AudioNext exec "mocp --next"
+bindsym XF86AudioPlay exec "mocp --toggle-pause"
+bindsym XF86AudioPrev exec "mocp --prev"
+bindsym $mod+XF86AudioPlay . exec $BINPATH/start_moc
+bindsym XF86MonBrightnessDown exec . $BINPATH/bright_control -d
+bindsym XF86MonBrightnessUp exec . $BINPATH/bright_control -i
+bindsym Print exec . $BINPATH/take_full_ss
+bindsym Shift+Print exec . $BINPATH/take_selection_ss
 
 bindsym $mod+Escape exec "rofi -theme $rofi_theme -show window"
 bindsym $mod+d exec "rofi -theme $rofi_theme -show run"
