@@ -191,7 +191,7 @@ bindsym XF86AudioRaiseVolume exec "pamixer -i 1 --allow-boost"
 bindsym XF86AudioNext exec "mocp --next"
 bindsym XF86AudioPlay exec "mocp --toggle-pause"
 bindsym XF86AudioPrev exec "mocp --prev"
-bindsym $mod+XF86AudioPlay . exec $BINPATH/start_moc
+bindsym $mod+XF86AudioPlay exec . $BINPATH/start_moc
 bindsym XF86MonBrightnessDown exec . $BINPATH/bright_control -d
 bindsym XF86MonBrightnessUp exec . $BINPATH/bright_control -i
 bindsym Print exec . $BINPATH/take_full_ss
