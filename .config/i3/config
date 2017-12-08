@@ -161,7 +161,7 @@ set $BINPATH ~/.bin
 gaps inner 3
 gaps outer 2
 
-exec_always feh --bg-fill $HOME/Pictures/bgs/wood_trees_gloomy_fog_haze_darkness_50175_1920x1080.jpg
+exec_always feh --bg-fill $HOME/Pictures/bgs/background.jpg
 
 new_window none
 new_float none
@@ -212,4 +212,7 @@ bindsym $mod+Shift+a move position 3px 3px resize set 1000px 760px
 bindsym Shift+XF86AudioRaiseVolume exec "pamixer --set-volume 100"
 bindsym Shift+XF86AudioLowerVolume exec "pamixer --set-volume 50"
 bindsym Shift+XF86AudioMute exec "pamixer --set-volume 0"
+
+bindsym Mod1+XF86AudioLowerVolume exec "pamixer -d 10 --allow-boost"
+bindsym Mod1+XF86AudioRaiseVolume exec "pamixer -i 10 --allow-boost"
 

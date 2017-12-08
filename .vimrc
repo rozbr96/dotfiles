@@ -49,3 +49,6 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' }, 'vimrc': {'l
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 let g:powerline_pycmd = "py3"
+
+map <leader>m :!make<CR>
+
