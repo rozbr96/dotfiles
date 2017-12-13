@@ -44,7 +44,7 @@ map <leader>t :NERDTreeTabsToggle<CR>
 map <Tab> :NERDTreeFocusToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 2
 let g:NERDSpaceDelims = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' }, 'vimrc': {'left': ':"'} }
+let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' }, 'vimrc': {'left': ':"'}, 'haskell': { 'left': '-- ' } }
 
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
