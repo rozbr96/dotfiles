@@ -207,7 +207,7 @@ bindsym --whole-window $mod+button5 workspace prev
 
 bindsym $mod+Ctrl+l mode "locked"
 
-bindsym $mod+Shift+a move position 3px 3px resize set 1000px 760px
+bindsym $mod+Shift+a move position 3px 3px resize set 1010px 760px
 
 bindsym Shift+XF86AudioRaiseVolume exec "pamixer --set-volume 100"
 bindsym Shift+XF86AudioLowerVolume exec "pamixer --set-volume 50"

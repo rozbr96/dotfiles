@@ -52,3 +52,9 @@ let g:powerline_pycmd = "py3"
 
 map <leader>m :!make<CR>
 
+
+map <leader>nf :!echo -n "Filename: "; read fn; touch $fn<CR>
+map <leader>nd :!echo -n "Dirname: "; read dn; mkdir -p $dn<CR>
+map <leader>df :!echo -n "Filename: "; read fn; rm $fn<CR>
+map <leader>dd :!echo -n "Dirname: "; read dn; rm -rf $dn<CR>
+
