@@ -8,9 +8,14 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/kuro/.zshrc'
 
-autoload -Uz compinit
+autoload -Uz promptinit
+promptinit
+prompt off
+# compinit
 # End of lines added by compinstall
 
 export TERM="xterm-256color"
 
-ZSH_THEME="powerline"
+powerline-daemon -q
+. /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
