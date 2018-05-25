@@ -104,7 +104,7 @@ gauge = {
 },
 {
     name='memperc',                arg='',                      max_value=100,
-    x=70,                          y=410,
+    x=70,                          y=390,
     graph_radius=54,
     graph_thickness=10,
     graph_start_angle=180,

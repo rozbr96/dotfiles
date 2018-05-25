@@ -12,7 +12,7 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'tpope/vim-surround'
   Plugin 'jistr/vim-nerdtree-tabs'
-  " Plugin 'scrooloose/syntastic'
+  Plugin 'scrooloose/syntastic'
   Plugin 'Shougo/neocomplete.vim'
   Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
