@@ -161,7 +161,7 @@ set $BINPATH ~/.bin
 gaps inner 3
 gaps outer 2
 
-exec_always feh --bg-fill $HOME/Pictures/bgs/background.jpg
+exec_always feh --bg-fill $HOME/Pictures/bgs/bg
 
 new_window none
 new_float none
@@ -197,8 +197,8 @@ bindsym XF86MonBrightnessUp exec . $BINPATH/bright_control -i
 bindsym Print exec . $BINPATH/take_full_ss
 bindsym Shift+Print exec . $BINPATH/take_selection_ss
 
-bindsym $mod+Escape exec "rofi -theme $rofi_theme -show window"
-bindsym $mod+d exec "rofi -theme $rofi_theme -show run"
+bindsym $mod+Escape exec "rofi -modi window,run -theme $rofi_theme -show window -show-icons"
+bindsym $mod+d exec "rofi -modi window,run -theme $rofi_theme -show run"
 
 bindsym $mod+Shift+t exec terminator
 

@@ -21,8 +21,8 @@ call vundle#end()
 
 set number
 set nowrap
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set autoindent
@@ -33,8 +33,10 @@ set showmatch
 
 map <leader>r :source ~/.vimrc<CR>
 map <leader>q :q<CR>
+map <leader>Q :q!<CR>
 map <leader>w :w!<CR>
 map <leader>x :!./%<CR>
+map <leader>X :!chmod +x %<CR>
 
 autocmd BufWritePre * :%s/\s\+$//e
 
