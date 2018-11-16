@@ -7,7 +7,6 @@ syntax on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'scrooloose/nerdtree'
   Plugin 'tpope/vim-surround'
@@ -15,6 +14,8 @@ call vundle#begin()
   Plugin 'scrooloose/syntastic'
   Plugin 'Shougo/neocomplete.vim'
   Plugin 'jiangmiao/auto-pairs'
+  Plugin 'junegunn/fzf.vim'
+  Plugin 'junegunn/fzf'
 call vundle#end()
 
 " set colorcolumn=80
@@ -52,7 +53,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 let g:powerline_pycmd = "py3"
 
-map <leader>m :!make<CR>
+map <leader>m :!make run<CR>
 
 
 map <leader>nf :!echo -n "Filename: "; read fn; touch $fn<CR>

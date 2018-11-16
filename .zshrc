@@ -1,21 +1,10 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt appendhistory autocd beep
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/kuro/.zshrc'
+# Created by newuser for 5.5.1
 
-autoload -Uz promptinit
-promptinit
-prompt off
-# compinit
-# End of lines added by compinstall
+PATH=${HOME}/.gem/ruby/2.5.0/bin:${PATH}
+PATH=${HOME}/.bin:${PATH}
 
-export TERM="xterm-256color"
+export PATH
 
-powerline-daemon -q
-. /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+
 

@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+cd ~/.wekafiles
+
+java -cp mysql-connector-java-8.0.11.jar:weka.jar weka.gui.GUIChooser &
+

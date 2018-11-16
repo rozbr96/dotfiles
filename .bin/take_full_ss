@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
-maim "$HOME/Pictures/shots/`date "+%B %d, %Y %T "`.png"
+maim "$HOME/Pictures/shots/`date "+%Y%m%d%H%M%S"`.png"
 

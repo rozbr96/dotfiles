@@ -1,11 +1,15 @@
+#!/usr/bin/zsh
 
 DIR=/sys/class/backlight/intel_backlight
 BRIGHT=`cat $DIR/brightness`
 MAX_BRIGHT=`cat $DIR/max_brightness`
 
 case $1 in
-  -i) new_bright=$(( $BRIGHT + 10 ));;
-  -d) new_bright=$(( $BRIGHT - 10 ));;
+  -inc) new_bright=$(( $BRIGHT + 10 ));;
+  -dec) new_bright=$(( $BRIGHT - 10 ));;
+  -max) new_bright=$MAX_BRIGHT;;
+  -min) new_bright=0;;
+  -med) new_bright=$(( $MAX_BRIGHT / 2 ));;
 esac
 
 if [ $new_bright -gt $MAX_BRIGHT ]; then
@@ -15,3 +19,4 @@ elif [ $new_bright -le 0 ]; then
 fi
 
 sudo tee $DIR/brightness <<< $new_bright
+

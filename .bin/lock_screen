@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+i3lock -ei ~/Pictures/bgs/ls
+
