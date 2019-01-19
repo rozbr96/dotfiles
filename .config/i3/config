@@ -131,6 +131,9 @@ bindsym Shift+XF86MonBrightnessDown exec ". $BINPATH/bright_control -min"
 bindsym $mod+XF86MonBrightnessUp exec ". $BINPATH/bright_control -med"
 bindsym $mod+XF86MonBrightnessDown exec ". $BINPATH/bright_control -med"
 
+# touchpad
+bindsym F7 exec ". $BINPATH/toggle_touchpad"
+
 # locking
 bindsym $mod+Ctrl+l exec ". $BINPATH/lock_screen"
 bindsym Ctrl+Shift+l exec ". $BINPATH/lock_screen"

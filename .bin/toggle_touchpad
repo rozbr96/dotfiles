@@ -1,0 +1,7 @@
+
+STATUS=`xinput list-props 11 | awk -F : '/Device Enabled/ { print $2 }'`
+
+new_status=$(( 1 - $STATUS ))
+
+sudo xinput set-prop 11 "Device Enabled" $new_status
+

@@ -5,6 +5,6 @@ PATH=${HOME}/.bin:${PATH}
 
 export PATH
 
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
-
+# source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+# source /opt/anaconda/bin/activate root
 
