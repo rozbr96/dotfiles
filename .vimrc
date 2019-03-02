@@ -112,7 +112,7 @@ map <leader>r :source ~/.vimrc<CR>
 map <leader>q :q<CR>
 map <leader>Q :q!<CR>
 map <leader>w :w!<CR>
-map <leader>wa :wa!<CR>
+map <leader>W :wa!<CR>
 
 " misc
 map <leader>x :!./%<CR>
