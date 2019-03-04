@@ -129,7 +129,8 @@ map <leader>dd :!echo -n "Dirname: "; read dn; rm -rf $dn<CR>
 map <leader>ga :!git add .<CR>
 map <leader>gs :!git status<CR>
 map <leader>gco :!echo -n "Commit Message: "; read msg; git commit -m $msg<CR>
-map <leader>gl :!git branch --list<CR>
+map <leader>gbl :!git branch --list<CR>
+map <leader>gbn :!echo -n "New Branch: "; read branch; git branch $branch<CR>
 map <leader>gch :!echo -n "Branch: "; read branch; git checkout $branch<CR>
 
 " tsuquyomi

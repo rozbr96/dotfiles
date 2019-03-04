@@ -1,4 +1,10 @@
 #!/usr/bin/zsh
 
-i3lock -ei ~/Pictures/bgs/ls
+FILENAME=${HOME}/.lock.png
+
+maim $FILENAME
+
+convert $FILENAME -blur 0x7 $FILENAME
+
+i3lock -ei $FILENAME
 
