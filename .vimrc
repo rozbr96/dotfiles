@@ -18,27 +18,27 @@ call vundle#begin()
   Plugin 'junegunn/fzf.vim'
   Plugin 'junegunn/fzf'
 
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'           " required for deoplete
-  Plugin 'roxma/vim-hug-neovim-rpc'  " required for deoplete
+  " Plugin 'Shougo/deoplete.nvim'
+  " Plugin 'roxma/nvim-yarp'           " required for deoplete
+  " Plugin 'roxma/vim-hug-neovim-rpc'  " required for deoplete
 
   " typescript plugins
-  Plugin 'leafgarland/typescript-vim'
-  Plugin 'Quramy/tsuquyomi'
-  Plugin 'Shougo/vimproc.vim', {
-    \ 'build' : {
-    \     'windows' : 'tools\\update-dll-mingw',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac' : 'make -f make_mac.mak',
-    \     'linux' : 'make',
-    \     'unix' : 'gmake',
-    \    },
-    \ }
+"   Plugin 'leafgarland/typescript-vim'
+  " Plugin 'Quramy/tsuquyomi'
+  " Plugin 'Shougo/vimproc.vim', {
+    " \ 'build' : {
+    " \     'windows' : 'tools\\update-dll-mingw',
+    " \     'cygwin' : 'make -f make_cygwin.mak',
+    " \     'mac' : 'make -f make_mac.mak',
+    " \     'linux' : 'make',
+    " \     'unix' : 'gmake',
+    " \    },
+    " \ }
 
-  Plugin 'AnsiEsc.vim'
-  Plugin 'ryanoasis/vim-devicons'
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
+  " Plugin 'AnsiEsc.vim'
+  " Plugin 'ryanoasis/vim-devicons'
+  " Plugin 'vim-airline/vim-airline'
+  " Plugin 'vim-airline/vim-airline-themes'
   " Plugin 'sjl/badwolf'
   " Plugin 'tomasr/molokai'
   " Plugin 'morhetz/gruvbox'
