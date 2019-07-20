@@ -13,14 +13,14 @@ call vundle#begin()
   Plugin 'tpope/vim-surround'
   Plugin 'jistr/vim-nerdtree-tabs'
   Plugin 'scrooloose/syntastic'
-  " Plugin 'Shougo/neocomplete.vim'
+  Plugin 'Shougo/neocomplete.vim'
   Plugin 'jiangmiao/auto-pairs'
   Plugin 'junegunn/fzf.vim'
   Plugin 'junegunn/fzf'
 
-  " Plugin 'Shougo/deoplete.nvim'
-  " Plugin 'roxma/nvim-yarp'           " required for deoplete
-  " Plugin 'roxma/vim-hug-neovim-rpc'  " required for deoplete
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'           " required for deoplete
+  Plugin 'roxma/vim-hug-neovim-rpc'  " required for deoplete
 
   " typescript plugins
 "   Plugin 'leafgarland/typescript-vim'
@@ -35,10 +35,10 @@ call vundle#begin()
     " \    },
     " \ }
 
-  " Plugin 'AnsiEsc.vim'
-  " Plugin 'ryanoasis/vim-devicons'
-  " Plugin 'vim-airline/vim-airline'
-  " Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'AnsiEsc.vim'
+  Plugin 'ryanoasis/vim-devicons'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
   " Plugin 'sjl/badwolf'
   " Plugin 'tomasr/molokai'
   " Plugin 'morhetz/gruvbox'
@@ -58,7 +58,7 @@ call vundle#begin()
   " Plugin 'dylanaraps/wal.vim'
   Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
-  " Plugin 'ashisha/image.vim'
+  Plugin 'ashisha/image.vim'
 call vundle#end()
 
 " vim configs
@@ -99,7 +99,7 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' }, 'vimrc': {'l
 
 "" syntax highlighting
 " typescript
-au BufRead,BufNewFile *.ts   set ft=typescript syntax=typescript
+" au BufRead,BufNewFile *.ts   set ft=typescript syntax=typescript
 
 
 " deoplete config
@@ -113,6 +113,7 @@ map <leader>q :q<CR>
 map <leader>Q :q!<CR>
 map <leader>w :w!<CR>
 map <leader>ww :wa!<CR>
+map <leader>W :wa!<CR>
 
 " misc
 map <leader>x :!./%<CR>

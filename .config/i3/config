@@ -12,6 +12,7 @@ new_float none
 
 for_window [ class = "Terminator" ] floating enable
 for_window [ class = "mpv" ] floating enable
+for_window [ class = "scrcpy" ] floating enable
 
 # gaps
 gaps inner 3
@@ -168,7 +169,7 @@ mode "resize" {
 exec "compton"
 
 # music player
-exec "mpd"
+# exec "mpd"
 
 # clipboard
 exec "clipit"
@@ -177,10 +178,10 @@ exec "clipit"
 exec "setxkbmap -layout us,br -option grp:win_space_toggle"
 
 # network manager applet
-exec "nm-applet"
+# exec "nm-applet"
 
 # polybar
-exec "polybar -r mybar"
+# exec "polybar -r mybar"
 
 # background
 exec_always "feh --bg-fill $HOME/Pictures/bgs/bg"
