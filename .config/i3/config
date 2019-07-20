@@ -190,3 +190,6 @@ exec_always " feh --randomize --bg-fill $HOME/Pictures/bgs/arch"
 # conky
 exec conky
 
+# disabling touchpad
+exec ". $BINPATH/toggle_touchpad"
+
