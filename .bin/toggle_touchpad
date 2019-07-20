@@ -1,7 +1,9 @@
 
-STATUS=`xinput list-props 11 | awk -F : '/Device Enabled/ { print $2 }'`
+DEVICE_ID=`xinput list | awk -F "=" '/Synaptics/ { print $2 }' | awk '{ print $1 }'`
+
+STATUS=`xinput list-props $DEVICE_ID | awk -F : '/Device Enabled/ { print $2 }'`
 
 new_status=$(( 1 - $STATUS ))
 
-sudo xinput set-prop 11 "Device Enabled" $new_status
+sudo xinput set-prop $DEVICE_ID "Device Enabled" $new_status
 
