@@ -184,5 +184,6 @@ exec "setxkbmap -layout us,br -option grp:win_space_toggle"
 # exec "polybar -r mybar"
 
 # background
-exec_always "feh --bg-fill $HOME/Pictures/bgs/bg"
+# exec_always "feh --bg-fill $HOME/Pictures/bgs/bg"
+exec_always " feh --randomize --bg-fill $HOME/Pictures/bgs/arch"
 
