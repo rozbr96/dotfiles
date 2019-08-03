@@ -121,11 +121,23 @@ bindsym Shift+XF86AudioMute exec "pamixer --set-volume 25"
 bindsym Shift+XF86AudioLowerVolume exec "pamixer --set-volume 50"
 bindsym Shift+XF86AudioRaiseVolume exec "pamixer --set-volume 100"
 
+# cursor navigation
+bindcode $mod+79  exec xdotool mousemove_relative -- -2 -2
+bindcode $mod+80  exec xdotool mousemove_relative --  0 -2
+bindcode $mod+81  exec xdotool mousemove_relative --  2 -2
+bindcode $mod+83  exec xdotool mousemove_relative -- -2  0
+bindcode 84       exec xdotool click 1
+bindcode Shift+84 exec xdotool click 3
+bindcode $mod+85  exec xdotool mousemove_relative --  2  0 
+bindcode $mod+87  exec xdotool mousemove_relative -- -2  2
+bindcode $mod+88  exec xdotool mousemove_relative --  0  2
+bindcode $mod+89  exec xdotool mousemove_relative --  2  2
+
 # moc player
-bindsym XF86AudioNext exec "mocp --next"
-bindsym XF86AudioPrev exec "mocp --previous"
-bindsym XF86AudioPause exec "mocp --toggle-pause"
-bindsym $mod+XF86AudioPause exec "mocp --server || mocp --on shuffle && mocp --play"
+# bindsym XF86AudioNext exec "mocp --next"
+# bindsym XF86AudioPrev exec "mocp --previous"
+# bindsym XF86AudioPause exec "mocp --toggle-pause"
+# bindsym $mod+XF86AudioPause exec "mocp --server || mocp --on shuffle && mocp --play"
 
 # brightness
 bindsym XF86MonBrightnessUp exec ". $BINPATH/bright_control -inc"
@@ -195,4 +207,5 @@ exec conky
 
 # disabling touchpad
 exec ". $BINPATH/toggle_touchpad"
+
 
