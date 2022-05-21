@@ -58,7 +58,7 @@ call vundle#begin()
   " Plugin 'dylanaraps/wal.vim'
   Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
-  Plugin 'ashisha/image.vim'
+  " Plugin 'ashisha/image.vim'
 call vundle#end()
 
 " vim configs
@@ -114,6 +114,8 @@ map <leader>Q :q!<CR>
 map <leader>w :w!<CR>
 map <leader>ww :wa!<CR>
 map <leader>W :wa!<CR>
+map <leader>wq :wq<CR>
+map <leader>WQ :wq!<CR>
 
 " misc
 map <leader>x :!./%<CR>
