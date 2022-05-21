@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
 vol=`pamixer --get-volume`
 muted=`pamixer --get-mute`
