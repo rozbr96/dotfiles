@@ -376,6 +376,9 @@ exec --no-startup-id numlockx on
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 exec_always --no-startup-id setxkbmap -layout 'us,br' -variant qwerty -option 'grp:alt_caps_toggle'
 
+# start polybar
+#exec_always "killall polybar || polybar -q -r"
+
 # start conky:
 #exec_always --no-startup-id conky
 
