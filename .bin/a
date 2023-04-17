@@ -1,3 +1,0 @@
-#!/usr/bin/zsh
-
-device_id=`xinput list | awk -F = '/Synaptics/ { print  }' | awk '{print }'`
