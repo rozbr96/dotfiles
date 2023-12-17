@@ -14,3 +14,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 alias g="git"
 alias gs="g status"
 alias yy="yay --noconfirm"
+
+source /usr/share/nvm/init-nvm.sh
+
