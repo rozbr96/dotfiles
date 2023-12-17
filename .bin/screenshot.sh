@@ -6,8 +6,8 @@ filename="$(xdg-user-dir PICTURES)/screenshots/$(date).png"
 
 
 case "$1" in
-  window) command="$command -g \"$(~/.bin/hyprland/get_active_window_coords)\"" ;;
-  monitor) command="$command -o $(~/.bin/hyprland/get_active_monitor)" ;;
+  window) command="$command -g \"$(~/.bin/hyprland/get_active_window_coords.py)\"" ;;
+  monitor) command="$command -o $(~/.bin/hyprland/get_active_monitor.py)" ;;
   region) command="$command -g \"$(slurp)\"" ;;
   full) ;;
   *) exit 1 ;;
