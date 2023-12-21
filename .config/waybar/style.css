@@ -118,10 +118,8 @@ label:focus {
 }
 
 #custom-hostname {
-  min-width: 80px;
-  border-radius: 100px 0 0 100px;
-  background-color: black;
-  margin-left: -10px;
+  min-width: 60px;
+  background-color: #0D73CC;
 }
 
 #temperature.critical {
