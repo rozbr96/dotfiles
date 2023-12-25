@@ -4,21 +4,18 @@ import json
 import os
 
 
-def get_focused_monitor():
-    with os.popen('hyprctl -j monitors') as output:
-        monitors = json.loads(output.read())
-        focused_monitors = list(filter(lambda monitor: monitor['focused'], monitors))
+def get_focused_monitor_name():
+    with os.popen('hyprctl -j activeworkspace') as output:
+        workspace = json.loads(output.read())
 
-        if not focused_monitors: return
-
-        focused_monitor = focused_monitors[0]
+        focused_monitor = workspace['monitor']
 
         return focused_monitor
         
 
 if __name__ == '__main__':
-    monitor = get_focused_monitor()
+    monitor_name = get_focused_monitor_name()
 
-    if monitor:
-        print(monitor['name'])
+    if monitor_name:
+        print(monitor_name)
 

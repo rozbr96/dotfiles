@@ -5,13 +5,8 @@ import os
 
 
 def get_focused_window():
-    with os.popen('hyprctl -j clients') as output:
-        windows = json.loads(output.read())
-        focused_windows = list(filter(lambda window: window['focusHistoryID'] == 0, windows))
-
-        if not focused_windows: return
-
-        focused_window = focused_windows[0]
+    with os.popen('hyprctl -j activewindow') as output:
+        focused_window = json.loads(output.read())
 
         return focused_window
         
