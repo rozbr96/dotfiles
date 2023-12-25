@@ -118,7 +118,6 @@ label:focus {
 }
 
 #custom-hostname {
-  min-width: 60px;
   background-color: #0D73CC;
 }
 
@@ -146,15 +145,27 @@ label:focus {
 }
 
 #cpu {
-  min-width: 180px;
+  min-width: 200px;
 }
 
 #pulseaudio {
-  min-width: 70px;
+  min-width: 90px;
   margin-right: -10px;
 }
 
 #language {
   min-width: 120px;
+}
+
+#memory {
+  min-width: 50px;
+}
+
+#temperature {
+  min-width: 50px;
+}
+
+#battery {
+  min-width: 40px;
 }
 
