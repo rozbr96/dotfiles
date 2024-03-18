@@ -226,8 +226,8 @@
 	cam = commit -am
 	cma = commit -am
 	aa = add .
-	discrd = restore .
-	discard = restore .
+	discrd = restore
+	discard = restore
 	p = push
 	pl = pull
 	cob = checkout -b
@@ -241,5 +241,11 @@
 	cl = clone
 	sub = submodule
 	ss = status --short
+	f = fetch
+	sw = switch
+	swc = switch -c
+	sw- = switch -
+	bd = branch --delete
+	cc = commit --amend -C HEAD
 [init]
 	defaultBranch = main
