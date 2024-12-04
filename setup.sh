@@ -3,16 +3,17 @@
 DOTFILES_DIR=$(pwd)
 
 SYMLINKS_TO_BE_CREATED=(
+  .config/hypr/hyprland.conf
   .gitconfig
   .vimrc
   .zprofile
-  .zsh
+  .zsh/aliases
   .zshrc.local
-  .config/hypr/hyprland.conf
 )
 
 DIRS=(
   .config/hypr
+  .zsh
 )
 
 
