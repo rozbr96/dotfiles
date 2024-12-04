@@ -53,7 +53,11 @@ function create_symlinks() {
 function install_deps() {
   echo "Installing some deps..."
   yay -S --noconfirm \
+    cmake \
+    cpio \
     hyprland-meta-git \
+    meson \
+    pkg-config \
     python-pynvim \
     kitty \
     uwsm \
