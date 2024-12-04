@@ -56,13 +56,13 @@ function install_deps() {
   yay -S --noconfirm \
     cmake \
     cpio \
-    hyprland-meta-git \
     meson \
     pkg-config \
     python-pynvim \
     kitty \
     uwsm \
-    vundle
+    vundle \
+    $(pacman -Ssq hypr)
   echo "DONE INSTALLING DEPS!\n"
 }
 
