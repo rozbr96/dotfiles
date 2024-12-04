@@ -8,7 +8,29 @@ SYMLINKS_TO_BE_CREATED=(
   .zprofile
   .zsh
   .zshrc.local
+  .config/hypr/hyprland.conf
 )
+
+DIRS=(
+  .config/hypr
+)
+
+
+function create_config_dirs() {
+  echo "Creating required dirs... "
+
+  cd ~
+
+  for dir in $DIRS; do
+    echo -n "Creating dir for $dir... "
+    mkdir -p $dir
+    echo "CREATED!"
+  done
+
+  echo "DONE CREATING DIRS!\n"
+
+  cd -
+}
 
 
 function create_symlinks() {
@@ -18,7 +40,7 @@ function create_symlinks() {
 
   for fd in $SYMLINKS_TO_BE_CREATED; do
     echo -n "Creating symlink for $fd... "
-    ln -fs $DOTFILES_DIR/$fd .
+    ln -fs $DOTFILES_DIR/$fd $fd
     echo "CREATED!"
   done
 
@@ -63,6 +85,7 @@ function install_yay() {
 
 
 function setup() {
+  create_config_dirs
   create_symlinks
   install_yay
   install_deps
