@@ -5,6 +5,7 @@ DOTFILES_DIR=$(pwd)
 SYMLINKS_TO_BE_CREATED=(
   .gitconfig
   .vimrc
+  .zprofile
   .zsh
   .zshrc.local
 )
@@ -33,6 +34,7 @@ function install_deps() {
     hyprland-meta-git \
     python-pynvim \
     kitty \
+    uwsm \
     vundle
   echo "DONE INSTALLING DEPS!\n"
 }
