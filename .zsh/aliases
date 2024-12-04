@@ -1,0 +1,5 @@
+
+alias g="git"
+alias gs="g status"
+alias yy="yay --noconfirm"
+
