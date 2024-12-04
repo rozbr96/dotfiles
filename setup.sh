@@ -57,6 +57,7 @@ function install_deps() {
     cmake \
     cpio \
     meson \
+    hy3 \
     pkg-config \
     python-pynvim \
     kitty \
