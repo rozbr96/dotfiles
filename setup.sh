@@ -3,35 +3,13 @@
 DOTFILES_DIR=$(pwd)
 
 SYMLINKS_TO_BE_CREATED=(
-  .config/hypr/hyprland.conf
+  .config/hypr
   .gitconfig
   .vimrc
   .zprofile
-  .zsh/aliases
+  .zsh
   .zshrc.local
 )
-
-DIRS=(
-  .config/hypr
-  .zsh
-)
-
-
-function create_config_dirs() {
-  echo "Creating required dirs... "
-
-  cd ~
-
-  for dir in $DIRS; do
-    echo -n "Creating dir for $dir... "
-    mkdir -p $dir
-    echo "CREATED!"
-  done
-
-  echo "DONE CREATING DIRS!\n"
-
-  cd -
-}
 
 
 function create_symlinks() {
@@ -41,8 +19,7 @@ function create_symlinks() {
 
   for fd in $SYMLINKS_TO_BE_CREATED; do
     echo -n "Creating symlink for $fd... "
-    ln -fs $DOTFILES_DIR/$fd $fd
-    echo "CREATED!"
+    ([[ ! -e $fd ]]  && ln -s $DOTFILES_DIR/$fd $fd && echo "DONE!") || echo "SKIPPED! [already exists]"
   done
 
   echo "DONE CREATING SYMLINKS!\n"
@@ -91,7 +68,6 @@ function install_yay() {
 
 
 function setup() {
-  create_config_dirs
   create_symlinks
   install_yay
   install_deps
