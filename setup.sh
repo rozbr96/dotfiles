@@ -30,6 +30,7 @@ function create_symlinks() {
 function install_deps() {
   echo "Installing some deps..."
   yay -S --noconfirm \
+    hyprland-meta-git \
     python-pynvim \
     kitty \
     vundle
@@ -44,8 +45,24 @@ function install_vim_plugins() {
 }
 
 
+function install_yay() {
+  echo "Installing yay..."
+  sudo pacman -S --noconfirm go
+  mkdir -p yay
+  cd yay
+  wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
+  tar -zxvf yay.tar.gz
+  cd yay
+  yes | makepkg -sri
+  cd ../..
+  sudo rm -r yay
+  echo "DONE INSTALLING YAY"
+}
+
+
 function setup() {
   create_symlinks
+  install_yay
   install_deps
   install_vim_plugins
 }
