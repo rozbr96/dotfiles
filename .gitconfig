@@ -247,5 +247,8 @@
 	sw- = switch -
 	bd = branch --delete
 	cc = commit --amend -C HEAD
+	dc = diff --cached
+	bm = branch -m
+	bdd = branch -D
 [init]
 	defaultBranch = main
