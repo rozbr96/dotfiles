@@ -1,5 +1,6 @@
 
 SYMLINKS_TO_BE_CREATED := .config/hypr \
+													.config/nvim \
 													.gitconfig \
 													.vimrc \
 													.zprofile \
@@ -22,7 +23,9 @@ install: install_yay \
 	install_hyprland \
 	install_ranger \
 	install_vim \
-	install_vim_plugins
+	install_vim_plugins \
+	install_neovim \
+	install_neovim_plugins
 
 install_hyprland:
 	echo "Installing hyprland..."
@@ -34,6 +37,18 @@ install_hyprland:
     pkg-config \
     kitty \
     uwsm
+
+install_neovim:
+	echo "Installing neovim..."
+	yay -S --noconfirm \
+		neovim \
+		nvim-packer-git \
+		python-pynvim \
+		wl-clipboard
+
+install_neovim_plugins:
+	echo "Installing neovim plugins..."
+	nvim +PackerSync +qall
 
 install_ranger:
 	echo "Installing ranger..."
