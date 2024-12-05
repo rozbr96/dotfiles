@@ -1,5 +1,6 @@
 
 SYMLINKS_TO_BE_CREATED := .config/hypr \
+													.config/kitty \
 													.config/nvim \
 													.gitconfig \
 													.vimrc \
@@ -36,6 +37,7 @@ install_hyprland:
     meson \
     pkg-config \
     kitty \
+		ttf-firacode-nerd \
     uwsm
 
 install_neovim:
