@@ -250,5 +250,10 @@
 	dc = diff --cached
 	bm = branch -m
 	bdd = branch -D
+	cp = cherry-pick
+	cpc = cherry-pick --continue
+	cpa = cherry-pick --abort
+	cps = cherry-pick --skip
+	cpq = cherry-pick --quit
 [init]
 	defaultBranch = main
