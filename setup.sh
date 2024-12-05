@@ -31,15 +31,25 @@ function create_symlinks() {
 function install_deps() {
   echo "Installing some deps..."
   yay -S --noconfirm \
+    atool \
     cmake \
     cpio \
-    meson \
+    ffmpegthumbnailer \
+    highlight \
     hy3 \
+    imagemagick \
+    mediainfo \
+    meson \
+    odt2txt \
     pkg-config \
+    poppler \
+    python-pillow \
     python-pynvim \
     kitty \
+    ranger \
     uwsm \
     vundle \
+    w3m \
     $(pacman -Ssq hypr)
   echo "DONE INSTALLING DEPS!\n"
 }
