@@ -43,9 +43,11 @@ install_hyprland:
 install_neovim:
 	echo "Installing neovim..."
 	yay -S --noconfirm \
+		fd \
 		neovim \
 		nvim-packer-git \
 		python-pynvim \
+		ripgrep \
 		wl-clipboard
 
 install_neovim_plugins:
