@@ -232,7 +232,7 @@
 	pl = pull
 	cob = checkout -b
 	cedit = commit --amend -m
-	ce = commit --amend -m
+	ce = commit --amend
 	m = merge
 	sh = show
 	b = branch
