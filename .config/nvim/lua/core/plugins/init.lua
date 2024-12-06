@@ -11,10 +11,7 @@ require('packer').startup(function()
     }
   }
 
-  use {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter'
-  }
+  use 'windwp/nvim-autopairs'
 
   use 'lewis6991/gitsigns.nvim'
 
