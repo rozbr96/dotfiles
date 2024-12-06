@@ -1,7 +1,7 @@
 
 vim.g.mapleader = '\\'
 
-bindings_per_mode = {
+local bindings_per_mode = {
   ['n'] = {
     -- reload config
     {keys = '<leader>r', command = ':lua ReloadConfig()<CR>'},
@@ -35,8 +35,8 @@ bindings_per_mode = {
     {keys = '<leader>cm', command = ':Telescope man_pages<CR>'},
 
     -- buffers
-    {keys = '<leader>v', command = ':split<CR>'},
-    {keys = '<leader>h', command = ':vsplit<CR>'},
+    {keys = '<leader>vv', command = ':split<CR>'},
+    {keys = '<leader>hh', command = ':vsplit<CR>'},
     {keys = '<leader>#', command = ':#wincmd w<CR>'},
 
     -- code
@@ -57,12 +57,12 @@ bindings_per_mode = {
 
 for mode, bindings in pairs(bindings_per_mode) do
   for _, value in pairs(bindings) do
-    is_numeric = string.find(value.keys, '#')
+    local is_numeric = string.find(value.keys, '#')
 
     if is_numeric then
       for i = 1, 9 do
-        keys = string.gsub(value.keys, '#', i)
-        cmd = string.gsub(value.command, '#', i)
+        local keys = string.gsub(value.keys, '#', i)
+        local cmd = string.gsub(value.command, '#', i)
 
         vim.api.nvim_set_keymap(mode, keys, cmd, {})
       end

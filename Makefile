@@ -23,6 +23,7 @@ create_symlinks:
 install: install_yay \
 	install_hyprland \
 	install_ranger \
+	install_language_servers \
 	install_vim \
 	install_vim_plugins \
 	install_neovim \
@@ -39,6 +40,11 @@ install_hyprland:
     kitty \
 		ttf-firacode-nerd \
     uwsm
+
+install_language_servers:
+	echo "Installing languages servers..."
+	yay -S --noconfirm \
+		lua-language-server
 
 install_neovim:
 	echo "Installing neovim..."
