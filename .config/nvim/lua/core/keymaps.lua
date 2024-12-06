@@ -41,6 +41,15 @@ local bindings_per_mode = {
 
     -- code
     {keys = '<leader>Cp', command = ':Telescope treesitter<CR>'},
+    {keys = '<leader>Cf', command = ':Telescope lsp_references<CR>'},
+    {keys = '<leader>CD', command = ':Telescope diagnostics<CR>'},
+    {keys = '<leader>Cd', command = ':Telescope lsp_definitions<CR>'},
+    {keys = '<leader>Ci', command = ':Telescope lsp_implementations<CR>'},
+    {keys = '<leader>Ct', command = ':Telescope lsp_type_definitions<CR>'},
+    {keys = '<leader>Cs', command = ':Telescope lsp_document_symbols<CR>'},
+    {keys = '<leader>CS', command = ':Telescope lsp_workspace_symbols<CR>'},
+    {keys = '<leader>CI', command = ':Telescope lsp_incoming_calls<CR>'},
+    {keys = '<leader>CO', command = ':Telescope lsp_outgoing_calls<CR>'},
 
     -- git
     {keys = '<leader>gl', command = ':Telescope git_commits<CR>'},
