@@ -76,6 +76,13 @@ require('packer').startup(function()
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter.configs').setup({})
+    end
+  }
+
+  use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     requires = {
@@ -88,5 +95,4 @@ require('packer').startup(function()
     end
   }
 end)
-
 
