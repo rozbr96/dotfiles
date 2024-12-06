@@ -26,6 +26,8 @@ require('packer').startup(function()
       }
     }
   }
+
+  use 'neovim/nvim-lspconfig'
 end)
 
 require('core.plugins.config')
