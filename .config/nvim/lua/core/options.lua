@@ -10,3 +10,9 @@ vim.opt.smartindent = true
 vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 
+vim.filetype.add {
+  pattern = {
+    ['.*compose.*.ya?ml'] = 'docker-compose'
+  }
+}
+

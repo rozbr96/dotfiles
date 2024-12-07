@@ -44,6 +44,7 @@ install_hyprland:
 install_language_servers:
 	echo "Installing languages servers..."
 	yay -S --noconfirm \
+		nodejs-compose-language-service \
 		lua-language-server
 
 install_neovim:
