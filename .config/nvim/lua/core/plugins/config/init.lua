@@ -4,4 +4,5 @@ require('core.plugins.config.gitsigns')
 require('core.plugins.config.telescope')
 require('core.plugins.config.nvim-tree')
 require('core.plugins.config.nvim-autopairs')
+require('core.plugins.config.nvim-cmp')
 
