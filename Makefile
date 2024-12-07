@@ -63,6 +63,7 @@ install_language_servers:
 		nodejs-compose-language-service \
 		lua-language-server \
 		pyright \
+		vue-language-server \
 		typescript-language-server
 
 install_neovim:
