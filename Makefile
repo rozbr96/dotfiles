@@ -62,7 +62,8 @@ install_language_servers:
 		dockerfile-language-server \
 		nodejs-compose-language-service \
 		lua-language-server \
-		pyright
+		pyright \
+		typescript-language-server
 
 install_neovim:
 	echo "Installing neovim..."
