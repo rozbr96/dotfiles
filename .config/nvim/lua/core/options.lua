@@ -12,7 +12,8 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.filetype.add {
   pattern = {
-    ['.*compose.*.ya?ml'] = 'docker-compose'
+    ['.*compose.*.ya?ml'] = 'docker-compose',
+    ['.*/hypr/.*conf'] = 'hyprlang',
   }
 }
 

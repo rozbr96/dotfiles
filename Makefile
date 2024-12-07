@@ -1,5 +1,6 @@
 
-SYMLINKS_TO_BE_CREATED := .config/hypr \
+SYMLINKS_TO_BE_CREATED := .bin \
+													.config/hypr \
 													.config/kitty \
 													.config/nvim \
 													.gitconfig \
@@ -65,6 +66,7 @@ install_language_servers:
 		pyright \
 		vue-language-server \
 		typescript-language-server
+	GOBIN=~/.bin go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest
 
 install_neovim:
 	echo "Installing neovim..."
