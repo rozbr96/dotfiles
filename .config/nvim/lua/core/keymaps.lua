@@ -3,8 +3,9 @@ vim.g.mapleader = '\\'
 
 local bindings_per_mode = {
   ['n'] = {
-    -- reload config
+    -- general config
     {keys = '<leader>r', command = ':lua ReloadConfig()<CR>'},
+    {keys = '<leader>T', command = ':terminal<CR>'},
 
     -- saving
     {keys = '<leader>ww', command = ':w<CR>'},
