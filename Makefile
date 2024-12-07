@@ -23,11 +23,20 @@ create_symlinks:
 install: install_yay \
 	install_hyprland \
 	install_ranger \
+	install_docker \
 	install_language_servers \
 	install_vim \
 	install_vim_plugins \
 	install_neovim \
 	install_neovim_plugins
+
+install_docker:
+	echo "Installing docker..."
+	yay -S --noconfirm \
+		docker \
+		docker-buildx \
+		docker-compose
+	sudo usermod -aG docker $$USER
 
 install_hyprland:
 	echo "Installing hyprland..."
