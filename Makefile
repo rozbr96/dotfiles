@@ -42,6 +42,7 @@ install_docker:
 		docker-buildx \
 		docker-compose
 	sudo usermod -aG docker $$USER
+	sudo systemctl enable docker
 
 install_hyprland:
 	echo "Installing hyprland..."
