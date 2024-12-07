@@ -24,11 +24,16 @@ install: install_yay \
 	install_hyprland \
 	install_ranger \
 	install_docker \
+	install_asdf \
 	install_language_servers \
 	install_vim \
 	install_vim_plugins \
 	install_neovim \
 	install_neovim_plugins
+
+install_asdf:
+	echo "Installing asdf..."
+	yay -S --noconfirm asdf-vm
 
 install_docker:
 	echo "Installing docker..."

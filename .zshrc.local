@@ -1,3 +1,7 @@
 
-source ~/.zsh/aliases
+ALIASES_FILE=~/.zsh/aliases
+ASDF_FILE=/opt/asdf-vm/asdf.sh
+
+[[ -f $ALIASES_FILE ]] && source $ALIASES_FILE
+[[ -f $ASDF_FILE ]] && . $ASDF_FILE
 
