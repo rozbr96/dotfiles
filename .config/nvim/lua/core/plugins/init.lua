@@ -41,6 +41,9 @@ require('packer').startup(function()
 
   use 'elkowar/yuck.vim'
   use 'gpanders/nvim-parinfer'
+
+  use 'numToStr/Comment.nvim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 end)
 
 require('core.plugins.config')
