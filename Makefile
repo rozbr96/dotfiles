@@ -1,5 +1,6 @@
 
 SYMLINKS_TO_BE_CREATED := .bin \
+													.config/eww \
 													.config/hypr \
 													.config/kitty \
 													.config/nvim \
@@ -23,6 +24,7 @@ create_symlinks:
 
 install: install_yay \
 	install_hyprland \
+	install_eww \
 	install_ranger \
 	install_docker \
 	install_asdf \
@@ -44,6 +46,26 @@ install_docker:
 		docker-compose
 	sudo usermod -aG docker $$USER
 	sudo systemctl enable docker
+
+install_eww:
+	echo "Installing eww..."
+	yay -S --noconfirm \
+		gtk3 \
+		gtk-layer-shell \
+		pango \
+		gdk-pixbuf2 \
+		libdbusmenu-gtk3 \
+		cairo \
+		glib2 \
+		gcc-libs \
+		glibc \
+		rustup
+	rm -rf .eww_build
+	git clone https://github.com/elkowar/eww ~/.eww
+	cd ~/.eww
+	cargo build --release --no-default-features --features=wayland
+	chmod +x target/release/eww
+	ln -fs ~/.eww/target/release/eww ~/.bin/eww
 
 install_hyprland:
 	echo "Installing hyprland..."

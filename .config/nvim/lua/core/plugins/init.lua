@@ -38,6 +38,9 @@ require('packer').startup(function()
       'hrsh7th/cmp-cmdline'
     }
   }
+
+  use 'elkowar/yuck.vim'
+  use 'gpanders/nvim-parinfer'
 end)
 
 require('core.plugins.config')
