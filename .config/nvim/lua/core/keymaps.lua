@@ -12,6 +12,8 @@ local bindings_per_mode = {
     {keys = '<leader>wa', command = ':wa<CR><ESC>'},
     {keys = '<leader>Ww', command = ':w!<CR>'},
     {keys = '<leader>Wa', command = ':wa!<CR>'},
+    {keys = '<leader>wq', command = ':wq<CR>'},
+    {keys = '<leader>Wq', command = ':wq!<CR>'},
 
     -- quiting
     {keys = '<leader>qq', command = ':q<CR>'},
