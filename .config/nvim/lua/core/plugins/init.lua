@@ -44,6 +44,8 @@ require('packer').startup(function()
 
   use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use 'echasnovski/mini.surround'
 end)
 
 require('core.plugins.config')

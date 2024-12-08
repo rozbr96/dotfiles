@@ -7,4 +7,5 @@ require('core.plugins.config.nvim-autopairs')
 require('core.plugins.config.nvim-cmp')
 require('core.plugins.config.comment')
 require('core.plugins.config.nvim-ts-context-commentstring')
+require('core.plugins.config.mini_surround')
 
