@@ -20,7 +20,8 @@ local bindings_per_mode = {
     {keys = '<leader>Qa', command = ':qa!<CR>'},
 
     -- tree
-    {keys = '<leader>t', command = ':NvimTreeToggle<CR>'},
+    {keys = '<leader>tt', command = ':NvimTreeToggle<CR>'},
+    {keys = '<leader>tf', command = ':NvimTreeFindFile!<CR>'},
     {keys = '<Tab>', command = ':NvimTreeFocus<CR>'},
 
     -- telescope
