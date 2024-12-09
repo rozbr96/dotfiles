@@ -46,6 +46,8 @@ require('packer').startup(function()
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   use 'echasnovski/mini.surround'
+
+  use 'johmsalas/text-case.nvim'
 end)
 
 require('core.plugins.config')

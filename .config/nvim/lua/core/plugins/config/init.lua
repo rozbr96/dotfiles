@@ -8,4 +8,5 @@ require('core.plugins.config.nvim-cmp')
 require('core.plugins.config.comment')
 require('core.plugins.config.nvim-ts-context-commentstring')
 require('core.plugins.config.mini_surround')
+require('core.plugins.config.text-case')
 
