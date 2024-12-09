@@ -24,6 +24,7 @@ create_symlinks:
 
 install: install_yay \
 	install_hyprland \
+	install_fonts \
 	install_eww \
 	install_ranger \
 	install_docker \
@@ -66,6 +67,12 @@ install_eww:
 	cargo build --release --no-default-features --features=wayland
 	chmod +x target/release/eww
 	ln -fs ~/.eww/target/release/eww ~/.bin/eww
+
+install_fonts:
+	echo "Installing fonts..."
+	yay -S --noconfirm \
+		noto-fonts-cjk \
+		noto-fonts-emoji
 
 install_hyprland:
 	echo "Installing hyprland..."
