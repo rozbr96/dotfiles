@@ -48,6 +48,8 @@ require('packer').startup(function()
   use 'echasnovski/mini.surround'
 
   use 'johmsalas/text-case.nvim'
+
+  use 'brenton-leighton/multiple-cursors.nvim'
 end)
 
 require('core.plugins.config')
