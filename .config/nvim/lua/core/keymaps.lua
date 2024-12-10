@@ -60,6 +60,12 @@ local bindings_per_mode = {
     {keys = '<leader>gs', command = ':Telescope git_status<CR>'},
     {keys = '<leader>gb', command = ':Telescope git_branches<CR>'},
     {keys = '<leader>gf', command = ':Telescope git_bcommits<CR>'},
+
+    -- multiple cursors
+    {keys = '<A-S-Down>', command = ':MultipleCursorsAddDown<CR>'},
+    {keys = '<A-S-Up>', command = ':MultipleCursorsAddUp<CR>'},
+    {keys = '<C-LeftMouse>', command = ':MultipleCursorsMouseAddDelete<CR>'},
+    {keys = '<C-D>', command = ':MultipleCursorsAddJumpNextMatch<CR>'},
   },
 
   ['v'] = {
