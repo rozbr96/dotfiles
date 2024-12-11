@@ -9,6 +9,7 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
+vim.wo.wrap = false
 
 vim.filetype.add {
   pattern = {
