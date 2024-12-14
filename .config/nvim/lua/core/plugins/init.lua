@@ -50,6 +50,8 @@ require('packer').startup(function()
   use 'johmsalas/text-case.nvim'
 
   use 'brenton-leighton/multiple-cursors.nvim'
+
+  use 'rozbr96/spec_runner'
 end)
 
 require('core.plugins.config')
