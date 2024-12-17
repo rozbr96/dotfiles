@@ -255,5 +255,8 @@
 	cpa = cherry-pick --abort
 	cps = cherry-pick --skip
 	cpq = cherry-pick --quit
+	ca = commit -a
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
