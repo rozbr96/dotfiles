@@ -52,6 +52,8 @@ require('packer').startup(function()
   use 'brenton-leighton/multiple-cursors.nvim'
 
   use 'rozbr96/spec_runner'
+
+  use 'sindrets/diffview.nvim'
 end)
 
 require('core.plugins.config')
