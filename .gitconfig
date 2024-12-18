@@ -256,6 +256,8 @@
 	cps = cherry-pick --skip
 	cpq = cherry-pick --quit
 	ca = commit -a
+	mc = merge --continue
+	ma = merge --abort
 [init]
 	defaultBranch = main
 [core]
