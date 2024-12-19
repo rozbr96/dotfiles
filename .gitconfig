@@ -258,6 +258,7 @@
 	ca = commit -a
 	mc = merge --continue
 	ma = merge --abort
+	swd = switch --detach
 [init]
 	defaultBranch = main
 [core]
