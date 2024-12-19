@@ -27,6 +27,7 @@ install: install_yay \
 	install_pipewire \
 	install_fonts \
 	install_mako \
+	install_screenshot_utility \
 	install_ranger \
 	install_docker \
 	install_asdf \
@@ -117,6 +118,15 @@ install_ranger:
     python-pillow \
     ranger \
     w3m
+
+install_screenshot_utility:
+	echo "Installing screenshoting utility..."
+	yay -S --noconfirm \
+		grim \
+		slurp \
+		xdg-user-dirs
+	xdg-user-dirs-update
+	mkdir -p "`xdg-user-dir PICTURES`/screenshots"
 
 install_vim:
 	echo "Installing vim..."
