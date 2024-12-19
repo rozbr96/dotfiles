@@ -24,6 +24,7 @@ create_symlinks:
 
 install: install_yay \
 	install_hyprland \
+	install_pipewire \
 	install_fonts \
 	install_mako \
 	install_ranger \
@@ -96,6 +97,13 @@ install_neovim_plugins:
 	echo "Installing neovim plugins..."
 	nvim +PackerSync +qall
 
+install_pipewire:
+	echo "Installing pipewire..."
+	yay -S --noconfirm \
+		pipewire \
+		wireplumber \
+		xdg-desktop-portal-hyprland-git
+
 install_ranger:
 	echo "Installing ranger..."
 	yay -S --noconfirm \
@@ -134,4 +142,3 @@ install_yay:
 	cd ../..
 	sudo rm -rf tmp
 	echo "DONE INSTALLING YAY!"
-
