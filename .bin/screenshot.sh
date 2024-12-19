@@ -3,13 +3,27 @@
 
 command="grim"
 filename="$(xdg-user-dir PICTURES)/screenshots/$(date).png"
+file=$(basename "$filename")
 
 
 case "$1" in
-  window) command="$command -g \"$(~/.bin/hyprland/get_active_window_coords.py)\"" ;;
-  monitor) command="$command -o $(~/.bin/hyprland/get_active_monitor.py)" ;;
-  region) command="$command -g \"$(slurp)\"" ;;
-  full) ;;
+  window)
+    title="Window screenshot taken"
+    command="$command -g \"$(~/.bin/hyprland/get_active_window_coords.py)\""
+  ;;
+
+  monitor)
+    title="Current monitor screenshot taken"
+    command="$command -o $(~/.bin/hyprland/get_active_monitor.py)"
+  ;;
+
+  region)
+    title="Selection screenshot taken"
+    command="$command -g \"$(slurp)\""
+  ;;
+  full)
+    title="Full screenshot taken"
+  ;;
   *) exit 1 ;;
 esac
 
@@ -24,7 +38,13 @@ esac
 eval $command
 
 
-if [ "$2" = "both" ]; then
-  wl-copy < $filename
-fi
+case "$2" in
+  file) message="Saved as $file" ;;
+  clipboard) message="Copied to clipboard" ;;
+  both)
+    wl-copy < $filename
+    message="Copied to clipboard\n\nSaved as $file"
+  ;;
+esac
 
+notify-send $title $message
