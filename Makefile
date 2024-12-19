@@ -2,6 +2,7 @@
 SYMLINKS_TO_BE_CREATED := .bin \
 													.config/hypr \
 													.config/kitty \
+													.config/mako \
 													.config/nvim \
 													.gitconfig \
 													.vimrc \
@@ -24,6 +25,7 @@ create_symlinks:
 install: install_yay \
 	install_hyprland \
 	install_fonts \
+	install_mako \
 	install_ranger \
 	install_docker \
 	install_asdf \
@@ -74,6 +76,11 @@ install_language_servers:
 		vue-language-server \
 		typescript-language-server
 	GOBIN=~/.bin go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest
+
+install_mako:
+	echo "Installing mako..."
+	yay -S --noconfirm \
+		mako
 
 install_neovim:
 	echo "Installing neovim..."

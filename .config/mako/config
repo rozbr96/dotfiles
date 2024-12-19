@@ -1,0 +1,24 @@
+
+layer=top
+anchor=top-right
+
+on-button-left=dismiss
+
+max-visible=5
+
+padding=10
+
+border-size=1
+border-color=#33ccffee
+
+font=Fira Sans 12
+
+background-color=#1e1e2e
+text-color=#ffffff
+
+max-icon-size=48
+
+border-radius=07
+
+ignore-timeout=false
+
