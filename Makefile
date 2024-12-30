@@ -126,7 +126,8 @@ install_utilities:
 		slurp \
 		xdg-user-dirs \
 		wofi \
-		wofi-emoji
+		wofi-emoji \
+		cliphist
 	xdg-user-dirs-update
 	mkdir -p "`xdg-user-dir PICTURES`/screenshots"
 
