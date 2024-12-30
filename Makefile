@@ -27,7 +27,7 @@ install: install_yay \
 	install_pipewire \
 	install_fonts \
 	install_mako \
-	install_screenshot_utility \
+	install_utilities \
 	install_ranger \
 	install_docker \
 	install_asdf \
@@ -119,12 +119,14 @@ install_ranger:
     ranger \
     w3m
 
-install_screenshot_utility:
-	echo "Installing screenshoting utility..."
+install_utilities:
+	echo "Installing utilities..."
 	yay -S --noconfirm \
 		grim \
 		slurp \
-		xdg-user-dirs
+		xdg-user-dirs \
+		wofi \
+		wofi-emoji
 	xdg-user-dirs-update
 	mkdir -p "`xdg-user-dir PICTURES`/screenshots"
 
