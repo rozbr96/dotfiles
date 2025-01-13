@@ -32,6 +32,7 @@ local bindings_per_mode = {
     {keys = '<leader>fh', command = ':Telescope search_history<CR>'},
     {keys = '<leader>fg', command = ':Telescope live_grep<CR>'},
     {keys = '<leader>fs', command = ':Telescope live_grep<CR>'},
+    {keys = '<leader>fw', command = ':Telescope grep_string<CR>'},
     {keys = '<leader>fb', command = ':Telescope buffers<CR>'},
 
     -- commands
