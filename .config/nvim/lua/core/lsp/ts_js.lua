@@ -1,5 +1,6 @@
 
 require('lspconfig').ts_ls.setup {
+  cmd = { 'npx', 'typescript-language-server', '--stdio' },
   init_options = {
     plugins = {
       {
