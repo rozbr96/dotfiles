@@ -10,6 +10,8 @@ vim.opt.smartindent = true
 vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 vim.wo.wrap = false
+vim.opt.foldmethod = 'indent'
+vim.o.foldenable = false
 
 vim.filetype.add {
   pattern = {
