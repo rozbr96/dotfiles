@@ -44,6 +44,8 @@ local bindings_per_mode = {
     {keys = '<leader>vv', command = ':split<CR>'},
     {keys = '<leader>hh', command = ':vsplit<CR>'},
     {keys = '<leader>#', command = ':#wincmd w<CR>'},
+    {keys = '<leader><leader>#', command = '#gt <CR>'},
+    {keys = '<leader><leader>o', command = ':tab split <CR>'},
 
     -- code
     {keys = '<leader>Cp', command = ':Telescope treesitter<CR>'},
