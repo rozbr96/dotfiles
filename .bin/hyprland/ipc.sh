@@ -4,10 +4,14 @@ function event_data() {
   echo "$1" | awk -F '>>' '{ print $2 }'
 }
 
+function active_monitor() {
+  hyprctl monitors -j | jq '.[] | select(.focused == true) | .id'
+}
+
 function handle_kb_layout_change() {
   layout=$(echo "$1" | sed 's/.*(\(.*\))$/\1/' | tr 'A-Z' 'a-z')
 
-  eww open kb-layout --duration 1s --arg layout="$layout"
+  eww open kb-layout --duration 1s --arg layout="$layout" --arg monitor=$(active_monitor)
 }
 
 function handle() {
