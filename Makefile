@@ -1,6 +1,7 @@
 
 SYMLINKS_TO_BE_CREATED := .bin \
 													.config/hypr \
+													.config/eww \
 													.config/kitty \
 													.config/mako \
 													.config/nvim \
@@ -66,7 +67,8 @@ install_hyprland:
     pkg-config \
     kitty \
 		ttf-firacode-nerd \
-    uwsm
+    uwsm \
+		socat
 
 install_language_servers:
 	echo "Installing languages servers..."

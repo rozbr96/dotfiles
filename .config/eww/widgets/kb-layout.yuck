@@ -1,0 +1,11 @@
+
+(deflisten kb-layout
+  :initial 'english'
+  `hyprctl devices -j | jq '.keyboards[] | select(.main == true) | .active_keymap' | awk '{ print $1 }' | cut -c2- | tr 'A-Z' 'a-z'`)
+
+(defwidget kb-layout [?layout]
+  (image
+    :class 'kb-layout'
+    :path 'assets/images/${layout ?: kb-layout}.png'
+    :image-width 100))
+
