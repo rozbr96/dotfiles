@@ -58,7 +58,7 @@ install_fonts:
 
 install_hyprland:
 	echo "Installing hyprland..."
-	pacman -Qsq hypr | xargs yay -S --noconfirm \
+	pacman -Ssq hypr | xargs yay -S --noconfirm \
     cmake \
     cpio \
     hy3 \
