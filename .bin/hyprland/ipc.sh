@@ -11,13 +11,21 @@ function active_monitor() {
 function handle_kb_layout_change() {
   layout=$(echo "$1" | sed 's/.*(\(.*\))$/\1/' | tr 'A-Z' 'a-z')
 
-  eww open kb-layout --duration 1s --arg layout="$layout" --arg monitor=$(active_monitor)
+  eww open kb-layout --duration 1s --arg layout="$layout" --arg monitor="$(eww get current-monitor)"
+}
+
+function handle_focused_mon_change() {
+  eww update current-monitor="$(active_monitor)"
 }
 
 function handle() {
   case $1 in
     activelayout*)
       handle_kb_layout_change "$(event_data "$1")" 
+    ;;
+
+    focusedmonv2*)
+      handle_focused_mon_change
     ;;
   esac
 }
