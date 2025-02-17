@@ -2,6 +2,6 @@
 (include 'widgets/kb-layout.yuck')
 
 (defwindow kb-layout [?layout ?monitor]
-  :monitor { monitor ?: 0 }
+  :monitor {monitor ?: 0}
   (kb-layout :layout layout))
 

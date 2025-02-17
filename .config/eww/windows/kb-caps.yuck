@@ -2,5 +2,5 @@
 (include 'widgets/kb-caps.yuck')
 
 (defwindow kb-caps [?monitor]
-  :monitor { monitor ?: 0 }
+  :monitor {monitor ?: 0}
   (kb-caps))
