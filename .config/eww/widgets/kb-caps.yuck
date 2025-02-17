@@ -1,0 +1,7 @@
+
+(defwidget kb-caps []
+  (label
+    :text { kb-caps-enabled ? '✔️' : '❌' }
+    :width 100
+    :height 100))
+
