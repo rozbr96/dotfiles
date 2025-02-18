@@ -25,6 +25,7 @@ create_symlinks:
 
 install: install_yay \
 	install_hyprland \
+	install_eww \
 	install_pipewire \
 	install_fonts \
 	install_mako \
@@ -50,6 +51,17 @@ install_docker:
 		docker-compose
 	sudo usermod -aG docker $$USER
 	sudo systemctl enable docker
+
+install_eww: create_symlinks
+	echo "Installing eww..."
+	yay -S --noconfirm cargo rustup
+	git clone https://github.com/elkowar/eww ~/.eww
+	cd ~/.eww
+	cargo build --release --no-default-features --features=wayland
+	cd target/release
+	chmod +x eww
+	cd ~/.bin
+	ln -s ~/.eww/target/release/eww .
 
 install_fonts:
 	echo "Installing fonts..."

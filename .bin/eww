@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+$HOME/.eww/target/release/eww --force-wayland $@
+
