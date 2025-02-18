@@ -23,6 +23,13 @@ function handle_workspace_change() {
   eww update current-active-workspace="$(hyprctl activeworkspace -j)"
 }
 
+function handle_monitors_change() {
+  eww update primary-monitor-id=$(hyprctl monitors -j | jq 'sort_by(-.id) | .[0].id')
+  eww close-all
+  sleep 5 # TODO workaround
+  eww open bottom-center-bar --screen $(eww get primary-monitor-id)
+}
+
 function handle() {
   case $1 in
     activelayout*)
@@ -35,6 +42,10 @@ function handle() {
 
     workspacev2*)
       handle_workspace_change
+    ;;
+
+    monitorremoved*|monitoradded*)
+      handle_monitors_change
     ;;
   esac
 }
