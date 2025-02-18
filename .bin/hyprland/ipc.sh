@@ -18,6 +18,11 @@ function handle_focused_mon_change() {
   eww update current-monitor="$(active_monitor)"
 }
 
+function handle_workspace_change() {
+  eww update current-workspaces="$(hyprctl workspaces -j | jq "[ sort | .[] | select(.monitorID == $(eww get primary-monitor-id)) ]")"
+  eww update current-active-workspace="$(hyprctl activeworkspace -j)"
+}
+
 function handle() {
   case $1 in
     activelayout*)
@@ -26,6 +31,10 @@ function handle() {
 
     focusedmonv2*)
       handle_focused_mon_change
+    ;;
+
+    workspacev2*)
+      handle_workspace_change
     ;;
   esac
 }
