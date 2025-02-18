@@ -1,0 +1,8 @@
+
+(defpoll time
+  :interval '1s'
+  `date +%c`)
+
+(defwidget clock []
+  (label :text time))
+

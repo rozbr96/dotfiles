@@ -2,4 +2,4 @@
 (include 'vars.yuck')
 (include 'windows/kb-layout.yuck')
 (include 'windows/kb-caps.yuck')
-
+(include 'windows/bottom-center-bar.yuck')
