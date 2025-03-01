@@ -1,4 +1,6 @@
 
+$primary_color: #3cf;
+
 * {
   background-color: transparent;
 }
@@ -9,13 +11,18 @@
   font-size: 50px;
 }
 
+.clock-label {
+  color: $primary_color;
+  font-family: 'Firacode'
+}
+
 .workspace {
-  color: #33ccff;
-  border: 2px solid #33ccff;
+  color: $primary_color;
+  border: 2px solid $primary_color;
   border-radius: 10px;
 
   &.active {
     color: black;
-    background-color: #33ccff;
+    background-color: $primary_color;
   }
 }

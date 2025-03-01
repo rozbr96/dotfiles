@@ -4,5 +4,5 @@
   `date +%c`)
 
 (defwidget clock []
-  (label :text time))
+  (label :text time :class 'clock-label'))
 
