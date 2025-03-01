@@ -1,0 +1,12 @@
+
+(include 'widgets/workspaces.yuck')
+
+(defwindow bottom-left-bar
+  :monitor '[1, 0]'
+  :exclusive true
+  :geometry (geometry
+              :height '20px'
+              :width '250px'
+              :anchor 'bottom left')
+  (workspaces))
+

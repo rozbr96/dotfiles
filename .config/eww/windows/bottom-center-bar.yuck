@@ -1,6 +1,5 @@
 
 (include 'widgets/clock.yuck')
-(include 'widgets/workspaces.yuck')
 
 (defwindow bottom-center-bar
   :monitor '[1, 0]'
@@ -8,8 +7,5 @@
   :geometry (geometry
               :height '20px'
               :anchor 'bottom center')
-  (box
-    :orientation 'h'
-    (workspaces)
-    (clock)))
+  (clock))
 

@@ -3,3 +3,4 @@
 (include 'windows/kb-layout.yuck')
 (include 'windows/kb-caps.yuck')
 (include 'windows/bottom-center-bar.yuck')
+(include 'windows/bottom-left-bar.yuck')
