@@ -1,13 +1,18 @@
 
+(defwidget workspace [workspace]
+  (eventbox
+    :width 20
+    :cursor 'pointer'
+    :class {workspace.id == current-active-workspace.id ? 'workspace active' : 'workspace'}
+    :onclick "hyprctl dispatch workspace ${workspace.id}"
+    {workspace.id}))
+
 (defwidget workspaces []
   (eventbox
-    :onscroll '[ {} == "up" ] && hyprctl dispatch workspace m-1 || hyprctl dispatch workspace m+1'
+    :onscroll '[ {} = "up" ] && hyprctl dispatch workspace m-1 || hyprctl dispatch workspace m+1'
     (box
       :orientation 'h'
+      :spacing 4
+      :space-evenly false
       (for workspace in current-workspaces
-           (eventbox
-             :cursor 'pointer'
-             :class {workspace.id == current-active-workspace.id ? 'active' : ''}
-             :onclick "hyprctl dispatch workspace ${workspace.id}"
-             {workspace.id})))))
-
+         (workspace :workspace workspace)))))
