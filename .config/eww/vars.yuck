@@ -5,3 +5,4 @@
 (defvar current-active-workspace '{}')
 (defvar primary-monitor-id 1)
 (defvar bottom-bar-height 30)
+(defvar primary-color '#3cf')
