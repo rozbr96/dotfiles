@@ -1,7 +1,7 @@
 
 (defwidget workspace [workspace]
   (eventbox
-    :width 20
+    :width bottom-bar-height
     :cursor 'pointer'
     :class {workspace.id == current-active-workspace.id ? 'workspace active' : 'workspace'}
     :onclick 'hyprctl dispatch workspace ${workspace.id}'

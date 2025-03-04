@@ -4,3 +4,4 @@
 (defvar current-workspaces '[]')
 (defvar current-active-workspace '{}')
 (defvar primary-monitor-id 1)
+(defvar bottom-bar-height 30)
