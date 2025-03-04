@@ -1,6 +1,6 @@
 
 (defvar kb-caps-enabled false)
 (defvar current-monitor 0)
-(defvar current-workspaces "[]")
-(defvar current-active-workspace "{}")
+(defvar current-workspaces '[]')
+(defvar current-active-workspace '{}')
 (defvar primary-monitor-id 1)

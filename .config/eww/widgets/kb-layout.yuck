@@ -1,11 +1,11 @@
 
 (deflisten kb-layout
   :initial 'english'
-  `hyprctl devices -j | jq '.keyboards[] | select(.main == true) | .active_keymap' | awk '{ print $1 }' | cut -c2- | tr 'A-Z' 'a-z'`)
+  'hyprctl devices -j | jq ".keyboards[] | select(.main == true) | .active_keymap" | awk "{ print $1 }" | cut -c2- | tr "A-Z" "a-z"')
 
 (defwidget kb-layout [?layout]
   (label
-    :text "${layout == 'brazil' ? '🇧🇷' : '🇺🇸'}"
+    :text '${layout == "brazil" ? "🇧🇷" : "🇺🇸"}'
     :width 100
     :height 100))
 

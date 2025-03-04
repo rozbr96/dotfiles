@@ -4,7 +4,7 @@
     :width 20
     :cursor 'pointer'
     :class {workspace.id == current-active-workspace.id ? 'workspace active' : 'workspace'}
-    :onclick "hyprctl dispatch workspace ${workspace.id}"
+    :onclick 'hyprctl dispatch workspace ${workspace.id}'
     {workspace.id}))
 
 (defwidget workspaces []
