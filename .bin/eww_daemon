@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+echo "Killing..."
+eww kill
+
+echo "Daemonizing..."
+eww daemon
+
+echo "Opening..."
+# eww open bottom-left-bar
+# eww open bottom-center-bar
+eww open bottom-bar
+
