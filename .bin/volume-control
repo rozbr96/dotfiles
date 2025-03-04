@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+current_sink="$(pactl get-default-sink)"
+
+case $1 in
+  set)
+    eww update volume=$2
+    pactl set-sink-volume $current_sink $2%
+    notify-send "Volume set to: $2%"
+  ;;
+esac

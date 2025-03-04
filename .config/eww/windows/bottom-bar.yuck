@@ -1,16 +1,16 @@
 
 (include 'widgets/workspaces.yuck')
 (include 'widgets/clock.yuck')
+(include 'widgets/volume-control.yuck')
 
 (defwindow bottom-bar
   :monitor '[1, 0]'
   :exclusive true
   :geometry (geometry
-              :height '20px'
               :anchor 'bottom center')
   (box
     :hexpand true
     :width 1920
     (workspaces)
-    (clock)))
-
+    (clock)
+    (volume-control)))

@@ -1,0 +1,14 @@
+
+(defvar volume 90)
+
+(defwidget volume-control []
+  (box
+    :orientation 'h'
+    :height bottom-bar-height
+    (scale
+      :class {volume > 100 ? 'volume-control boosted' : volume > 75 ? 'volume-control warning' : 'volume-control'}
+      :height bottom-bar-height
+      :value volume
+      :min 0
+      :max 150
+      :onchange 'volume-control set {}')))

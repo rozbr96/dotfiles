@@ -30,3 +30,19 @@ $primary_color: #3cf;
 .box {
   background-color: red;
 }
+
+.volume-control {
+  color: red;
+
+  & highlight {
+    background-color: $primary_color;
+  }
+
+  &.warning highlight {
+    background-color: orange;
+  }
+
+  &.boosted highlight {
+    background-color: red;
+  }
+}
