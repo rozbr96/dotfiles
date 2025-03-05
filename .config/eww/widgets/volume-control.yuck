@@ -4,10 +4,13 @@
 (defvar volume-notification-id 0)
 
 (defwidget volume-icon []
-  (image
-    :image-height bottom-bar-height
-    :fill-svg primary-color
-    :path 'assets/icons/volume/${volume-icon}.svg'))
+  (eventbox
+    :cursor 'pointer'
+    :onclick 'volume-control mute toggle'
+    (image
+      :image-height bottom-bar-height
+      :fill-svg primary-color
+      :path 'assets/icons/volume/${volume-icon}.svg')))
 
 (defwidget volume-control []
   (box
