@@ -64,6 +64,8 @@ local bindings_per_mode = {
     {keys = '<leader>gs', command = ':Telescope git_status<CR>'},
     {keys = '<leader>gb', command = ':Telescope git_branches<CR>'},
     {keys = '<leader>gf', command = ':Telescope git_bcommits<CR>'},
+    {keys = '<leader>ga', command = ':!git add -f %<CR>'},
+    {keys = '<leader>gu', command = ':!git unstage %<CR>'},
 
     -- multiple cursors
     {keys = '<A-S-Down>', command = ':MultipleCursorsAddDown<CR>'},
@@ -94,4 +96,3 @@ for mode, bindings in pairs(bindings_per_mode) do
     end
   end
 end
-
