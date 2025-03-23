@@ -79,7 +79,9 @@ local bindings_per_mode = {
 
   ['v'] = {
     {keys = '>', command = '>gv'},
-    {keys = '<Tab>', command = '>gv'}
+    {keys = '<Tab>', command = '>gv'},
+    {keys = '<', command = '<gv'},
+    {keys = '<S-Tab>', command = '<gv'}
   },
 }
 
