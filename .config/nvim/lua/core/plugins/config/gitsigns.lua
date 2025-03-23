@@ -27,7 +27,7 @@ require('gitsigns').setup {
       if vim.wo.diff then
         vim.cmd.normal({'[c', bang = true})
       else
-        gitsigns.nav_chunk('prev')
+        gitsigns.nav_hunk('prev')
       end
     end)
 
@@ -46,4 +46,3 @@ require('gitsigns').setup {
     map('n', '<leader>td', gitsigns.toggle_deleted)
   end
 }
-
