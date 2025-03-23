@@ -72,12 +72,14 @@ local bindings_per_mode = {
     {keys = '<A-S-Up>', command = ':MultipleCursorsAddUp<CR>'},
     {keys = '<C-LeftMouse>', command = ':MultipleCursorsMouseAddDelete<CR>'},
     {keys = '<C-D>', command = ':MultipleCursorsAddJumpNextMatch<CR>'},
+    {keys = '<C-S-D>', command = ':MultipleCursorsAddJumpPrevMatch<CR>'},
 
     -- defaults
     {keys = '<C-i>', command = '<C-i>'},
   },
 
   ['v'] = {
+    -- indentation
     {keys = '>', command = '>gv'},
     {keys = '<Tab>', command = '>gv'},
     {keys = '<', command = '<gv'},
