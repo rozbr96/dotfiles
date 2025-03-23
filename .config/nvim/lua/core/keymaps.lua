@@ -72,6 +72,9 @@ local bindings_per_mode = {
     {keys = '<A-S-Up>', command = ':MultipleCursorsAddUp<CR>'},
     {keys = '<C-LeftMouse>', command = ':MultipleCursorsMouseAddDelete<CR>'},
     {keys = '<C-D>', command = ':MultipleCursorsAddJumpNextMatch<CR>'},
+
+    -- defaults
+    {keys = '<C-i>', command = '<C-i>'},
   },
 
   ['v'] = {
@@ -89,10 +92,10 @@ for mode, bindings in pairs(bindings_per_mode) do
         local keys = string.gsub(value.keys, '#', i)
         local cmd = string.gsub(value.command, '#', i)
 
-        vim.api.nvim_set_keymap(mode, keys, cmd, {})
+        vim.keymap.set(mode, keys, cmd)
       end
     else
-      vim.api.nvim_set_keymap(mode, value.keys, value.command, {})
+      vim.keymap.set(mode, value.keys, value.command)
     end
   end
 end

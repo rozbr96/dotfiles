@@ -8,3 +8,7 @@ function ReloadConfig()
   dofile(vim.fn.stdpath('config') .. '/init.lua')
 end
 
+if vim.env.TERM == 'xterm-kitty' then
+  vim.cmd([[autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[>1u") | endif]])
+  vim.cmd([[autocmd UILeave * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[<1u") | endif]])
+end
