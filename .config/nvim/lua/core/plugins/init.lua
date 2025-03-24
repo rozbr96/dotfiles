@@ -60,7 +60,11 @@ require('packer').startup(function()
   use 'rozbr96/spec_runner'
 
   use 'sindrets/diffview.nvim'
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 end)
 
 require('core.plugins.config')
-

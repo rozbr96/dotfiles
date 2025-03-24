@@ -12,4 +12,4 @@ require('core.plugins.config.text-case')
 require('core.plugins.config.multiple-cursors')
 require('core.plugins.config.spec_runner')
 require('core.plugins.config.diffview')
-
+require('core.plugins.config.lualine')
