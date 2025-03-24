@@ -83,7 +83,10 @@ local bindings_per_mode = {
     {keys = '>', command = '>gv'},
     {keys = '<Tab>', command = '>gv'},
     {keys = '<', command = '<gv'},
-    {keys = '<S-Tab>', command = '<gv'}
+    {keys = '<S-Tab>', command = '<gv'},
+
+    -- telescope
+    {keys = '<leader>fw', command = [["zy:Telescope live_grep default_text=<C-r>z<cr>]]},
   },
 }
 
