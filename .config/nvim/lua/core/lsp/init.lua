@@ -11,4 +11,4 @@ require('core.lsp.ruby')
 require('core.lsp.rubocop')
 require('core.lsp.go')
 require('core.lsp.c')
-
+require('core.lsp.arduino')
