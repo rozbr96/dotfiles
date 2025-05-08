@@ -1,5 +1,6 @@
 
 SYMLINKS_TO_BE_CREATED := .bin \
+													.ssh \
 													.config/hypr \
 													.config/kitty \
 													.config/mako \
