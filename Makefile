@@ -5,6 +5,7 @@ SYMLINKS_TO_BE_CREATED := .bin \
 													.config/kitty \
 													.config/mako \
 													.config/nvim \
+													.config/nixpkgs \
 													.gitconfig \
 													.vimrc \
 													.zprofile \
