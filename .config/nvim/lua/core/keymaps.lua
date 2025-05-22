@@ -76,6 +76,12 @@ local bindings_per_mode = {
 
     -- defaults
     {keys = '<C-i>', command = '<C-i>'},
+
+    -- move current line
+    {keys = '<A-j>', command = ":m .+1<CR>=="},
+    {keys = '<A-Down>', command = ":m .+1<CR>=="},
+    {keys = '<A-k>', command = ":m .-2<CR>=="},
+    {keys = '<A-Up>', command = ":m .-2<CR>=="},
   },
 
   ['v'] = {
@@ -87,6 +93,12 @@ local bindings_per_mode = {
 
     -- telescope
     {keys = '<leader>fw', command = [["zy:Telescope live_grep default_text=<C-r>z<cr>]]},
+
+    -- move selected block
+    {keys = '<A-j>', command = ":m '>+1<CR>gv=gv"},
+    {keys = '<A-Down>', command = ":m '>+1<CR>gv=gv"},
+    {keys = '<A-k>', command = ":m '<-2<CR>gv=gv"},
+    {keys = '<A-Up>', command = ":m '<-2<CR>gv=gv"},
   },
 }
 
