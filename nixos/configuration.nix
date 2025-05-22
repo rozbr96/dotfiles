@@ -11,6 +11,8 @@
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
     };
+
+    supportedFilesystems = [ "exfat" "ntfs" "vfat" ];
   };
 
   environment = {
