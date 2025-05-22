@@ -9,7 +9,11 @@
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot = {
+        editor = false;
+        enable = true;
+      };
+      timeout = 10;
     };
 
     supportedFilesystems = [ "exfat" "ntfs" "vfat" ];
