@@ -137,12 +137,15 @@
   };
 
   users = {
+    groups.hikari = {};
+
     users.hikari = {
+      description = "Rosemilson Barbosa";
+      extraGroups = [ "docker" "networkmanager" "wheel" ];
+      group = "hikari";
+      initialPassword = "password";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
-      packages = with pkgs; [
-        tree
-      ];
+      shell = pkgs.zsh;
     };
   };
 
