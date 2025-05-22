@@ -10,6 +10,7 @@
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
+        configurationLimit = 1;
         editor = false;
         enable = true;
       };
@@ -120,22 +121,7 @@
   };
 
   system = {
-    activationScripts = {
-      systemdBootLoaderEntriesScript = {
-        text = ''
-          current_loader_entry_file="$(cat /boot/loader/loader.conf | grep ^default | cut -c9-)"
-
-          files=$(ls /boot/loader/entries -I $current_loader_entry_file)
-
-          cd /boot/loader/entries
-
-          [[ ! -z $files ]] && rm $files
-        '';
-      };
-    };
-
     copySystemConfiguration = true;
-
     stateVersion = "24.11"; # Did you read the comment? yes, I did :)
   };
 
