@@ -37,6 +37,7 @@
       neovim
       networkmanagerapplet
       powerline
+      ranger
       unzip
       vimPlugins.packer-nvim
       waybar
