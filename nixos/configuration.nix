@@ -122,7 +122,7 @@
 
           cd /boot/loader/entries
 
-          rm $files
+          [[ ! -z $files ]] && rm $files
         '';
       };
     };
