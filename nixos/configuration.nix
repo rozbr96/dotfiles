@@ -94,6 +94,8 @@
   programs = {
     hyprland.enable = true;
 
+    thefuck.enable = true;
+
     zsh = {
       autosuggestions.enable = true;
       enable = true;
