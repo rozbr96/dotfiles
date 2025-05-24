@@ -31,6 +31,7 @@
       curl
       docker
       docker-compose
+      fzf
       gawk
       gcc
       git
@@ -92,7 +93,40 @@
 
   programs = {
     hyprland.enable = true;
-    zsh.enable = true;
+
+    zsh = {
+      autosuggestions.enable = true;
+      enable = true;
+      enableBashCompletion = true;
+      ohMyZsh = {
+        enable = true;
+        plugins = [
+          "branch"
+          "bundler"
+          "colored-man-pages"
+          "command-not-found"
+          "copyfile"
+          "copypath"
+          "docker"
+          "docker-compose"
+          "emoji"
+          "gem"
+          "gitignore"
+          "history-substring-search"
+          "ssh"
+          "sudo"
+          "themes"
+          "zsh-interactive-cd"
+          "zsh-navigation-tools"
+        ];
+        theme = "philips";
+      };
+      shellAliases = {
+        g = "git";
+        gs = "g s";
+      };
+      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "regexp" "root" "line" ];
+    };
   };
 
   security = {
