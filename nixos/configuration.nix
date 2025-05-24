@@ -42,6 +42,7 @@
       mako
       neovim
       networkmanagerapplet
+      nixd
       powerline
       ranger
       unzip
