@@ -60,7 +60,6 @@
     packages = with pkgs; [
       fira-code
       fira-code-symbols
-      nerdfonts
       noto-fonts
       noto-fonts-emoji
       powerline-fonts
@@ -159,7 +158,7 @@
 
   system = {
     copySystemConfiguration = true;
-    stateVersion = "24.11"; # Did you read the comment? yes, I did :)
+    stateVersion = "25.05"; # Did you read the comment? yes, I did :)
   };
 
   time = {
