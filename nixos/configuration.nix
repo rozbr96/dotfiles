@@ -31,6 +31,7 @@
       curl
       docker
       docker-compose
+      eww
       fzf
       gawk
       gcc
