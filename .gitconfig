@@ -214,7 +214,7 @@
 	li98 = log --oneline -n 98
 	li99 = log --oneline -n 99
 	li100 = log --oneline -n 100
-	r = restore
+	r = rebase -i
 	res = reset --soft
 	clear = clean -f
 	undo = restore .
@@ -259,6 +259,11 @@
 	mc = merge --continue
 	ma = merge --abort
 	swd = switch --detach
+	rc = rebase --continue
+	ra = rebase --abort
+	resh = reset --hard
+	ress = reset --soft
+	reh = reset --hard
 [init]
 	defaultBranch = main
 [core]
