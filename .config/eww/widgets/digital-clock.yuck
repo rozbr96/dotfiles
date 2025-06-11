@@ -1,0 +1,21 @@
+
+(defpoll hours
+  :interval "1s"
+  `date +%H`)
+
+(defpoll minutes
+  :interval "1s"
+  `date +%M`)
+
+(defpoll seconds
+  :interval "1s"
+  `date +%S`)
+
+(defwidget digital-clock [?orientation]
+  (box
+    :orientation {orientation ?: "horizontal"}
+    hours
+    {orientation == "vertical" ? ".." : ":"}
+    minutes
+    {orientation == "vertical" ? ".." : ":"}
+    seconds))
