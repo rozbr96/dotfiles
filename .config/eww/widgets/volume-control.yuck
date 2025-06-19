@@ -1,5 +1,6 @@
 
-(defvar max-volume 200)
+(defvar max-volume 150)
+(defvar volume-visible false)
 
 (defpoll muted
   :initial false
@@ -9,15 +10,21 @@
 (defpoll volume-level
   :initial 0
   :interval "250ms"
-  `wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 }' | xargs echo "100 *" | bc | rev | cut -c4- | rev`)
+  `wpctl get-volume @DEFAULT_SINK@ | awk '{ print 100 * $2 }'`)
 
 (defpoll volume-icon
   :initial "🔈"
   :interval "250ms"
   `vol=$(eww get volume-level) && [[ $vol -lt 40 ]] && echo "🔈" || ([[ $vol -lt 100 ]] && echo "🔉" || echo "🔊")`)
 
+(defpoll volume-level-100
+  :initial 0
+  :interval "250ms"
+  `eww get volume-level | awk '{ print $1 / 150 * 100 }'`)
+
 (defwidget volume-changer [?orientation]
   (scale
+    :visible volume-visible
     :max max-volume
     :height max-volume
     :value volume-level
@@ -34,9 +41,25 @@
      :text "🚫"
      :visible muted)))
 
+(defwidget circular-volume []
+  (circular-progress
+    :thickness 20
+    :value volume-level-100))
+
 (defwidget volume-control [?orientation]
-  (box
-    :space-evenly false
-    :orientation {orientation ?: "vertical"}
-    (volume-changer :orientation orientation)
-    (volume-icon)))
+  (eventbox
+    :onhover "eww update volume-visible=true"
+    :onhoverlost "eww update volume-visible=false"
+    (box
+      :space-evenly false
+      :orientation {orientation ?: "vertical"}
+      (revealer
+        :duration "100ms"
+        :transition "slideup"
+        :reveal volume-visible
+        (box
+          :space-evenly false
+          :orientation orientation
+          (volume-changer :orientation orientation)
+          (volume-icon)))
+      (circular-volume))))

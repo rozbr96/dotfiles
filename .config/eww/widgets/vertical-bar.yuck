@@ -6,10 +6,8 @@
 ;; (defvar orientation "horizontal")
 
 (defwidget vertical-bar []
-  (centerbox
+  (box
     :orientation orientation
-    ""
-    ""
     (box 
       :spacing 16
       :space-evenly false
