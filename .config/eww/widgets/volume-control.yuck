@@ -1,0 +1,42 @@
+
+(defvar max-volume 200)
+
+(defpoll muted
+  :initial false
+  :interval "250ms"
+  `wpctl get-volume @DEFAULT_SINK@ | grep -i muted > /dev/null && echo "true" || echo "false"`)
+
+(defpoll volume-level
+  :initial 0
+  :interval "250ms"
+  `wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 }' | xargs echo "100 *" | bc | rev | cut -c4- | rev`)
+
+(defpoll volume-icon
+  :initial "🔈"
+  :interval "250ms"
+  `vol=$(eww get volume-level) && [[ $vol -lt 40 ]] && echo "🔈" || ([[ $vol -lt 100 ]] && echo "🔉" || echo "🔊")`)
+
+(defwidget volume-changer [?orientation]
+  (scale
+    :max max-volume
+    :height max-volume
+    :value volume-level
+    :flipped {orientation == "vertical"}
+    :orientation {orientation ?: "vertical"}
+    :onchange `wpctl set-volume @DEFAULT_SINK@ {}%`))
+
+(defwidget volume-icon []
+  (overlay
+    (button
+      :onclick `wpctl set-mute @DEFAULT_SINK@ toggle`
+      volume-icon)
+   (label
+     :text "🚫"
+     :visible muted)))
+
+(defwidget volume-control [?orientation]
+  (box
+    :space-evenly false
+    :orientation {orientation ?: "vertical"}
+    (volume-changer :orientation orientation)
+    (volume-icon)))
