@@ -28,6 +28,7 @@
 
     systemPackages = with pkgs; [
       asdf-vm
+      busybox
       curl
       docker
       docker-compose
