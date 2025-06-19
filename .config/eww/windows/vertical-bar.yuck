@@ -1,0 +1,13 @@
+
+(include "widgets/vertical-bar.yuck")
+
+(defwindow vertical-bar
+  :monitor '["1", "0"]'
+  :stacking "fg"
+  :exclusive true
+  :fosusable exclusive
+  :geometry (geometry
+              :width "36px"
+              :height "100%"
+              :anchor "center left")
+  (vertical-bar))

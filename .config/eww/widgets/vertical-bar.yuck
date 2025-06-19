@@ -1,0 +1,21 @@
+
+(include "widgets/digital-clock.yuck")
+(include "widgets/volume-control.yuck")
+
+(defvar orientation "vertical")
+;; (defvar orientation "horizontal")
+
+(defwidget vertical-bar []
+  (centerbox
+    :orientation orientation
+    ""
+    ""
+    (box 
+      :spacing 16
+      :space-evenly false
+      :orientation orientation
+      :valign "end"
+      (volume-control :orientation orientation)
+      (digital-clock :orientation orientation))))
+   
+     
