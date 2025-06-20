@@ -1,4 +1,6 @@
 
+(include "widgets/donut.yuck")
+
 (defvar max-volume 150)
 (defvar volume-visible false)
 
@@ -41,11 +43,6 @@
      :text "🚫"
      :visible muted)))
 
-(defwidget circular-volume []
-  (circular-progress
-    :thickness 20
-    :value volume-level-100))
-
 (defwidget volume-control [?orientation]
   (eventbox
     :onhover "eww update volume-visible=true"
@@ -62,4 +59,6 @@
           :orientation orientation
           (volume-changer :orientation orientation)
           (volume-icon)))
-      (circular-volume))))
+      (donut
+        :value volume-level-100
+        :thickness 20))))
