@@ -28,7 +28,8 @@
   (scale
     :visible volume-visible
     :max max-volume
-    :height max-volume
+    :height {orientation == "vertical" ? max-volume : 36}
+    :width {orientation == "vertical" ? 36 : max-volume}
     :value volume-level
     :flipped {orientation == "vertical"}
     :orientation {orientation ?: "vertical"}

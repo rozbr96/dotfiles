@@ -1,2 +1,2 @@
 
-(include "windows/vertical-bar.yuck")
+(include "windows/main-bar.yuck")

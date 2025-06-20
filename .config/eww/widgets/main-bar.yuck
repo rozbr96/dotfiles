@@ -5,7 +5,7 @@
 (defvar orientation "vertical")
 ;; (defvar orientation "horizontal")
 
-(defwidget vertical-bar []
+(defwidget main-bar []
   (box
     :orientation orientation
     (box 
@@ -13,6 +13,7 @@
       :space-evenly false
       :orientation orientation
       :valign "end"
+      :halign "end"
       (volume-control :orientation orientation)
       (systray :orientation orientation :space-evenly false)
       (digital-clock :orientation orientation))))
