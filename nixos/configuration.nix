@@ -62,8 +62,11 @@
     packages = with pkgs; [
       fira-code
       fira-code-symbols
+      google-fonts
+      nerd-fonts.fira-code
       noto-fonts
       noto-fonts-emoji
+      orbitron
       powerline-fonts
     ];
   };
