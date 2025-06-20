@@ -53,7 +53,7 @@
       :orientation {orientation ?: "vertical"}
       (revealer
         :duration "100ms"
-        :transition "slideup"
+        :transition {orientation == "vertical" ? "slideup" : "slideleft"}
         :reveal volume-visible
         (box
           :space-evenly false
