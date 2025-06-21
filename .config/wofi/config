@@ -6,4 +6,5 @@ allow-images=true
 term=kitty
 prompt=❯❯
 width=600
-lines=12
+matching=fuzzy
+normal_window=false
