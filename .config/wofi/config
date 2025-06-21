@@ -1,0 +1,9 @@
+
+show-icons=true
+insensitive=true
+allow-markup=true
+allow-images=true
+term=kitty
+prompt=❯❯
+width=600
+lines=12

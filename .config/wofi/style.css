@@ -1,0 +1,42 @@
+
+window {
+  background-color: #0e0f11;
+  border-radius: 12px;
+  border: 2px solid #00bcd4;
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+  color: #e0f7fa;
+}
+
+#entry {
+  padding: 0.5em;
+  margin: 0.2em 0;
+  border-radius: 8px;
+  background-color: #1c1f24;
+}
+
+#entry:selected {
+  background-color: #1de9b6;
+  color: #0e0f11;
+}
+
+#input {
+  margin: 1em;
+  padding: 0.5em;
+  border-radius: 8px;
+  background-color: #1c1f24;
+  color: #e0f7fa;
+  border: 1px solid #00bcd4;
+}
+
+#outer-box {
+  padding: 1em;
+}
+
+#scroll {
+  margin-top: 0.5em;
+}
+
+#text {
+  color: inherit;
+}
+

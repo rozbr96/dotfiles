@@ -7,6 +7,7 @@ SYMLINKS_TO_BE_CREATED := .bin \
 													.config/nvim \
 													.config/nixpkgs \
 													.config/eww \
+													.config/wofi \
 													.gitconfig \
 													.vimrc \
 													.zprofile \
