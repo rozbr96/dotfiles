@@ -9,12 +9,12 @@ file=$(basename "$filename")
 case "$1" in
   window)
     title="Window screenshot taken"
-    command="$command -g \"$(~/.bin/hyprland/get_active_window_coords.py)\""
+    command="$command -g \"$(~/.bin/hyprland/get_active_window_coords)\""
   ;;
 
   monitor)
     title="Current monitor screenshot taken"
-    command="$command -o $(~/.bin/hyprland/get_active_monitor.py)"
+    command="$command -o $(~/.bin/hyprland/get_active_monitor)"
   ;;
 
   region)

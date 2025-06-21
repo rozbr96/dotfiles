@@ -1,5 +1,5 @@
 
-~/.bin/hyprland/get_existing_windows.py | wofi --dmenu --gtk-dark -o $PRIMARY_MONITOR | {
+~/.bin/hyprland/get_existing_windows | wofi --dmenu -o $PRIMARY_MONITOR | {
   read -r window
 
   [[ ! -n $window ]] && exit
