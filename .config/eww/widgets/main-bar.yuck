@@ -15,7 +15,7 @@
       :valign "end"
       :halign "end"
       (volume-control :orientation orientation)
-      (systray :orientation orientation :space-evenly false)
+      ;; (systray :orientation orientation :space-evenly false)
       (digital-clock :orientation orientation))))
    
      
