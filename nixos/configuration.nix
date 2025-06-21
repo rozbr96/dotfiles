@@ -40,6 +40,8 @@
       gnumake
       google-chrome
       hyprlandPlugins.hy3
+      ijq
+      jq
       kitty
       mako
       neovim
