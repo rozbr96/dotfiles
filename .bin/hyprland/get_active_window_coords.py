@@ -1,22 +1,7 @@
-#!/bin/env python
 
-import json
-import os
+hyprctl -j activewindow | jq -rc '[.at, .size] | map(join(" ")) | join(" ")' | {
+  read -d EOF x y width height
 
-
-def get_focused_window():
-    with os.popen('hyprctl -j activewindow') as output:
-        focused_window = json.loads(output.read())
-
-        return focused_window
-        
-
-if __name__ == '__main__':
-    window = get_focused_window()
-
-    if window:
-        x, y = window['at']
-        width, height = window['size']
-
-        print(f'{x},{y} {width}x{height}')
+  echo ${x},${y} ${width}x${height}
+}
 

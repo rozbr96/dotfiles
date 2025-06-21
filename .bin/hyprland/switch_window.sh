@@ -1,9 +1,10 @@
-#!/bin/zsh
 
 ~/.bin/hyprland/get_existing_windows.py | wofi --dmenu --gtk-dark -o $PRIMARY_MONITOR | {
-  read -r title
+  read -r window
 
-  [[ ! -n $title ]] && exit
+  [[ ! -n $window ]] && exit
 
-  hyprctl dispatch focuswindow title:"$title"
+  window_address=$(echo $window | awk -F ' --- ' '{ print $2 }')
+
+  hyprctl dispatch focuswindow address:"$window_address"
 }
