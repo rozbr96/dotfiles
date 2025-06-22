@@ -40,22 +40,26 @@
       git
       gnumake
       google-chrome
+      grim
       hyprlandPlugins.hy3
       ijq
       jq
       kitty
+      libnotify
       mako
       neovim
       networkmanagerapplet
       nixd
       powerline
       ranger
+      slurp
       unzip
       vimPlugins.packer-nvim
       waybar
       wget
       wl-clipboard
       wofi
+      xdg-user-dirs
       xdg-utils
       zsh
     ];

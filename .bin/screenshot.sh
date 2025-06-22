@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 
 command="grim"
 filename="$(xdg-user-dir PICTURES)/screenshots/$(date).png"
@@ -47,4 +45,4 @@ case "$2" in
   ;;
 esac
 
-notify-send $title $message
+notify-send "$title" "$message"
