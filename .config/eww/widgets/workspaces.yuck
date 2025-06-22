@@ -1,0 +1,30 @@
+
+(defpoll active-workspaces
+  :initial '[]'
+  :interval '250ms'
+  `hyprctl -j workspaces | jq 'sort'`)
+
+(defpoll active-workspace
+  :initial 0
+  :interval '250ms'
+  `hyprctl -j activeworkspace`)
+
+(defwidget workspace [?name id]
+  (eventbox
+    :class 'workspace ${active-workspace.id == id ? "active" : ""}'
+    (button
+      :height 36
+      :width 36
+      :onclick `hyprctl dispatch workspace ${id}`
+      {name ?: id})))
+
+(defwidget workspaces [?orientation]
+  (eventbox
+    :onscroll `echo "{}" | sed s/down/m-1/ | sed s/up/m+1/ | xargs hyprctl dispatch workspace`
+    (box
+      :orientation {orientation ?: 'vertical'}
+      :space-evenly false
+      (label :text active-workspace :visible false)
+      (for workspace in active-workspaces
+        (workspace
+          :id {workspace.id})))))

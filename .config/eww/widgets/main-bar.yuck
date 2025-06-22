@@ -1,6 +1,7 @@
 
 (include "widgets/digital-clock.yuck")
 (include "widgets/volume-control.yuck")
+(include "widgets/workspaces.yuck")
 
 (defvar orientation "vertical")
 ;; (defvar orientation "horizontal")
@@ -8,6 +9,7 @@
 (defwidget main-bar []
   (box
     :orientation orientation
+    (workspaces :orientation orientation)
     (box 
       :spacing 16
       :space-evenly false
