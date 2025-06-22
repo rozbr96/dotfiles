@@ -3,10 +3,7 @@
 (include "widgets/volume-control.yuck")
 (include "widgets/workspaces.yuck")
 
-(defvar orientation "vertical")
-;; (defvar orientation "horizontal")
-
-(defwidget main-bar []
+(defwidget main-bar [orientation]
   (box
     :orientation orientation
     (workspaces :orientation orientation)
