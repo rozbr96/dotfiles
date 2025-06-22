@@ -1,1 +1,26 @@
 
+$primary-color: #00bcd4;
+$accent-color: #1de9b6;
+$background-dark: #0e0f11;
+$background-light: #1c1f24;
+$text-color: #e0f7fa;
+$secondary-text: #b2ebf2;
+$danger-color: #f44336;
+$success-color: #4caf50;
+
+$font-family: "Orbitron", "Segoe UI", sans-serif;
+
+
+* {
+  font-family: $font-family;
+  color: $text-color;
+}
+
+.main-bar {
+  background-color: $background-dark;
+  padding: 0.5em;
+
+  & button {
+    all: unset;
+  }
+}
