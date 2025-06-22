@@ -35,15 +35,6 @@
     :orientation {orientation ?: "vertical"}
     :onchange `wpctl set-volume @DEFAULT_SINK@ {}%`))
 
-(defwidget volume-icon []
-  (overlay
-    (button
-      :onclick `wpctl set-mute @DEFAULT_SINK@ toggle`
-      volume-icon)
-   (label
-     :text "🚫"
-     :visible muted)))
-
 (defwidget volume-control [?orientation]
   (eventbox
     :onhover "eww update volume-visible=true"
@@ -55,11 +46,13 @@
         :duration "100ms"
         :transition {orientation == "vertical" ? "slideup" : "slideleft"}
         :reveal volume-visible
-        (box
-          :space-evenly false
-          :orientation orientation
-          (volume-changer :orientation orientation)
-          (volume-icon)))
-      (donut
-        :value volume-level-100
-        :thickness 20))))
+        (volume-changer :orientation orientation))
+      (eventbox
+        :onclick `wpctl set-mute @DEFAULT_SINK@ toggle`
+        (overlay
+          (donut
+            :value volume-level-100
+            :thickness 20)
+          (label
+            :text "🚫"
+            :visible muted))))))
