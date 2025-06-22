@@ -29,6 +29,7 @@
     systemPackages = with pkgs; [
       asdf-vm
       busybox
+      cliphist
       curl
       docker
       docker-compose
