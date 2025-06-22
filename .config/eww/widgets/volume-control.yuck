@@ -1,7 +1,7 @@
 
 (include "widgets/donut.yuck")
 
-(defvar max-volume 150)
+(defvar max-volume 151)
 (defvar volume-visible false)
 
 (defpoll muted
@@ -53,6 +53,9 @@
           (donut
             :value volume-level-100
             :thickness 20)
+          (label
+            :text volume-level
+            :visible {!muted})
           (label
             :text "🚫"
             :visible muted))))))
