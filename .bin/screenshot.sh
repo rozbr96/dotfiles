@@ -1,6 +1,6 @@
 
 command="grim"
-filename="$(xdg-user-dir PICTURES)/screenshots/$(date).png"
+filename="$(xdg-user-dir PICTURES)/screenshots/$(date +%FT%T).png"
 file=$(basename "$filename")
 
 
