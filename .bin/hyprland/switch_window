@@ -1,5 +1,5 @@
 
-~/.bin/hyprland/get_existing_windows | wofi --dmenu | {
+~/.local/bin/hyprland/get_existing_windows | wofi --dmenu | {
   read -r window
 
   [[ ! -n $window ]] && exit
