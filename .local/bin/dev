@@ -1,0 +1,3 @@
+
+nix-shell --run zsh ~/Workspace/dotfiles/nixos/dev/$1.nix
+

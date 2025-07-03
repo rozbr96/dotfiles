@@ -1,5 +1,5 @@
 
-SYMLINKS_TO_BE_CREATED := .bin \
+SYMLINKS_TO_BE_CREATED := .local/bin \
 													.ssh \
 													.config/hypr \
 													.config/kitty \
