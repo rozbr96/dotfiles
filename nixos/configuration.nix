@@ -132,16 +132,38 @@
           "ssh"
           "sudo"
           "themes"
+          "wd"
           "zsh-interactive-cd"
           "zsh-navigation-tools"
         ];
         theme = "philips";
       };
+      setOptions = [
+        "AUTO_CD"
+        "AUTO_PUSHD"
+        "CD_SILENT"
+        "CORRECT"
+        "HIST_IGNORE_DUPS"
+        "PUSHD_IGNORE_DUPS"
+        "SHARE_HISTORY"
+        "HIST_FCNTL_LOCK"
+      ];
       shellAliases = {
         g = "git";
         gs = "g s";
       };
-      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "regexp" "root" "line" ];
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "main"
+          "brackets"
+          "pattern"
+          "cursor"
+          "regexp"
+          "root"
+          "line"
+        ];
+      };
     };
   };
 
@@ -158,7 +180,9 @@
 
     pipewire = {
       enable = true;
+      alsa.enable = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
 
     printing.enable = true;
