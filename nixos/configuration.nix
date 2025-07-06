@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -65,6 +65,19 @@
       xdg-utils
       zsh
     ];
+  };
+
+  fileSystems = lib.mkForce {
+    "/" = {
+      device = "/dev/disk/by-label/SYSTEM";
+      fsType = "ext4";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-label/BOOT";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
   };
 
   fonts = {
