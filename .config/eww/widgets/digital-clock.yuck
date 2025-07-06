@@ -1,21 +1,13 @@
 
-(defpoll hours
+(defpoll time
   :interval "1s"
-  `date +%H`)
-
-(defpoll minutes
-  :interval "1s"
-  `date +%M`)
-
-(defpoll seconds
-  :interval "1s"
-  `date +%S`)
+  `date +%T`)
 
 (defwidget digital-clock [?orientation]
   (box
     :orientation {orientation ?: "horizontal"}
-    hours
+    "${substring(time, 0, 2)}"
     {orientation == "vertical" ? ".." : ":"}
-    minutes
+    "${substring(time, 3, 2)}"
     {orientation == "vertical" ? ".." : ":"}
-    seconds))
+    "${substring(time, 6, 2)}"))
