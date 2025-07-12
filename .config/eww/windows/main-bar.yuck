@@ -1,8 +1,8 @@
 
 (include "widgets/main-bar.yuck")
 
-(defwindow main-bar [orientation]
-  :monitor '["1", "0"]'
+(defwindow main-bar [orientation monitor]
+  :monitor monitor
   :stacking 'fg'
   :exclusive true
   :geometry (geometry
