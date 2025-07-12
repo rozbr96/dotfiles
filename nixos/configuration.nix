@@ -121,6 +121,8 @@
   programs = {
     hyprland.enable = true;
 
+    nix-ld.enable = true;
+
     thefuck.enable = true;
 
     zsh = {
