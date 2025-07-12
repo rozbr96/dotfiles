@@ -67,6 +67,8 @@ require('packer').startup(function()
   }
 
   use 'nvim-treesitter/nvim-treesitter-context'
+
+  use 'emmet-language-server'
 end)
 
 require('core.plugins.config')
