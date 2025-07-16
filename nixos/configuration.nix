@@ -47,6 +47,7 @@
       ijq
       jq
       kitty
+      libinput
       libnotify
       mako
       neovim
@@ -54,6 +55,7 @@
       nixd
       powerline
       ranger
+      sddm-chili-theme
       slurp
       unzip
       vimPlugins.packer-nvim
@@ -194,7 +196,14 @@
   services = {
     dbus.enable = true;
 
-    displayManager.defaultSession = "hyprland";
+    displayManager = {
+      defaultSession = "hyprland";
+
+      sddm = {
+        enable = true;
+        theme = "chili";
+      };
+    };
 
     libinput.enable = true;
 
@@ -209,7 +218,6 @@
 
     xserver = {
       enable = true;
-      displayManager.gdm.wayland = true;
       videoDrivers = [ "nvidia" ];
     };
   };
@@ -228,7 +236,7 @@
 
     users.hikari = {
       description = "Rosemilson Barbosa";
-      extraGroups = [ "docker" "networkmanager" "wheel" ];
+      extraGroups = [ "docker" "input" "networkmanager" "wheel" ];
       group = "hikari";
       initialPassword = "password";
       isNormalUser = true;
