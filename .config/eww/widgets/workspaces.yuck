@@ -2,7 +2,7 @@
 (defpoll active-workspaces
   :initial '[]'
   :interval '250ms'
-  `hyprctl -j workspaces | jq '[ sort | .[] | select(.name | contains("special") | not) ]'`)
+  `hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)'`)
 
 (defpoll active-workspace
   :initial 0
