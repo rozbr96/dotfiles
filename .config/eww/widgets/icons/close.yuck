@@ -1,0 +1,5 @@
+
+(defwidget close-icon []
+  (image
+    :path "assets/icons/close.svg"
+    :fill-svg "white"))

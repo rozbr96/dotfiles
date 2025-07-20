@@ -1,0 +1,36 @@
+
+.power-menu {
+  background-color: rgba($background-dark, 0.75);
+
+  & .power-menu-title {
+    font-size: 44px;
+  }
+
+  & .power-menu-option {
+
+    &:hover {
+      border: 2px solid $text-color;
+      border-radius: 100px;
+
+      &.lock {
+        background-color: rgba(#335766, 0.75);
+      }
+
+      &.logout {
+        background-color: rgba(#4caf50, 0.75);
+      }
+
+      &.sleep {
+        background-color: rgba(#913040, 0.75);
+      }
+
+      &.restart {
+        background-color: rgba(#00A1E6, 0.75);
+      }
+
+      &.poweroff {
+        background-color: rgba(#E60026, 0.75);
+      }
+    }
+  }
+}

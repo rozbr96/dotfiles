@@ -1,0 +1,64 @@
+
+(include "widgets/icons/lock.yuck")
+(include "widgets/icons/power-menu.yuck")
+(include "widgets/icons/restart.yuck")
+(include "widgets/icons/sleep.yuck")
+(include "widgets/icons/close.yuck")
+(include "widgets/icons/exit.yuck")
+
+(defvar power-menu-close-command "eww close power-menu")
+
+(defwidget power-menu-option [?include-class ?class]
+  (eventbox
+    :class {(include-class ?: true) ? "power-menu-option ${class}" : "${class}"}
+    (box
+      :valign "center"
+      :orientation "vertical"
+      :space-evenly false
+      (children))))
+
+(defwindow power-menu [monitor]
+  :monitor monitor
+  :stacking 'overlay'
+  :exclusive false
+  :focusable true
+  :geometry (geometry
+              :anchor "left center"
+              :width "100%"
+              :height "100%")
+  (eventbox
+    :onrightclick power-menu-close-command
+    (centerbox
+      :orientation "vertical"
+      (label
+        :class "power-menu-title"
+        :text "Leaving already, sir?")
+      (box
+        :orientation "horizontal"
+        :height 300
+        (power-menu-option
+          :class "lock"
+          (lock-icon)
+          "Lock")
+        (power-menu-option
+          :class "logout"
+          (exit-icon)
+          "Logout")
+        (power-menu-option
+          :class "sleep"
+          (sleep-icon)
+          "Sleep")
+        (power-menu-option
+          :class "restart"
+          (restart-icon)
+          "Reboot")
+        (power-menu-option
+          :class "poweroff"
+          (power-menu-icon)
+          "Poweroff"))
+      (eventbox
+        :onclick power-menu-close-command
+        (power-menu-option
+          :include-class false
+          (close-icon)
+          "Cancel")))))

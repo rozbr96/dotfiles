@@ -1,0 +1,5 @@
+
+(defwidget lock-icon []
+  (image
+    :path "assets/icons/lock.svg"
+    :fill-svg "white"))

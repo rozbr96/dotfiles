@@ -1,0 +1,5 @@
+
+(defwidget sleep-icon []
+  (image
+    :path "assets/icons/sleep.svg"
+    :fill-svg "white"))

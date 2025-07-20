@@ -1,0 +1,5 @@
+
+(defwidget restart-icon []
+  (image
+    :path "assets/icons/restart.svg"
+    :fill-svg "white"))
