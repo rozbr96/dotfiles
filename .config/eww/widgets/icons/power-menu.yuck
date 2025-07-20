@@ -1,0 +1,5 @@
+
+(defwidget power-menu-icon []
+  (image
+    :path "assets/icons/power-menu.svg"
+    :fill-svg "white"))

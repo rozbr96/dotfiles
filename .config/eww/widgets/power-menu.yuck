@@ -1,0 +1,5 @@
+
+(include "widgets/icons/power-menu.yuck")
+
+(defwidget power-menu []
+  (power-menu-icon))
