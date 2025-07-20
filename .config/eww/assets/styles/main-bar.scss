@@ -1,0 +1,22 @@
+
+.main-bar {
+  background-color: transparent;
+  padding: 0.5em;
+}
+
+.workspace {
+  &.active {
+    button {
+      background-color: $primary-color;
+    }
+  }
+
+  button {
+    all: unset;
+    border-radius: 5em;
+
+    &:hover {
+      background-color: $background-light;
+    }
+  }
+}
