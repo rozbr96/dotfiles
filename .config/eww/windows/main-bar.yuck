@@ -9,4 +9,4 @@
               :width {orientation == 'horizontal' ? '100%' : '36px'}
               :height {orientation == 'horizontal' ? '36px' : '100%'}
               :anchor {orientation == 'horizontal' ? 'top center' : 'center left'})
-  (main-bar :orientation orientation))
+  (main-bar :orientation orientation :monitor monitor))

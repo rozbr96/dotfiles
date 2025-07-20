@@ -1,5 +1,7 @@
 
 (include "widgets/icons/power-menu.yuck")
 
-(defwidget power-menu []
-  (power-menu-icon))
+(defwidget power-menu [monitor]
+  (eventbox
+    :onclick `${EWW_CMD} open power-menu --arg monitor=${monitor}`
+    (power-menu-icon)))
