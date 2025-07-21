@@ -1,0 +1,44 @@
+
+(include "widgets/icons/check.yuck")
+(include "widgets/icons/close.yuck")
+
+(defwindow confirmation [monitor title confirmation-button-text cancellation-button-text confirmation-command cancellation-command]
+  :monitor monitor
+  :stacking "overlay"
+  :focusable true
+  :geometry (geometry
+              :width "100%"
+              :height "400px"
+              :anchor "center")
+  (eventbox
+    :onrightclick `${EWW_CMD} close confirmation`
+    (box
+      :orientation "vertical"
+      (label
+        :text title
+        :class "confirmation-title")
+      (box
+        :spacing 100
+        :orientation "horizontal"
+        :space-evenly false
+        :halign "center"
+        (eventbox
+          :width 200
+          :class "confirmation-option cancel"
+          :onclick `${EWW_CMD} close confirmation; ${cancellation-command == "" ? "" : "${cancellation-command} &"}`
+          (box
+            :orientation "vertical"
+            :space-evenly false
+            :valign "center"
+            (close-icon)
+            (label :text cancellation-button-text)))
+        (eventbox
+          :width 200
+          :class "confirmation-option confirm"
+          :onclick `${EWW_CMD} close confirmation; ${confirmation-command} &`
+          (box
+            :orientation "vertical"
+            :space-evenly false
+            :valign "center"
+            (check-icon)
+            (label :text confirmation-button-text)))))))

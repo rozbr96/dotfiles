@@ -8,8 +8,9 @@
 
 (defvar power-menu-close-command "eww close power-menu")
 
-(defwidget power-menu-option [?include-class ?class]
+(defwidget power-menu-option [?include-class ?class monitor title confirmation-button-text cancellation-button-text confirmation-command cancellation-command]
   (eventbox
+    :onclick `${EWW_CMD} close power-menu && ${EWW_CMD} open confirmation --arg monitor=${monitor} --arg title="${title}" --arg confirmation-button-text="${confirmation-button-text}" --arg cancellation-button-text="${cancellation-button-text}" --arg confirmation-command="${confirmation-command}" --arg cancellation-command="${cancellation-command}"`
     :class {(include-class ?: true) ? "power-menu-option ${class}" : "${class}"}
     (box
       :valign "center"
@@ -37,28 +38,62 @@
         :orientation "horizontal"
         :height 300
         (power-menu-option
+          :monitor monitor
+          :title "Lock Screen?"
+          :confirmation-button-text "Lock"
+          :cancellation-button-text "No"
+          :confirmation-command "lock-command"
+          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "lock"
           (lock-icon)
           "Lock")
         (power-menu-option
+          :monitor monitor
+          :title "Logout?"
+          :confirmation-button-text "Logout"
+          :cancellation-button-text "No"
+          :confirmation-command "hyprctl dispatch exit"
+          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "logout"
           (exit-icon)
           "Logout")
         (power-menu-option
+          :monitor monitor
+          :title "Put machine to sleep?"
+          :confirmation-button-text "Sleep"
+          :cancellation-button-text "No"
+          :confirmation-command "sleep-command"
+          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "sleep"
           (sleep-icon)
           "Sleep")
         (power-menu-option
+          :monitor monitor
+          :title "Restart?"
+          :confirmation-button-text "Restart"
+          :cancellation-button-text "No"
+          :confirmation-command "systemctl reboot"
+          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "restart"
           (restart-icon)
           "Reboot")
         (power-menu-option
+          :monitor monitor
+          :title "Poweroff?"
+          :confirmation-button-text "Poweroff"
+          :cancellation-button-text "No"
+          :confirmation-command "systemctl poweroff"
+          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "poweroff"
           (power-menu-icon)
           "Poweroff"))
       (eventbox
         :onclick power-menu-close-command
-        (power-menu-option
-          :include-class false
-          (close-icon)
-          "Cancel")))))
+        (eventbox
+          :onclick `${EWW_CMD} close power-menu`
+          (box
+            :valign "center"
+            :orientation "vertical"
+            :space-evenly false
+            (close-icon)
+            "Cancel"))))))

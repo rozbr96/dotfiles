@@ -1,0 +1,19 @@
+
+.confirmation {
+  background-color: rgba($background-dark, 0.75);
+
+  & .confirmation-option {
+    &:hover {
+      border: 2px solid $text-color;
+      border-radius: 100px;
+
+      &.confirm {
+        background-color: $success-color;
+      }
+
+      &.cancel {
+        background-color: $danger-color;
+      }
+    }
+  }
+}

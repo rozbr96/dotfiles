@@ -1,0 +1,5 @@
+
+(defwidget check-icon []
+  (image
+    :path "assets/icons/check.svg"
+    :fill-svg "white"))

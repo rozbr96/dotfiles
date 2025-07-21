@@ -1,3 +1,4 @@
 
 (include "windows/main-bar.yuck")
 (include "windows/power-menu.yuck")
+(include "windows/confirmation.yuck")
