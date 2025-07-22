@@ -158,7 +158,7 @@
           "zsh-interactive-cd"
           "zsh-navigation-tools"
         ];
-        theme = "philips";
+        theme = "muse";
       };
       setOptions = [
         "AUTO_CD"
