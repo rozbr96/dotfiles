@@ -57,6 +57,7 @@
       ranger
       sddm-chili-theme
       slurp
+      socat
       unzip
       vimPlugins.packer-nvim
       waybar
