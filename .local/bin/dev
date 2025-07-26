@@ -2,24 +2,31 @@
 dev_path=~/Workspace/dotfiles/nixos/dev
 
 function enter_shell() {
-  nix-shell --run zsh ~/Workspace/dotfiles/nixos/dev/$1.nix
+  if [ -z $1 ]; then
+    nix-shell --run zsh
+  else
+    nix-shell --run zsh ~/Workspace/dotfiles/nixos/dev/$1.nix
+  fi
 }
 
-case $1 in
-  edit)
-    [ -z $2 ] && exit 1
+if [ ! -z $1 ]; then
+  case $1 in
+    edit)
+      [ -z $2 ] && exit 1
 
-    ${EDITOR:-nvim} "$dev_path/$2.nix"
-  ;;
+      ${EDITOR:-nvim} "$dev_path/$2.nix"
+    ;;
 
-  enter)
-    [ -z $2 ] && exit 1
+    enter)
+      [ -z $2 ] && exit 1
 
-    enter_shell $2
-  ;;
+      enter_shell $2
+    ;;
 
-  *)
-    enter_shell $1
-  ;;
-esac
-
+    *)
+      enter_shell $1
+    ;;
+  esac
+else
+  enter_shell
+fi
