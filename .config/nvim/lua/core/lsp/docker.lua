@@ -1,5 +1,5 @@
 
 require('lspconfig').dockerls.setup {
-  cmd = { 'npx', 'docker-langserver', '--stdio' }
+  cmd = { 'docker-langserver', '--stdio' }
 }
 

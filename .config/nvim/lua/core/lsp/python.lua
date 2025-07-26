@@ -1,6 +1,6 @@
 
 require('lspconfig').pyright.setup {
-  cmd = { 'poetry', 'run', 'pyright-langserver', '--stdio' },
+  cmd = { 'pyright-langserver', '--stdio' },
   settings = {
     python = {
       analysis = {

@@ -1,6 +1,6 @@
 
 require('lspconfig').volar.setup {
-  cmd = { "npx", "vue-language-server", "--stdio" },
+  cmd = { "vue-language-server", "--stdio" },
   on_new_config = function (new_config, new_root_dir)
     local lib_path = vim.fs.find('node_modules/typescript/lib', { path = new_root_dir, upward = true})[1]
 
