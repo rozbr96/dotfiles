@@ -1,4 +1,6 @@
 
+local ft = require('Comment.ft')
+
 require('Comment').setup {
   ---Add a space b/w comment and the line
   padding = true,
@@ -43,3 +45,4 @@ require('Comment').setup {
   post_hook = nil,
 }
 
+ft.set('docker-compose', '# %s')
