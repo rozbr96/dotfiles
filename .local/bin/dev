@@ -11,6 +11,10 @@ function enter_shell() {
 
 if [ ! -z $1 ]; then
   case $1 in
+    create|init)
+      echo -e "\nwith import <nixpkgs> { };\n\nmkShell {\n  buildInputs = [\n  ];\n}" > shell.nix
+    ;;
+
     edit)
       [ -z $2 ] && exit 1
 
