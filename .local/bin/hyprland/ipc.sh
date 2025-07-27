@@ -1,6 +1,7 @@
 
 declare -A active_layouts
 layouts=("English (US)" "Portuguese (Brazil)")
+layouts_flags=("🇺🇸" "🇧🇷")
 active_window=""
 
 handle() {
@@ -21,8 +22,11 @@ handle() {
       layout_index=${layouts[(Ie)$layout]}
 
       if [ $layout_index -gt 0 ]; then
+        layout_flag=${layouts_flags[$layout_index]}
         layout_index=$(( $layout_index - 1 ))
         active_layouts[$active_window]=$layout_index
+
+        eww update kb-layout-flag=$layout_flag
       fi
     ;;
 

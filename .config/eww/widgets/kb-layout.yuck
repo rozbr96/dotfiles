@@ -1,0 +1,10 @@
+
+(defpoll kb-layout-flag
+  :initial '🔤'
+  :interval '1s'
+  `eww get kb-layout-flag`)
+
+(defwidget kb-layout []
+  (eventbox
+    :onclick `hyprctl switchxkblayout all next`
+    kb-layout-flag))

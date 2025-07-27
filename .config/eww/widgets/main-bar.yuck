@@ -3,6 +3,7 @@
 (include "widgets/volume-control.yuck")
 (include "widgets/workspaces.yuck")
 (include "widgets/power-menu.yuck")
+(include "widgets/kb-layout.yuck")
 
 (defwidget main-bar [orientation monitor]
   (box
@@ -15,7 +16,7 @@
       :valign "end"
       :halign "end"
       (volume-control :orientation orientation)
-      ;; (systray :orientation orientation :space-evenly false)
+      (kb-layout)
       (digital-clock :orientation orientation)
       (power-menu :monitor monitor))))
    
