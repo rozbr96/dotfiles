@@ -1,74 +1,60 @@
 
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    }
-  }
+vim.opt.rtp:prepend(lazypath)
 
-  use 'windwp/nvim-autopairs'
-
-  use 'lewis6991/gitsigns.nvim'
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function ()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+require("lazy").setup({
+  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "windwp/nvim-autopairs" },
+  { "lewis6991/gitsigns.nvim" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end
-  }
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim'
-      }
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  { "neovim/nvim-lspconfig" },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline"
     }
-  }
+  },
+  { "elkowar/yuck.vim" },
+  { "gpanders/nvim-parinfer" },
+  { "numToStr/Comment.nvim" },
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  { "echasnovski/mini.surround" },
+  { "johmsalas/text-case.nvim" },
+  { "brenton-leighton/multiple-cursors.nvim" },
+  { "rozbr96/spec_runner" },
+  { "sindrets/diffview.nvim" },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
+  { "nvim-treesitter/nvim-treesitter-context" },
+  { "olrtg/emmet-language-server" },
+})
 
-  use 'neovim/nvim-lspconfig'
-
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline'
-    }
-  }
-
-  use 'elkowar/yuck.vim'
-  use 'gpanders/nvim-parinfer'
-
-  use 'numToStr/Comment.nvim'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
-
-  use 'echasnovski/mini.surround'
-
-  use 'johmsalas/text-case.nvim'
-
-  use 'brenton-leighton/multiple-cursors.nvim'
-
-  use 'rozbr96/spec_runner'
-
-  use 'sindrets/diffview.nvim'
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-
-  use 'nvim-treesitter/nvim-treesitter-context'
-
-  use 'emmet-language-server'
-end)
-
-require('core.plugins.config')
+require("core.plugins.config")
