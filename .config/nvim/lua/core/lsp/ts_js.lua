@@ -1,6 +1,6 @@
 
 require('lspconfig').ts_ls.setup {
-  cmd = { 'typescript-language-server', '--stdio' },
+  cmd = { 'npx', 'typescript-language-server', '--stdio' },
   init_options = {
     plugins = {
       {
@@ -10,6 +10,6 @@ require('lspconfig').ts_ls.setup {
       }
     }
   },
-  filetypes = { 'javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'vue' }
+  filetypes = { 'javascript', 'javascript.jsx', 'typescript', 'typescript.tsx', 'vue', 'typescriptreact' }
 }
 
