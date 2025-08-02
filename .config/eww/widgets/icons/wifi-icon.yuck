@@ -8,7 +8,13 @@
   :interval "1s"
   `nmcli -t -f ACTIVE,SIGNAL dev wifi | grep ^yes | cut -c5- | xargs -i echo "({} - 1) / 25" | bc`)
 
+(defpoll wifi-ssid
+  :initial ""
+  :interval "1s"
+  `nmcli -t -f ACTIVE,SSID dev wifi | grep ^yes | cut -c5-`)
+
 (defwidget wifi-icon []
   (image
+    :tooltip wifi-ssid
     :path "assets/icons/wifi-${jq(wifi-strengths, ".[${wifi-strength-index}]", "r")}.svg"
     :fill-svg "${jq(wifi-icon-colors, ".[${wifi-strength-index}]", "r")}"))
