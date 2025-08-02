@@ -1,0 +1,14 @@
+
+(defvar wifi-strengths '["null", "low", "mid", "full"]')
+
+(defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
+
+(defpoll wifi-strength-index
+  :initial "1"
+  :interval "1s"
+  `nmcli -t -f ACTIVE,SIGNAL dev wifi | grep ^yes | cut -c5- | xargs -i echo "({} - 1) / 25" | bc`)
+
+(defwidget wifi-icon []
+  (image
+    :path "assets/icons/wifi-${jq(wifi-strengths, ".[${wifi-strength-index}]", "r")}.svg"
+    :fill-svg "${jq(wifi-icon-colors, ".[${wifi-strength-index}]", "r")}"))
