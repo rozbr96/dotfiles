@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -55,6 +54,7 @@ require("lazy").setup({
   },
   { "nvim-treesitter/nvim-treesitter-context" },
   { "olrtg/emmet-language-server" },
+  { "stevearc/conform.nvim" },
 })
 
 require("core.plugins.config")

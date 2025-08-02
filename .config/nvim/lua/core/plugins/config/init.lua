@@ -1,4 +1,3 @@
-
 require('core.plugins.config.treesitter')
 require('core.plugins.config.gitsigns')
 require('core.plugins.config.telescope')
@@ -14,3 +13,4 @@ require('core.plugins.config.spec_runner')
 require('core.plugins.config.diffview')
 require('core.plugins.config.lualine')
 require('core.plugins.config.treesitter-context')
+require('core.plugins.config.conform')
