@@ -1,0 +1,35 @@
+function notify() {
+  notify-send -t 3000 "$1"
+}
+
+nmcli dev wifi rescan
+
+network="$(nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list | tail -n+2 | wofi --dmenu)"
+
+[ -z "$network" ] \
+  && notify "No network selected" \
+  && exit 1
+
+ssid="$(echo "$network" | awk -F':' '{ print $1 }')"
+
+nmcli -f NAME connection show | grep -w "$ssid" \
+  && nmcli dev wifi connect "$ssid" \
+  && notify "Connected to: $ssid" \
+  && exit 0
+
+security="$(echo "$network" | awk -F':' '{ print $3 }')"
+
+[ -n "$security" ] \
+ && password="$(wofi --dmenu)"
+
+[ -n "$security" ] && [ -z "$password" ] \
+  && notify "No password provided" \
+  && exit 1
+
+[ -z "$password" ] \
+  && nmcli dev wifi connect "$ssid" name "$ssid" \
+  && notify "Connected to: $ssid" \
+  && exit 0
+
+nmcli dev wifi connect "$ssid" password "$password" name "$ssid" \
+  && notify "Connected to: $ssid"
