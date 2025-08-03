@@ -1,0 +1,7 @@
+
+(include "widgets/icons/wifi-icon.yuck")
+
+(defwidget wifi []
+  (eventbox
+    :onclick `wifi &`
+    (wifi-icon)))

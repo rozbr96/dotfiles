@@ -4,7 +4,7 @@
 (include "widgets/workspaces.yuck")
 (include "widgets/power-menu.yuck")
 (include "widgets/kb-layout.yuck")
-(include "widgets/icons/wifi-icon.yuck")
+(include "widgets/wifi.yuck")
 
 (defwidget main-bar [orientation monitor]
   (box
@@ -17,7 +17,7 @@
       :valign "end"
       :halign "end"
       (volume-control :orientation orientation)
-      (wifi-icon)
+      (wifi)
       (kb-layout)
       (digital-clock :orientation orientation)
       (power-menu :monitor monitor))))
