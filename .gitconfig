@@ -264,6 +264,7 @@
 	resh = reset --hard
 	ress = reset --soft
 	reh = reset --hard
+	ds = diff --stat
 [init]
 	defaultBranch = main
 [core]
