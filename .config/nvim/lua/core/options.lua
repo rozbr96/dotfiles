@@ -1,4 +1,3 @@
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -12,6 +11,8 @@ vim.opt.clipboard = 'unnamedplus'
 vim.wo.wrap = false
 vim.opt.foldmethod = 'indent'
 vim.o.foldenable = false
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 vim.filetype.add {
   pattern = {
@@ -19,4 +20,3 @@ vim.filetype.add {
     ['.*/hypr/.*conf'] = 'hyprlang',
   }
 }
-
