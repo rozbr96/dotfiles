@@ -36,6 +36,7 @@
       docker
       docker-compose
       eww
+      fd
       fzf
       gawk
       gcc
@@ -55,6 +56,7 @@
       nixd
       powerline
       ranger
+      ripgrep
       sddm-chili-theme
       slurp
       socat
