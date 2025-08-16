@@ -13,6 +13,7 @@ vim.opt.foldmethod = 'indent'
 vim.o.foldenable = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.o.updatetime = 250
 
 vim.filetype.add {
   pattern = {
@@ -20,3 +21,21 @@ vim.filetype.add {
     ['.*/hypr/.*conf'] = 'hyprlang',
   }
 }
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
+  float = {
+    source = true,
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
+})
+
+vim.cmd([[
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })
+]])
