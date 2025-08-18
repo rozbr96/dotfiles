@@ -1,12 +1,33 @@
 
 dev_path=~/Workspace/dotfiles/nixos/dev
+shell_files=(default.nix shell.nix)
+
+function nearest_shell() {
+  [ "$(pwd)" = "/" ] && exit 1
+
+  for shell_file in ${shell_files[@]}; do
+    file="$(pwd)/$shell_file"
+
+    [ -f "$file" ] && echo "$file" && exit 0
+  done
+
+  cd ..
+
+  echo "$(nearest_shell)"
+}
 
 function enter_shell() {
   if [ -z $1 ]; then
-    nix-shell --run zsh
+    shell_file="$(nearest_shell)"
+
+    [ ! -f "$shell_file" ] && echo "No suitable shell.nix/default.nix file could be found!" && exit 1
   else
-    nix-shell --run zsh ~/Workspace/dotfiles/nixos/dev/$1.nix
+    shell_file="$HOME/Workspace/dotfiles/nixos/dev/$1.nix"
   fi
+
+  echo "Entering shell from: $shell_file"
+
+  nix-shell --run zsh $shell_file
 }
 
 if [ ! -z $1 ]; then
