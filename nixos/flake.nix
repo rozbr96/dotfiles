@@ -5,11 +5,11 @@
     nixpks.url = "github:NixOS/nixpkgs/nixos-25.05";
   };
 
-  outputs = {nixpks, ...}:
+  outputs = {nixpkgs, ...}:
     let
       system = "x86_64-linux";
     in {
-      nixosConfiguration.Helios = nixpks.lib.nixosSystem {
+      nixosConfiguration.Helios = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix
