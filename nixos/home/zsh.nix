@@ -57,6 +57,10 @@
       setopt PUSHD_IGNORE_DUPS
       setopt SHARE_HISTORY
       setopt HIST_FCNTL_LOCK
+
+      if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+        . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      fi
     '';
   };
 }
