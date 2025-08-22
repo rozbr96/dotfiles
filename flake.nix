@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -27,12 +27,8 @@
         hikari = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./nixos/home/home.nix
+            ./nixos/home/hikari.nix
           ];
-          extraSpecialArgs = {
-            inherit inputs;
-            flake = inputs;
-          };
         };
       };
     };

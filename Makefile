@@ -9,3 +9,5 @@ endif
 
 apply_user_configs:
 	@nix run --extra-experimental-features nix-command --extra-experimental-features flakes .#homeConfigurations.hikari.activationPackage
+
+all: apply_system_configs apply_user_configs
