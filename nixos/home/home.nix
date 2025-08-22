@@ -1,7 +1,7 @@
 let
   dotfiles = builtins.fetchGit {
     url = "https://github.com/rozbr96/dotfiles.git";
-    rev = "9d5db4c7446aafe07f39c089d5bcdee28ecabd84";
+    rev = "43e1821f417f2a9d493ec58a44f40114422a959e";
   };
 in
 {
