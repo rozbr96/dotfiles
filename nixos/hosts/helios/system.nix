@@ -130,66 +130,7 @@
 
     nix-ld.enable = true;
 
-    zsh = {
-      autosuggestions.enable = true;
-      enable = true;
-      enableBashCompletion = true;
-      interactiveShellInit = ''
-        . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-        fpath=(${pkgs.asdf-vm}/share/asdf-vm/completions $fpath)
-        autoload -Uz compinit && compinit
-      '';
-      ohMyZsh = {
-        enable = true;
-        plugins = [
-          "branch"
-          "bundler"
-          "colored-man-pages"
-          "command-not-found"
-          "copyfile"
-          "copypath"
-          "docker"
-          "docker-compose"
-          "emoji"
-          "gem"
-          "gitignore"
-          "history-substring-search"
-          "ssh"
-          "sudo"
-          "themes"
-          "wd"
-          "zsh-interactive-cd"
-          "zsh-navigation-tools"
-        ];
-        theme = "muse";
-      };
-      setOptions = [
-        "AUTO_CD"
-        "AUTO_PUSHD"
-        "CD_SILENT"
-        "CORRECT"
-        "HIST_IGNORE_DUPS"
-        "PUSHD_IGNORE_DUPS"
-        "SHARE_HISTORY"
-        "HIST_FCNTL_LOCK"
-      ];
-      shellAliases = {
-        g = "git";
-        gs = "g s";
-      };
-      syntaxHighlighting = {
-        enable = true;
-        highlighters = [
-          "main"
-          "brackets"
-          "pattern"
-          "cursor"
-          "regexp"
-          "root"
-          "line"
-        ];
-      };
-    };
+    zsh.enable = true;
   };
 
   security = {
