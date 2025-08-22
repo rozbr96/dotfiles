@@ -5,12 +5,18 @@ let
   };
 in
 {
-  home.username = "hikari";
-  home.homeDirectory = "/home/hikari";
+  home = {
+    username = "hikari";
+    homeDirectory = "/home/hikari";
+    sessionPath = [ "$HOME/.local/bin" ];
+    stateVersion = "25.05";
 
-  home.file.".config/kitty".source = "${dotfiles}/.config/kitty";
-  home.file.".config/nvim".source = "${dotfiles}/.config/nvim";
-  home.file.".local/bin".source = "${dotfiles}/.local/bin";
+    file = {
+      ".config/kitty".source = "${dotfiles}/.config/kitty";
+      ".config/nvim".source = "${dotfiles}/.config/nvim";
+      ".local/bin".source = "${dotfiles}/.local/bin";
+    };
+  };
 
   imports = [
     ./git.nix
@@ -18,8 +24,4 @@ in
     ./nvim.nix
     ./zsh.nix
   ];
-
-  home.sessionPath = [ "$HOME/.local/bin" ];
-
-  home.stateVersion = "25.05";
 }
