@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    fd
+    fzf
+    ripgrep
+  ];
+
   programs.zsh = {
     enable = true;
 
