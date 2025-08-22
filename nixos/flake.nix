@@ -26,7 +26,7 @@
 
       homeConfigurations = {
         hikari = home-manager.lib.homeManagerConfiguration {
-	  pkgs = pkgs;
+          pkgs = pkgs;
           modules = [ ./home/home.nix ];
         };
       };

@@ -4,7 +4,6 @@
 {
   imports = [
     ./hardware.nix
-    # home-manager.nixosModules.home-manager
   ];
 
   boot = {
