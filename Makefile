@@ -1,28 +1,11 @@
+IS_NIXOS := $(shell grep -q "NixOS" /etc/os-release && echo 1 || echo 0)
 
-SYMLINKS_TO_BE_CREATED := .local/bin \
-													.ssh \
-													.config/hypr \
-													.config/kitty \
-													.config/mako \
-													.config/nvim \
-													.config/nixpkgs \
-													.config/eww \
-													.config/wofi \
-													.gitconfig \
-													.vimrc \
-													.zprofile \
-													.zsh \
-													.zshrc.local
+apply_system_configs:
+ifeq ($(IS_NIXOS),1)
+	@sudo nixos-rebuild switch --flake .#Helios
+else
+	@echo "⚠️ Skipping system configs: not on NixOS"
+endif
 
-.ONESHELL:
-.SILENT:
-
-run: create_symlinks
-
-create_symlinks:
-	echo "Creating symlinks..."
-	for fd in $(SYMLINKS_TO_BE_CREATED); do
-		echo -n "Creating symlink for $$fd... "
-		([[ ! -e $$HOME/$$fd ]] && ln -s $(CURDIR)/$$fd $$HOME/$$fd && echo "DONE!") || echo "SKIPPED! [already exists]"
-	done
-
+apply_user_configs:
+	@nix run --extra-experimental-features nix-command --extra-experimental-features flakes .#homeConfigurations.hikari.activationPackage
