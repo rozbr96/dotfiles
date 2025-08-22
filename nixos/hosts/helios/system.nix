@@ -3,7 +3,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
+    # home-manager.nixosModules.home-manager
   ];
 
   boot = {
@@ -130,8 +131,6 @@
 
     nix-ld.enable = true;
 
-    thefuck.enable = true;
-
     zsh = {
       autosuggestions.enable = true;
       enable = true;
@@ -228,7 +227,6 @@
   };
 
   system = {
-    copySystemConfiguration = true;
     stateVersion = "25.05"; # Did you read the comment? yes, I did :)
   };
 
