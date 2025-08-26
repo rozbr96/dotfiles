@@ -143,9 +143,8 @@
     displayManager = {
       defaultSession = "hyprland";
 
-      sddm = {
+      ly = {
         enable = true;
-        theme = "chili";
       };
     };
 
