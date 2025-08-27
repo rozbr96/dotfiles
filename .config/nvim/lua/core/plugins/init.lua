@@ -56,6 +56,14 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter-context" },
   { "olrtg/emmet-language-server" },
   { "stevearc/conform.nvim" },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.cmd "colorscheme catppuccin"
+    end
+  }
 })
 
 require("core.plugins.config")
