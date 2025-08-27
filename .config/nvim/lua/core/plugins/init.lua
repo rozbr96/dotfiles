@@ -63,7 +63,8 @@ require("lazy").setup({
     config = function()
       vim.cmd "colorscheme catppuccin"
     end
-  }
+  },
+  { 'kevinhwang91/nvim-bqf', dependencies = { 'junegunn/fzf' } }
 })
 
 require("core.plugins.config")
