@@ -64,9 +64,9 @@ require("lazy").setup({
       vim.cmd "colorscheme catppuccin"
     end
   },
-  { 'kevinhwang91/nvim-bqf', dependencies = { 'junegunn/fzf' } },
+  { "kevinhwang91/nvim-bqf",       dependencies = { "junegunn/fzf" } },
   {
-    'mistweaverco/kulala.nvim',
+    "mistweaverco/kulala.nvim",
     keys = {
       { "<leader>Rs", desc = "Send request" },
       { "<leader>Ra", desc = "Send all requests" },
@@ -76,7 +76,8 @@ require("lazy").setup({
       global_keymaps = true,
       global_keymaps_prefix = " "
     }
-  }
+  },
+  { "shortcuts/no-neck-pain.nvim", version = "*" }
 })
 
 require("core.plugins.config")

@@ -88,6 +88,11 @@ local bindings_per_mode = {
     { keys = '<leader>sc',        command = ':RunCurrentSpec<CR>' },
     { keys = '<leader>sl',        command = ':RunLastSpecCommand<CR>' },
     { keys = '<leader>sd',        command = ':DisplayLastSpecCommandOutput<CR>' },
+
+    -- zen
+    { keys = '<leader>zz',        command = ':NoNeckPain<CR>' },
+    { keys = '<leader>za',        command = ':NoNeckPainToggleLeftSide<CR>' },
+    { keys = '<leader>zd',        command = ':NoNeckPainToggleRightSide<CR>' },
   },
 
   ['v'] = {
