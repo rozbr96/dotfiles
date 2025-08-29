@@ -37,6 +37,7 @@
       docker-compose
       eww
       fd
+      feh
       fzf
       gawk
       gcc
@@ -51,6 +52,7 @@
       libinput
       libnotify
       mako
+      mpv
       neovim
       networkmanagerapplet
       nixd
