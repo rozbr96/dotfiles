@@ -16,7 +16,11 @@ in
       ".config/kitty".source = "${dotfiles}/.config/kitty";
       ".config/mako".source = "${dotfiles}/.config/mako";
       ".config/nvim".source = "${dotfiles}/.config/nvim";
-      ".config/ranger".source = "${dotfiles}/.config/ranger";
+      ".config/ranger/commands.py".source = "${dotfiles}/.config/ranger/commands.py";
+      ".config/ranger/commands_full.py".source = "${dotfiles}/.config/ranger/commands_full.py";
+      ".config/ranger/rc.conf".source = "${dotfiles}/.config/ranger/rc.conf";
+      ".config/ranger/rifle.conf".source = "${dotfiles}/.config/ranger/rifle.conf";
+      ".config/ranger/scope.sh".source = "${dotfiles}/.config/ranger/scope.sh";
       ".config/wofi".source = "${dotfiles}/.config/wofi";
       ".gitconfig".source = "${dotfiles}/.gitconfig";
       ".local/bin".source = "${dotfiles}/.local/bin";
