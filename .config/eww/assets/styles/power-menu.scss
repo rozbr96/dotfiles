@@ -1,6 +1,8 @@
 
 .power-menu {
   background-color: rgba($background-dark, 0.75);
+  border: 2px inset white;
+  border-radius: 100px;
 
   & .power-menu-title {
     font-size: 44px;
