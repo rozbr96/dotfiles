@@ -42,7 +42,7 @@
           :title "Lock Screen?"
           :confirmation-button-text "Lock"
           :cancellation-button-text "No"
-          :confirmation-command "lock-command"
+          :confirmation-command "hyprlock"
           :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class "lock"
           (lock-icon)

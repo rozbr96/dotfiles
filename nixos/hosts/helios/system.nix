@@ -130,6 +130,8 @@
   programs = {
     hyprland.enable = true;
 
+    hyprlock.enable = true;
+
     nix-ld.enable = true;
 
     zsh.enable = true;
