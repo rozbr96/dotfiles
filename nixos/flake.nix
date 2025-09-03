@@ -2,7 +2,7 @@
   description = "NixOS configuration for Helios";
 
   inputs = {
-    nixpks.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +27,7 @@
       homeConfigurations = {
         hikari = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
-          modules = [ ./home/home.nix ];
+          modules = [ ./home/hikari.nix ];
         };
       };
     };
