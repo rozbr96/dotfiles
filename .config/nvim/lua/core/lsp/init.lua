@@ -1,16 +1,16 @@
+local lsp_dir = vim.fn.stdpath('config') .. '/lua/core/lsp'
 
-require('core.lsp.lua_ls')
-require('core.lsp.docker_compose')
-require('core.lsp.docker')
-require('core.lsp.python')
-require('core.lsp.vue')
-require('core.lsp.ts_js')
-require('core.lsp.hyprls')
-require('core.lsp.elixir_ls')
-require('core.lsp.ruby')
-require('core.lsp.rubocop')
-require('core.lsp.go')
-require('core.lsp.c')
-require('core.lsp.arduino')
-require('core.lsp.nixd')
-require('core.lsp.emmet')
+for _, file in ipairs(vim.fn.readdir(lsp_dir)) do
+  local server = file:gsub('%.lua$', '')
+
+  if server ~= 'init' then
+    local ok, config = pcall(require, 'core.lsp.' .. server)
+
+    if ok then
+      vim.lsp.config(server, config)
+      vim.lsp.enable(server)
+    else
+      vim.notify('Failed to load LSP config for ' .. server .. ': ' .. config, vim.log.levels.ERROR)
+    end
+  end
+end
