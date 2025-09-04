@@ -1,6 +1,15 @@
 ---@type vim.lsp.Config
 return {
-  init_options = { hostInfo = 'neovim' },
+  init_options = {
+    hostInfo = 'neovim',
+    plugins = {
+      {
+        name = '@vue/typescript-plugin',
+        location = 'rua dos bobos, número zero',
+        languages = { 'javascript', 'typescript', 'vue' },
+      }
+    },
+  },
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = {
     'javascript',
@@ -9,6 +18,7 @@ return {
     'typescript',
     'typescriptreact',
     'typescript.tsx',
+    'vue'
   },
   root_dir = function(bufnr, on_dir)
     local root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock', 'deno.lock' }
