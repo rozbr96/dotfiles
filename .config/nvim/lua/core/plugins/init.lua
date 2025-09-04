@@ -30,7 +30,6 @@ require("lazy").setup({
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
-  { "neovim/nvim-lspconfig" },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
