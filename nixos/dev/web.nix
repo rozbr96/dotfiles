@@ -6,6 +6,7 @@ mkShell {
     emmet-language-server
     typescript-language-server
     vue-language-server
+    vscode-langservers-extracted
   ];
 }
 
