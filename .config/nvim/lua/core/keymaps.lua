@@ -26,44 +26,44 @@ local bindings_per_mode = {
     { keys = '<leader>tf',        command = ':NvimTreeFindFile!<CR>' },
     { keys = '<Tab>',             command = ':NvimTreeFocus<CR>' },
 
-    -- telescope
-    { keys = '<leader>ff',        command = ':Telescope find_files<CR>' },
-    { keys = '<leader>fh',        command = ':Telescope search_history<CR>' },
-    { keys = '<leader>fg',        command = ':Telescope live_grep<CR>' },
-    { keys = '<leader>fs',        command = ':Telescope live_grep<CR>' },
-    { keys = '<leader>fw',        command = ':Telescope grep_string<CR>' },
-    { keys = '<leader>fb',        command = ':Telescope buffers<CR>' },
-    { keys = '<leader>fd',        command = ':Telescope diagnostics<CR>' },
+    -- files/search
+    { keys = '<leader>ff',        command = ':FzfLua files<CR>' },
+    { keys = '<leader>fh',        command = ':FzfLua command_history<CR>' },
+    { keys = '<leader>fg',        command = ':FzfLua live_grep<CR>' },
+    { keys = '<leader>fs',        command = ':FzfLua live_grep<CR>' },
+    { keys = '<leader>fw',        command = ':FzfLua grep_cword<CR>' },
+    { keys = '<leader>fb',        command = ':FzfLua buffers<CR>' },
+    { keys = '<leader>fd',        command = ':FzfLua diagnostics_workspace<CR>' },
 
     -- commands
-    { keys = '<leader>cc',        command = ':Telescope commands<CR>' },
-    { keys = '<leader>ch',        command = ':Telescope command_history<CR>' },
-    { keys = '<leader>cm',        command = ':Telescope man_pages<CR>' },
+    { keys = '<leader>cc',        command = ':FzfLua commands<CR>' },
+    { keys = '<leader>ch',        command = ':FzfLua command_history<CR>' },
+    { keys = '<leader>cm',        command = ':FzfLua manpages<CR>' },
 
-    -- buffers
+    -- buffers (plain vim)
     { keys = '<leader>vv',        command = ':split<CR>' },
     { keys = '<leader>hh',        command = ':vsplit<CR>' },
     { keys = '<leader>#',         command = ':#wincmd w<CR>' },
-    { keys = '<leader><leader>#', command = '#gt <CR>' },
-    { keys = '<leader><leader>o', command = ':tab split <CR>' },
+    { keys = '<leader><leader>#', command = '#gt<CR>' },
+    { keys = '<leader><leader>o', command = ':tab split<CR>' },
 
-    -- code
-    { keys = '<leader>Cp',        command = ':Telescope treesitter<CR>' },
-    { keys = '<leader>Cf',        command = ':Telescope lsp_references<CR>' },
-    { keys = '<leader>CD',        command = ':Telescope diagnostics<CR>' },
-    { keys = '<leader>Cd',        command = ':Telescope lsp_definitions<CR>' },
-    { keys = '<leader>Ci',        command = ':Telescope lsp_implementations<CR>' },
-    { keys = '<leader>Ct',        command = ':Telescope lsp_type_definitions<CR>' },
-    { keys = '<leader>Cs',        command = ':Telescope lsp_document_symbols<CR>' },
-    { keys = '<leader>CS',        command = ':Telescope lsp_workspace_symbols<CR>' },
-    { keys = '<leader>CI',        command = ':Telescope lsp_incoming_calls<CR>' },
-    { keys = '<leader>CO',        command = ':Telescope lsp_outgoing_calls<CR>' },
+    -- code (LSP + treesitter)
+    { keys = '<leader>Cp',        command = ':FzfLua treesitter<CR>' },
+    { keys = '<leader>Cf',        command = ':FzfLua lsp_references<CR>' },
+    { keys = '<leader>CD',        command = ':FzfLua diagnostics_workspace<CR>' },
+    { keys = '<leader>Cd',        command = ':FzfLua lsp_definitions<CR>' },
+    { keys = '<leader>Ci',        command = ':FzfLua lsp_implementations<CR>' },
+    { keys = '<leader>Ct',        command = ':FzfLua lsp_typedefs<CR>' },
+    { keys = '<leader>Cs',        command = ':FzfLua lsp_document_symbols<CR>' },
+    { keys = '<leader>CS',        command = ':FzfLua lsp_workspace_symbols<CR>' },
+    { keys = '<leader>CI',        command = ':FzfLua lsp_incoming_calls<CR>' },
+    { keys = '<leader>CO',        command = ':FzfLua lsp_outgoing_calls<CR>' },
 
     -- git
-    { keys = '<leader>gl',        command = ':Telescope git_commits<CR>' },
-    { keys = '<leader>gs',        command = ':Telescope git_status<CR>' },
-    { keys = '<leader>gb',        command = ':Telescope git_branches<CR>' },
-    { keys = '<leader>gf',        command = ':Telescope git_bcommits<CR>' },
+    { keys = '<leader>gl',        command = ':FzfLua git_commits<CR>' },
+    { keys = '<leader>gs',        command = ':FzfLua git_status<CR>' },
+    { keys = '<leader>gb',        command = ':FzfLua git_branches<CR>' },
+    { keys = '<leader>gf',        command = ':FzfLua git_bcommits<CR>' },
     { keys = '<leader>ga',        command = ':!git add -f %<CR>' },
     { keys = '<leader>gu',        command = ':!git unstage %<CR>' },
 

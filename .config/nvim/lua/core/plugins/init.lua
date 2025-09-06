@@ -30,6 +30,7 @@ require("lazy").setup({
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
+  { "ibhagwan/fzf-lua" },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
