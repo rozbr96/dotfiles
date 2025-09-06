@@ -25,11 +25,6 @@ require("lazy").setup({
       ts_update()
     end
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
   { "ibhagwan/fzf-lua" },
   {
     "hrsh7th/nvim-cmp",
