@@ -88,6 +88,9 @@ local bindings_per_mode = {
     { keys = '<leader>sc',        command = ':RunCurrentSpec<CR>' },
     { keys = '<leader>sl',        command = ':RunLastSpecCommand<CR>' },
     { keys = '<leader>sd',        command = ':DisplayLastSpecCommandOutput<CR>' },
+    { keys = '<leader>sff',       command = ':RunFailedSpecs<CR>' },
+    { keys = '<leader>sfa',       command = ':RunFailedSpecsTillFirstFailure<CR>' },
+    { keys = '<leader>sa',        command = ':RunSpecsTillFirstFailure<CR>' },
 
     -- zen
     { keys = '<leader>zz',        command = ':NoNeckPain<CR>' },
@@ -113,6 +116,8 @@ local bindings_per_mode = {
   },
 }
 
+local options = { noremap = true, silent = true }
+
 for mode, bindings in pairs(bindings_per_mode) do
   for _, value in pairs(bindings) do
     local is_numeric = string.find(value.keys, '#')
@@ -122,10 +127,10 @@ for mode, bindings in pairs(bindings_per_mode) do
         local keys = string.gsub(value.keys, '#', i)
         local cmd = string.gsub(value.command, '#', i)
 
-        vim.keymap.set(mode, keys, cmd)
+        vim.keymap.set(mode, keys, cmd, options)
       end
     else
-      vim.keymap.set(mode, value.keys, value.command)
+      vim.keymap.set(mode, value.keys, value.command, options)
     end
   end
 end
