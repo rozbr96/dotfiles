@@ -220,6 +220,7 @@
   undo = restore .
   a = add
   ad = add
+  ap = add --patch
   unstage = restore --staged
   c = commit
   cm = commit -m
