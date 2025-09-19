@@ -75,8 +75,8 @@ in
       };
 
       initExtra = ''
-        . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-        fpath=(${pkgs.asdf-vm}/share/asdf-vm/completions $fpath)
+        # . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+        # fpath=(${pkgs.asdf-vm}/share/asdf-vm/completions $fpath)
         autoload -Uz compinit && compinit
 
         setopt AUTO_CD
