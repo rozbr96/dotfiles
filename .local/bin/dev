@@ -28,13 +28,9 @@ function nearest_shell() {
 }
 
 function enter_shell() {
-  if [ -z $1 ]; then
-    shell_file="$(nearest_shell)"
+  shell_file="$(nearest_shell $1)"
 
-    [ ! -f "$shell_file" ] && echo "No suitable shell.nix/default.nix file could be found!" && exit 1
-  else
-    shell_file="$HOME/Workspace/dotfiles/nixos/dev/$1.nix"
-  fi
+  [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
   echo "Entering shell from: $shell_file"
 
