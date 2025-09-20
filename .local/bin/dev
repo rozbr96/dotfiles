@@ -2,18 +2,29 @@
 dev_path=~/Workspace/dotfiles/nixos/dev
 shell_files=(default.nix shell.nix)
 
+function file_full_path() {
+  echo "$(pwd)/$1"
+}
+
 function nearest_shell() {
   [ "$(pwd)" = "/" ] && exit 1
 
-  for shell_file in ${shell_files[@]}; do
-    file="$(pwd)/$shell_file"
+  if [ -z $1 ]; then
+    for shell_file in ${shell_files[@]}; do
+      file="$(file_full_path $shell_file)"
+
+      [ -f "$file" ] && echo "$file" && exit 0
+    done
+  else
+    file="$(file_full_path $1.nix)"
 
     [ -f "$file" ] && echo "$file" && exit 0
-  done
+  fi
+
 
   cd ..
 
-  echo "$(nearest_shell)"
+  echo "$(nearest_shell $1)"
 }
 
 function enter_shell() {
