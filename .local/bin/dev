@@ -28,7 +28,11 @@ function nearest_shell() {
 }
 
 function enter_shell() {
-  shell_file="$(nearest_shell $1)"
+  if [ -f "$dev_path/$1.nix" ]; then
+    shell_file="$dev_path/$1.nix"
+  else
+    shell_file="$(nearest_shell $1)"
+  fi
 
   [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
