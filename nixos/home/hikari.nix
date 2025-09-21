@@ -34,6 +34,10 @@ in
       neovim
       ripgrep
     ];
+
+    sessionVariables = {
+      LIBHY3_PATH = "${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so";
+    };
   };
 
   programs ={
