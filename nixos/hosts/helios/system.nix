@@ -50,6 +50,7 @@
       kitty
       libinput
       libnotify
+      libreoffice
       mako
       mpv
       neovim
