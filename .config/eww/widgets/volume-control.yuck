@@ -1,6 +1,4 @@
 
-(include "widgets/donut.yuck")
-
 (defvar max-volume 151)
 (defvar volume-visible false)
 

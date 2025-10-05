@@ -1,0 +1,8 @@
+
+(defwidget memory-usage []
+  (overlay
+    (donut
+      :value {EWW_RAM.used_mem_perc}
+      :thickness 20)
+    (label
+      :text "${ceil(EWW_RAM.used_mem_perc)}%")))
