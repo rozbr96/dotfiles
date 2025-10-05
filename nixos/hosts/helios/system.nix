@@ -29,6 +29,7 @@
     };
 
     systemPackages = with pkgs; [
+      btop
       busybox
       cliphist
       curl
