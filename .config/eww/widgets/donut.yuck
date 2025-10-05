@@ -1,5 +1,5 @@
 
-(defwidget donut [thickness value]
+(defwidget donut [thickness value ?style]
   (overlay
     (circular-progress
       :style "color: transparent;"
@@ -7,5 +7,6 @@
       :value 100)
     (circular-progress
       :thickness {thickness / 5}
-      :value value)))
+      :value value
+      :style {style ?: ""})))
 

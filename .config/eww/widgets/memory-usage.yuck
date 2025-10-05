@@ -1,8 +1,12 @@
 
+(defvar colors '["green", "green", "yellow", "orange", "red"]')
+
 (defwidget memory-usage []
   (overlay
     (donut
       :value {EWW_RAM.used_mem_perc}
-      :thickness 20)
+      :thickness 20
+      :style "color: ${colors[floor(EWW_RAM.used_mem_perc / 20)]};")
     (label
-      :text "${ceil(EWW_RAM.used_mem_perc)}%")))
+      :text "${floor(EWW_RAM.used_mem_perc)}%"
+      :style "color: ${colors[floor(EWW_RAM.used_mem_perc / 20)]};")))
