@@ -4,6 +4,10 @@ layouts=("English (US)" "Portuguese (Brazil)")
 layouts_flags=("🇺🇸" "🇧🇷")
 active_window=""
 
+update_active_workspace() {
+  eww update active-workspace-id=$1
+}
+
 handle() {
   echo "$1" | awk -F ">>" '{ print $1 " " $2 }' | read -r event data
 
@@ -30,6 +34,18 @@ handle() {
         eww update kb-layout-name="$layout_name"
         eww update kb-layout-flag=$layout_flag
       fi
+    ;;
+
+    workspacev2)
+      workspace_id=$(echo $data | cut -d',' -f1)
+
+      update_active_workspace $workspace_id
+    ;;
+
+    focusedmonv2)
+      workspace_id=$(echo $data | cut -d',' -f2)
+
+      update_active_workspace $workspace_id
     ;;
 
     *)

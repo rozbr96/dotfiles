@@ -1,17 +1,14 @@
 
+(defvar active-workspace-id 1)
+
 (defpoll active-workspaces
   :initial '[]'
   :interval '250ms'
   `hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)'`)
 
-(defpoll active-workspace
-  :initial 0
-  :interval '250ms'
-  `hyprctl -j activeworkspace`)
-
 (defwidget workspace [?name id]
   (eventbox
-    :class 'workspace ${active-workspace.id == id ? "active" : ""}'
+    :class 'workspace ${active-workspace-id == id ? "active" : ""}'
     (button
       :height 36
       :width 36
@@ -24,7 +21,6 @@
     (box
       :orientation {orientation ?: 'vertical'}
       :space-evenly false
-      (label :text active-workspace :visible false)
       (for workspace in active-workspaces
         (workspace
           :id {workspace.id})))))
