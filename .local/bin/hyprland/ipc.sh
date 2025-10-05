@@ -8,6 +8,10 @@ update_active_workspace() {
   eww update active-workspace-id=$1
 }
 
+update_active_workspaces() {
+  eww update active-workspaces="$(hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)')"
+}
+
 handle() {
   echo "$1" | awk -F ">>" '{ print $1 " " $2 }' | read -r event data
 
@@ -46,6 +50,10 @@ handle() {
       workspace_id=$(echo $data | cut -d',' -f2)
 
       update_active_workspace $workspace_id
+    ;;
+
+    createworkspacev2|destroyworkspacev2)
+      update_active_workspaces
     ;;
 
     *)

@@ -1,10 +1,7 @@
 
 (defvar active-workspace-id 1)
 
-(defpoll active-workspaces
-  :initial '[]'
-  :interval '250ms'
-  `hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)'`)
+(defvar active-workspaces "[]")
 
 (defwidget workspace [?name id]
   (eventbox
