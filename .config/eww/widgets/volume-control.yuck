@@ -35,6 +35,7 @@
 
 (defwidget volume-control [?orientation]
   (eventbox
+    :tooltip "Volume"
     :onhover "eww update volume-visible=true"
     :onhoverlost "eww update volume-visible=false"
     (box

@@ -1,4 +1,6 @@
 
+(defvar kb-layout-name "")
+
 (defpoll kb-layout-flag
   :initial '🔤'
   :interval '1s'
@@ -6,5 +8,6 @@
 
 (defwidget kb-layout []
   (eventbox
+    :tooltip kb-layout-name
     :onclick `hyprctl switchxkblayout all next`
     kb-layout-flag))

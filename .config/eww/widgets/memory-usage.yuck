@@ -3,6 +3,7 @@
 
 (defwidget memory-usage []
   (overlay
+    :tooltip "RAM usage"
     (donut
       :value {EWW_RAM.used_mem_perc}
       :thickness 20
