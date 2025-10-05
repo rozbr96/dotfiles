@@ -1,10 +1,7 @@
 
 (defvar kb-layout-name "")
 
-(defpoll kb-layout-flag
-  :initial '🔤'
-  :interval '1s'
-  `eww get kb-layout-flag`)
+(defvar kb-layout-flag '🔤')
 
 (defwidget kb-layout []
   (eventbox
