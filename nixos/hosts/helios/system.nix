@@ -57,6 +57,7 @@
       neovim
       networkmanagerapplet
       nixd
+      playerctl
       powerline
       ranger
       ripgrep
