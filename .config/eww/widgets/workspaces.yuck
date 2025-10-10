@@ -14,7 +14,7 @@
 
 (defwidget workspaces [?orientation]
   (eventbox
-    :onscroll `echo "{}" | sed s/down/m-1/ | sed s/up/m+1/ | xargs hyprctl dispatch workspace`
+    :onscroll `echo "{}" | sed s/down/m+1/ | sed s/up/m-1/ | xargs hyprctl dispatch workspace`
     (box
       :orientation {orientation ?: 'vertical'}
       :space-evenly false
