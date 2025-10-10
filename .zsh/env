@@ -1,6 +1,0 @@
-
-export ASDF_DATA_DIR=~/.asdf
-
-export PATH=~/.bin/:$PATH
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-
