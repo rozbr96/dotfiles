@@ -50,9 +50,11 @@ if [ ! -z $1 ]; then
     ;;
 
     edit)
-      [ -z $2 ] && exit 1
+      [ -z "$2" ] && shell_file="$(nearest_shell)" || shell_file="$dev_path/$2.nix"
 
-      ${EDITOR:-nvim} "$dev_path/$2.nix"
+      [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
+
+      ${EDITOR:-nvim} "$shell_file"
     ;;
 
     enter)
