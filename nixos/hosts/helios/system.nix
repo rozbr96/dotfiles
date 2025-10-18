@@ -103,6 +103,12 @@
   };
 
   hardware = {
+    bluetooth = {
+      enable = true;
+    };
+
+    graphics.enable = true;
+
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
@@ -110,8 +116,6 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       powerManagement.enable = true;
     };
-
-    graphics.enable = true;
   };
 
   i18n = {
