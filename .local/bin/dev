@@ -38,7 +38,7 @@ function enter_shell() {
 
   echo "Entering shell from: $shell_file"
 
-  nix-shell --run zsh $shell_file
+  nix-shell --run "DEV_PROMPT=$dev_environment zsh" $shell_file
 }
 
 if [ ! -z $1 ]; then
@@ -60,13 +60,19 @@ if [ ! -z $1 ]; then
     enter)
       [ -z $2 ] && exit 1
 
+      dev_environment=$2
+
       enter_shell $2
     ;;
 
     *)
+      dev_environment=$1
+
       enter_shell $1
     ;;
   esac
 else
+  dev_environment=$(basename $(pwd))
+
   enter_shell
 fi
