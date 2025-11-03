@@ -36,6 +36,8 @@ function enter_shell() {
 
   [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
+  export NIXPKGS_ALLOW_UNFREE=1
+
   echo "Entering shell from: $shell_file"
 
   nix-shell --run "DEV_PROMPT=$dev_environment zsh" $shell_file
