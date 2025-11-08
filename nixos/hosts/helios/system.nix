@@ -169,6 +169,8 @@
 
     printing.enable = true;
 
+    seatd.enable = true;
+
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
