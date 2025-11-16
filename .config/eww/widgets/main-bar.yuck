@@ -8,6 +8,7 @@
 (include "widgets/kb-layout.yuck")
 (include "widgets/wifi.yuck")
 (include "widgets/memory-usage.yuck")
+(include "widgets/icons/ethernet.yuck")
 
 (defwidget main-bar [orientation monitor]
   (box
@@ -22,6 +23,7 @@
       (volume-control :orientation orientation)
       (memory-usage)
       (wifi)
+      (ethernet-icon)
       (kb-layout)
       (digital-clock :orientation orientation)
       (power-menu :monitor monitor))))

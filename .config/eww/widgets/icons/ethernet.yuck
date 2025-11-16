@@ -1,0 +1,11 @@
+
+(defpoll ethernet-network-name
+  :initial ''
+  :interval '1s'
+  `nmcli -t -f TYPE,CONNECTION dev status | awk -F: '$1=="ethernet"{ print $2 }'`)
+
+(defwidget ethernet-icon []
+  (image
+    :tooltip {ethernet-network-name ?: "Disconnected"}
+    :path 'assets/icons/ethernet.svg'
+    :fill-svg {ethernet-network-name == '' ? 'red' : 'green'}))
