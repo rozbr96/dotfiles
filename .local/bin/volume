@@ -1,0 +1,15 @@
+
+case $1 in
+  monitor)
+    pw-mon | grep --line-buffered sink | while read -r; do
+      volume_status=$(wpctl get-volume @DEFAULT_SINK@)
+      volume_level=$(echo "$volume_status" | awk '{ print $2 * 100 }')
+      donut_volume_level=$(echo "$volume_level / 1.5" | bc)
+      volume_muted=$(echo "$volume_status" | grep -i muted > /dev/null && echo true || echo false)
+
+      eww update volume-muted=$volume_muted
+      eww update volume-level=$volume_level
+      eww update donut-volume-level=$donut_volume_level
+    done
+  ;;
+esac

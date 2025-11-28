@@ -1,26 +1,9 @@
 
 (defvar max-volume 151)
 (defvar volume-visible false)
-
-(defpoll muted
-  :initial false
-  :interval "250ms"
-  `wpctl get-volume @DEFAULT_SINK@ | grep -i muted > /dev/null && echo "true" || echo "false"`)
-
-(defpoll volume-level
-  :initial 0
-  :interval "250ms"
-  `wpctl get-volume @DEFAULT_SINK@ | awk '{ print 100 * $2 }'`)
-
-(defpoll volume-icon
-  :initial "🔈"
-  :interval "250ms"
-  `vol=$(eww get volume-level) && [[ $vol -lt 40 ]] && echo "🔈" || ([[ $vol -lt 100 ]] && echo "🔉" || echo "🔊")`)
-
-(defpoll volume-level-100
-  :initial 0
-  :interval "250ms"
-  `eww get volume-level | awk '{ print $1 / 150 * 100 }'`)
+(defvar volume-level 0)
+(defvar donut-volume-level 0)
+(defvar volume-muted false)
 
 (defwidget volume-changer [?orientation]
   (scale
@@ -50,11 +33,11 @@
         :onclick `wpctl set-mute @DEFAULT_SINK@ toggle`
         (overlay
           (donut
-            :value volume-level-100
+            :value donut-volume-level
             :thickness 20)
           (label
             :text volume-level
-            :visible {!muted})
+            :visible {!volume-muted})
           (label
             :text "🚫"
-            :visible muted))))))
+            :visible volume-muted))))))

@@ -9,8 +9,9 @@ endif
 
 apply_user_configs:
 	@nix run --extra-experimental-features nix-command --extra-experimental-features flakes .#homeConfigurations.hikari.activationPackage
+	@make apply_hypr_configs
 
-apply_hypr_configs: apply_user_configs
+apply_hypr_configs:
 	@hyprctl reload
 
 all: apply_system_configs apply_user_configs
