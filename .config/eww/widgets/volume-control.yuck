@@ -14,7 +14,7 @@
     :value volume-level
     :flipped {orientation == "vertical"}
     :orientation {orientation ?: "vertical"}
-    :onchange `wpctl set-volume @DEFAULT_SINK@ {}%`))
+    :onchange `volume set {}`))
 
 (defwidget volume-control [?orientation]
   (eventbox
@@ -30,7 +30,7 @@
         :reveal volume-visible
         (volume-changer :orientation orientation))
       (eventbox
-        :onclick `wpctl set-mute @DEFAULT_SINK@ toggle`
+        :onclick `volume mute toggle`
         (overlay
           (donut
             :value donut-volume-level

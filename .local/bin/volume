@@ -12,4 +12,32 @@ case $1 in
       eww update donut-volume-level=$donut_volume_level
     done
   ;;
+
+  mute)
+    case $2 in
+      toggle)
+        wpctl set-mute @DEFAULT_SINK@ toggle
+      ;;
+
+      on)
+        wpctl set-mute @DEFAULT_SINK@ 1
+      ;;
+
+      off)
+        wpctl set-mute @DEFAULT_SINK@ 0
+      ;;
+    esac
+  ;;
+
+  increase)
+    wpctl set-volume @DEFAULT_SINK@ ${2:-5}%+
+  ;;
+
+  decrease)
+    wpctl set-volume @DEFAULT_SINK@ ${2:-5}%-
+  ;;
+
+  set)
+    wpctl set-volume @DEFAULT_SINK@ $2%
+  ;;
 esac
