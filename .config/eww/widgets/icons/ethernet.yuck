@@ -1,8 +1,5 @@
 
-(defpoll ethernet-network-name
-  :initial ''
-  :interval '1s'
-  `nmcli -t -f TYPE,CONNECTION dev status | awk -F: '$1=="ethernet"{ print $2 }'`)
+(defvar ethernet-network-name "")
 
 (defwidget ethernet-icon []
   (image
