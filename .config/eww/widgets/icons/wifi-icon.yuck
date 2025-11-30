@@ -1,17 +1,10 @@
 
+(defvar wifi-ssid "Disconnected")
+(defvar wifi-strength-index 0)
+
 (defvar wifi-strengths '["null", "low", "mid", "full", "off"]')
 
 (defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
-
-(defpoll wifi-strength-index
-  :initial ""
-  :interval "1s"
-  `nmcli -t -f ACTIVE,SIGNAL dev wifi | grep ^yes | cut -c5- | xargs -i echo "({} - 1) / 25" | bc`)
-
-(defpoll wifi-ssid
-  :initial ""
-  :interval "1s"
-  `nmcli -t -f ACTIVE,SSID dev wifi | grep ^yes | cut -c5-`)
 
 (defwidget wifi-icon []
   (image
