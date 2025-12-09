@@ -96,7 +96,7 @@
       google-fonts
       nerd-fonts.fira-code
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       orbitron
       powerline-fonts
     ];

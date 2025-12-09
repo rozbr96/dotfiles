@@ -35,9 +35,9 @@ in
       ripgrep
     ];
 
-    sessionVariables = {
-      LIBHY3_PATH = "${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so";
-    };
+    # sessionVariables = {
+    #   LIBHY3_PATH = "${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so";
+    # };
   };
 
   programs ={
@@ -92,9 +92,9 @@ in
         setopt SHARE_HISTORY
         setopt HIST_FCNTL_LOCK
 
-        if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-          . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-        fi
+        # if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+        #   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+        # fi
 
         if [ -n "$DEV_PROMPT" ]; then
           PROMPT="($DEV_PROMPT) $PROMPT"
