@@ -9,7 +9,7 @@ local bindings_per_mode = {
 
     -- saving
     { keys = '<leader>ww',        command = ':w<CR>' },
-    { keys = '<leader>wa',        command = ':wa<CR><ESC>' },
+    { keys = '<leader>wa',        command = ':wa<CR>' },
     { keys = '<leader>Ww',        command = ':w!<CR>' },
     { keys = '<leader>Wa',        command = ':wa!<CR>' },
     { keys = '<leader>wq',        command = ':wq<CR>' },
@@ -18,8 +18,11 @@ local bindings_per_mode = {
     -- quiting
     { keys = '<leader>qq',        command = ':q<CR>' },
     { keys = '<leader>qa',        command = ':qa<CR>' },
+    { keys = '<leader>qd',        command = ':bd<CR>' },
+    { keys = '<leader>qt',        command = ':tabclose<CR>' },
     { keys = '<leader>Qq',        command = ':q!<CR>' },
     { keys = '<leader>Qa',        command = ':qa!<CR>' },
+    { keys = '<leader>Qd',        command = ':bd!<CR>' },
 
     -- tree
     { keys = '<leader>tt',        command = ':NvimTreeToggle<CR>' },
@@ -96,6 +99,8 @@ local bindings_per_mode = {
     { keys = '<leader>zz',        command = ':NoNeckPain<CR>' },
     { keys = '<leader>za',        command = ':NoNeckPainToggleLeftSide<CR>' },
     { keys = '<leader>zd',        command = ':NoNeckPainToggleRightSide<CR>' },
+    { keys = '<leader>zw',        command = ':NoNeckPainWidthUp<CR>' },
+    { keys = '<leader>zs',        command = ':NoNeckPainWidthDown<CR>' },
   },
 
   ['v'] = {
