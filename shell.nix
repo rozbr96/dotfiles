@@ -8,5 +8,6 @@ mkShell {
     lemminx
     lua-language-server
     nixd
+    systemd-language-server
   ];
 }
