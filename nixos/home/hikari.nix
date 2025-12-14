@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   dotfiles = ../..;
@@ -34,13 +34,9 @@ in
       neovim
       ripgrep
     ];
-
-    # sessionVariables = {
-    #   LIBHY3_PATH = "${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so";
-    # };
   };
 
-  programs ={
+  programs = {
     zsh = {
       enable = true;
 
@@ -79,8 +75,6 @@ in
       };
 
       initExtra = ''
-        # . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-        # fpath=(${pkgs.asdf-vm}/share/asdf-vm/completions $fpath)
         autoload -Uz compinit && compinit
 
         setopt AUTO_CD
@@ -92,14 +86,71 @@ in
         setopt SHARE_HISTORY
         setopt HIST_FCNTL_LOCK
 
-        # if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-        #   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-        # fi
-
         if [ -n "$DEV_PROMPT" ]; then
           PROMPT="($DEV_PROMPT) $PROMPT"
         fi
       '';
+    };
+  };
+
+  systemd.user = {
+    sessionVariables = {
+      PATH = "${config.home.homeDirectory}/.local/bin:/run/current-system/sw/bin:${config.home.profileDirectory}/bin";
+    };
+
+    services = {
+      eww = {
+        Unit = {
+          Description = "EWW Daemon";
+        };
+
+        Service = {
+          Type = "exc";
+          ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
+          ExecStartPost = "${pkgs.eww}/bin/eww open main-bar --arg orientation=horizontal --arg monitor=1";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
+      hypr-ipc = {
+        Unit = {
+          Description = "Hyprland IPC";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/hypr_ipc";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
+      volume-monitor = {
+        Unit = {
+          Description = "Volume Monitor";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/volume monitor";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
+      network-monitor = {
+        Unit = {
+          Description = "Network Monitor";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/network monitor";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
     };
   };
 }

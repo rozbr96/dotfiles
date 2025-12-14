@@ -1,3 +1,4 @@
+#!/run/current-system/sw/bin/zsh
 
 case $1 in
   monitor)
