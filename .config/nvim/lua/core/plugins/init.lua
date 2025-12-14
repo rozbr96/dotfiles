@@ -90,6 +90,11 @@ require("lazy").setup({
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
+  },
+  {
+    "folke/noice.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    event = "VeryLazy"
   }
 })
 
