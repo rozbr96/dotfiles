@@ -1,4 +1,7 @@
 vim.g.mapleader = '\\'
+vim.g.maplocalleader = '\\'
+
+vim.keymap.set({ 'n', 'v', 'o' }, '<Space>', '<Leader>', { remap = true, silent = true })
 
 local bindings_per_mode = {
   ['n'] = {
