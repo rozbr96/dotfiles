@@ -7,8 +7,6 @@ function file_full_path() {
 }
 
 function nearest_shell() {
-  [ "$(pwd)" = "/" ] && exit 1
-
   if [ -z $1 ]; then
     for shell_file in ${shell_files[@]}; do
       file="$(file_full_path $shell_file)"
@@ -22,17 +20,21 @@ function nearest_shell() {
   fi
 
 
+  if [ "$(pwd)" = "/" ]; then
+    shell_file="$dev_path/$1.nix"
+
+    [ ! -f "$shell_file" ] && exit 1
+
+    echo "$shell_file" && exit 0
+  fi
+
   cd ..
 
   echo "$(nearest_shell $1)"
 }
 
 function enter_shell() {
-  if [ -f "$dev_path/$1.nix" ]; then
-    shell_file="$dev_path/$1.nix"
-  else
-    shell_file="$(nearest_shell $1)"
-  fi
+  shell_file="$(nearest_shell $1)"
 
   [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
@@ -52,11 +54,21 @@ if [ ! -z $1 ]; then
     ;;
 
     edit)
-      [ -z "$2" ] && shell_file="$(nearest_shell)" || shell_file="$dev_path/$2.nix"
+      shell_file="$(nearest_shell $2)"
 
       [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
       ${EDITOR:-nvim} "$shell_file"
+    ;;
+
+    show)
+      shell_file="$(nearest_shell $2)"
+
+      [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
+
+      echo "# Displaying contents for: $shell_file"
+
+      cat "$shell_file"
     ;;
 
     enter)
