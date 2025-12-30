@@ -61,6 +61,18 @@ if [ ! -z $1 ]; then
       ${EDITOR:-nvim} "$shell_file"
     ;;
 
+    delete|deinit|remove)
+      shell_file="$(nearest_shell $2)"
+
+      [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
+
+      echo -n "# Removing $shell_file... "
+
+      rm -f "$shell_file" 2> /dev/null
+
+      [ -f "$shell_file" ] && echo "Failed!" || echo "Done!"
+    ;;
+
     show)
       shell_file="$(nearest_shell $2)"
 
