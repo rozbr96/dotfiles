@@ -13,7 +13,14 @@
 (defwidget main-bar [orientation monitor]
   (box
     :orientation orientation
-    (workspaces :orientation orientation)
+    (box
+      :orientation orientation
+      :space-evenly false
+      :spacing 3
+      (image
+        :image-height 36
+        :path {orientation == "horizontal" ? "assets/icons/hyprheader.svg" : "assets/icons/hypr.svg"})
+      (workspaces :orientation orientation))
     (box 
       :spacing 16
       :space-evenly false
