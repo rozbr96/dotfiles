@@ -1,5 +1,10 @@
-
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -17,7 +22,11 @@
       timeout = 10;
     };
 
-    supportedFilesystems = [ "exfat" "ntfs" "vfat" ];
+    supportedFilesystems = [
+      "exfat"
+      "ntfs"
+      "vfat"
+    ];
   };
 
   environment = {
@@ -45,7 +54,6 @@
       gnumake
       google-chrome
       grim
-      hyprlandPlugins.hy3
       ijq
       jq
       kitty
@@ -85,7 +93,10 @@
     "/boot" = {
       device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
     };
   };
 
@@ -127,7 +138,10 @@
     hostName = "Helios";
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -137,6 +151,7 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
 
     hyprlock.enable = true;
@@ -189,11 +204,16 @@
   };
 
   users = {
-    groups.hikari = {};
+    groups.hikari = { };
 
     users.hikari = {
       description = "Rosemilson Barbosa";
-      extraGroups = [ "docker" "input" "networkmanager" "wheel" ];
+      extraGroups = [
+        "docker"
+        "input"
+        "networkmanager"
+        "wheel"
+      ];
       group = "hikari";
       initialPassword = "password";
       isNormalUser = true;
@@ -205,14 +225,13 @@
     docker.enable = true;
   };
 
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-hyprland
-        pkgs.xdg-desktop-portal-gtk
-      ];
-    };
-  };
+  # xdg = {
+  #   portal = {
+  #     enable = true;
+  #     extraPortals = [
+  #       pkgs.xdg-desktop-portal-hyprland
+  #       pkgs.xdg-desktop-portal-gtk
+  #     ];
+  #   };
+  # };
 }
-
