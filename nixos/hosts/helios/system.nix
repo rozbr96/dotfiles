@@ -65,6 +65,7 @@
       neovim
       networkmanagerapplet
       nixd
+      nixfmt
       playerctl
       powerline
       ranger
