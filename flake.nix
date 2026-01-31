@@ -7,6 +7,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.53.0";
+
+    hy3 = {
+      url = "github:outfoxxed/hy3/hl0.53.0";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs =
@@ -30,6 +35,10 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
+                extraSpecialArgs = {
+                  inherit inputs system;
+                };
+
                 users.hikari = import ./nixos/home/hikari.nix;
               };
             }

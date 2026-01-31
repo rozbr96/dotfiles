@@ -1,6 +1,8 @@
 {
   pkgs,
   config,
+  inputs,
+  system,
   ...
 }:
 
@@ -38,6 +40,10 @@ in
       neovim
       ripgrep
     ];
+
+    sessionVariables = {
+      LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
+    };
   };
 
   programs = {
