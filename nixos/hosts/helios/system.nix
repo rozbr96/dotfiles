@@ -63,20 +63,15 @@
       mako
       mpv
       neovim
-      networkmanagerapplet
       nixd
       nixfmt
       playerctl
-      powerline
       ranger
       ripgrep
-      sddm-chili-theme
       slurp
       socat
       unzip
       vimPlugins.packer-nvim
-      waybar
-      wget
       wl-clipboard
       wofi
       xdg-user-dirs
@@ -110,7 +105,6 @@
       noto-fonts
       noto-fonts-color-emoji
       orbitron
-      powerline-fonts
     ];
   };
 
