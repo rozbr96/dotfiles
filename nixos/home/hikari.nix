@@ -2,7 +2,6 @@
   pkgs,
   config,
   inputs,
-  system,
   ...
 }:
 
@@ -42,7 +41,7 @@ in
     ];
 
     sessionVariables = {
-      LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
+      LIB_HY3_PATH = "${inputs.hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3}/lib/libhy3.so";
     };
   };
 
@@ -50,7 +49,7 @@ in
     zsh = {
       enable = true;
 
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
 
       syntaxHighlighting.enable = true;
 
@@ -84,7 +83,7 @@ in
         theme = "muse";
       };
 
-      initExtra = ''
+      initContent = ''
         autoload -Uz compinit && compinit
 
         setopt AUTO_CD

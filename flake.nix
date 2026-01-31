@@ -36,7 +36,7 @@
             {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit inputs system;
+                  inherit inputs;
                 };
 
                 users.hikari = import ./nixos/home/hikari.nix;
