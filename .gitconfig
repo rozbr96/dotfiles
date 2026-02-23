@@ -256,6 +256,7 @@
   cpa = cherry-pick --abort
   cps = cherry-pick --skip
   cpq = cherry-pick --quit
+  cpn = cherry-pick --no-commit
   ca = commit -a
   mc = merge --continue
   ma = merge --abort
