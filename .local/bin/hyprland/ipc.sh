@@ -12,6 +12,22 @@ update_active_workspaces() {
   eww update active-workspaces="$(hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)')"
 }
 
+update_active_layout() {
+  layout_index=${layouts[(Ie)$1]}
+
+  if [ $layout_index -gt 0 ]; then
+    layout_name="${layouts[$layout_index]}"
+    layout_flag=${layouts_flags[$layout_index]}
+    layout_index=$(( $layout_index - 1 ))
+    active_layouts[$active_window]=$layout_index
+
+    eww update kb-layout-name="$layout_name"
+    eww update kb-layout-flag=$layout_flag
+
+    export active_layout_notification_id=$(notify-send -pr "${active_layout_notification_id:-0}" "$layout_flag - $layout_name")
+  fi
+}
+
 handle() {
   echo "$1" | awk -F ">>" '{ print $1 " " $2 }' | read -r event data
 
@@ -27,17 +43,7 @@ handle() {
 
     activelayout)
       layout="$(echo $data | cut -d',' -f2)"
-      layout_index=${layouts[(Ie)$layout]}
-
-      if [ $layout_index -gt 0 ]; then
-        layout_name="${layouts[$layout_index]}"
-        layout_flag=${layouts_flags[$layout_index]}
-        layout_index=$(( $layout_index - 1 ))
-        active_layouts[$active_window]=$layout_index
-
-        eww update kb-layout-name="$layout_name"
-        eww update kb-layout-flag=$layout_flag
-      fi
+      update_active_layout "$layout"
     ;;
 
     workspacev2)
