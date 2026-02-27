@@ -29,6 +29,7 @@ in
       ".config/wofi".source = "${dotfiles}/.config/wofi";
       ".gitconfig".source = "${dotfiles}/.gitconfig";
       ".local/bin".source = "${dotfiles}/.local/bin";
+      ".local/share/icons/volantes".source = "${dotfiles}/.local/share/icons/volantes";
       ".ssh/config".source = "${dotfiles}/.ssh/config";
     };
 
