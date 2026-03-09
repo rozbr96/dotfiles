@@ -12,6 +12,10 @@
   ];
 
   boot = {
+    extraModprobeConfig = ''
+      options snd-intel-dspcfg dsp_driver=3
+    '';
+
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
@@ -38,6 +42,9 @@
     };
 
     systemPackages = with pkgs; [
+      alsa-tools
+      alsa-ucm-conf
+      alsa-utils
       btop
       busybox
       cliphist
@@ -65,7 +72,9 @@
       neovim
       nixd
       nixfmt
+      pavucontrol
       playerctl
+      pulseaudioFull
       ranger
       ripgrep
       slurp
@@ -113,6 +122,11 @@
       enable = true;
     };
 
+    firmware = with pkgs; [
+      alsa-firmware
+      sof-firmware
+    ];
+
     graphics.enable = true;
 
     nvidia = {
@@ -158,6 +172,7 @@
 
   security = {
     polkit.enable = true;
+    rtkit.enable = true;
   };
 
   services = {
@@ -219,14 +234,4 @@
   virtualisation = {
     docker.enable = true;
   };
-
-  # xdg = {
-  #   portal = {
-  #     enable = true;
-  #     extraPortals = [
-  #       pkgs.xdg-desktop-portal-hyprland
-  #       pkgs.xdg-desktop-portal-gtk
-  #     ];
-  #   };
-  # };
 }
