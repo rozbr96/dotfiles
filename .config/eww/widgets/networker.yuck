@@ -1,0 +1,31 @@
+
+(include 'widgets/wireless.yuck')
+
+(defwidget networker [networks]
+  (box
+    :class 'networker'
+    :orientation 'v'
+    :space-evenly false
+    (scroll
+      :vscroll true
+      :height {min(arraylength(networks) * network-entry-height, network-entry-height * 10)}
+      (box
+        :orientation 'v'
+        :space-evenly false
+        (for network in networks
+            (wireless :network network))))
+    (eventbox
+      :class 'hover'
+      :cursor 'pointer'
+      :onclick `${EWW_CMD} close networker`
+      (box
+        :height network-entry-height
+        :orientation 'h'
+        :spacing 10
+        (image
+          :path 'assets/icons/close.svg'
+          :fill-svg '#ffffff'
+          :halign 'end')
+        (label
+          :text 'Cancel'
+          :halign 'start')))))

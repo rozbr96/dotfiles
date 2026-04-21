@@ -1,0 +1,12 @@
+
+(include 'widgets/networker.yuck')
+
+(defwindow networker [monitor networks]
+  :monitor {monitor ?: 1}
+  :stacking 'overlay'
+  :exclusive false
+  :geometry (geometry
+              :x 200
+              :width 400
+              :anchor 'top right')
+  (networker :networks networks))

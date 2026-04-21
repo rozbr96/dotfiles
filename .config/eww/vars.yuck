@@ -1,0 +1,7 @@
+
+(defvar wifi-ssid "Disconnected")
+(defvar wifi-strength-index 0)
+(defvar wifi-strengths '["null", "low", "mid", "full", "off"]')
+(defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
+
+(defvar network-entry-height 44)

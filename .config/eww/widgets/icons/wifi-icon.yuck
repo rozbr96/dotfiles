@@ -1,13 +1,6 @@
 
-(defvar wifi-ssid "Disconnected")
-(defvar wifi-strength-index 0)
-
-(defvar wifi-strengths '["null", "low", "mid", "full", "off"]')
-
-(defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
-
-(defwidget wifi-icon []
+(defwidget wifi-icon [?ssid ?strength-index]
   (image
-    :tooltip {wifi-ssid ?: "Disconnected"}
-    :path "assets/icons/wifi-${jq(wifi-strengths, ".[${wifi-strength-index ?: 4}]", "r")}.svg"
-    :fill-svg "${jq(wifi-icon-colors, ".[${wifi-strength-index ?: 0}]", "r")}"))
+    :tooltip {ssid ?: wifi-ssid ?: "Disconnected"}
+    :path "assets/icons/wifi-${jq(wifi-strengths, ".[${strength-index ?: wifi-strength-index ?: 4}]", "r")}.svg"
+    :fill-svg "${jq(wifi-icon-colors, ".[${strength-index ?: wifi-strength-index ?: 0}]", "r")}"))

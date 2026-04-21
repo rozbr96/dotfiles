@@ -1,0 +1,17 @@
+
+.networker {
+  & .hover {
+    background-color: $background-dark;
+
+    &:hover {
+      background-color: $background-light;
+    }
+  }
+
+  & .wireless {
+
+    & box {
+      padding-left: 24px;
+    }
+  }
+}

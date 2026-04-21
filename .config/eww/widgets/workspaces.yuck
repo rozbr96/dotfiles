@@ -5,6 +5,7 @@
 
 (defwidget workspace [?name id]
   (eventbox
+    :cursor 'pointer'
     :class 'workspace ${active-workspace-id == id ? "active" : ""}'
     (button
       :height 36

@@ -3,5 +3,6 @@
 
 (defwidget wifi []
   (eventbox
-    :onclick `wifi &`
+    :cursor 'pointer'
+    :onclick `${EWW_CMD} open networker --arg monitor=1 --arg networks="$(wifi list json)"`
     (wifi-icon)))

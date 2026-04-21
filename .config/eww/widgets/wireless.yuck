@@ -1,0 +1,19 @@
+
+(include 'widgets/icons/wifi-icon.yuck')
+
+(defwidget wireless [network]
+  (eventbox
+    :class 'wireless hover'
+    :cursor 'pointer'
+    :tooltip {network.SSID}
+    :onclick `notify-send "${network.SSID}"`
+    (box
+      :orientation 'h'
+      :space-evenly false
+      :spacing 10
+      :height network-entry-height
+      (wifi-icon
+        :ssid {network.SSID}
+        :strength-index {network.STRENGTH_INDEX})
+      (label
+         :text "${network.SSID} (${network.SIGNAL})"))))
