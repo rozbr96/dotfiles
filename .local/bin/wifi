@@ -2,34 +2,71 @@ function notify() {
   notify-send -t 3000 "$1"
 }
 
-nmcli dev wifi rescan
+function notify_connected_to() {
+  notify "Connected to: $1"
+}
 
-network="$(nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list | tail -n+2 | wofi --dmenu)"
+function list() {
+  case $1 in
+    json)
+      nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list \
+        | jq -R -s '
+          split("\n")
+          | map(select(length > 0))
+          | map(
+              capture("(?<SSID>.*):(?<SIGNAL>[0-9]+):(?<SECURITY>.*)")
+              | .SIGNAL |= tonumber
+              | .STRENGTH_INDEX = ((.SIGNAL - 1) / 25 | floor)
+            )
+        '
+    ;;
 
-[ -z "$network" ] \
-  && notify "No network selected" \
-  && exit 1
+    dmenu)
+      nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list | tail -n+2
+    ;;
+  esac
+}
 
-ssid="$(echo "$network" | awk -F':' '{ print $1 }')"
+function connect() {
+  [ -z "$2" ] \
+    && nmcli dev wifi connect "$1" name "$1" \
+    && notify_connected_to "$1" \
+    && exit 0
 
-nmcli -f NAME connection show | grep -w "$ssid" \
-  && nmcli dev wifi connect "$ssid" \
-  && notify "Connected to: $ssid" \
-  && exit 0
+  nmcli dev wifi connect "$1" name "$1" password "$2" \
+    && notify_connected_to "$1"
+}
 
-security="$(echo "$network" | awk -F':' '{ print $3 }')"
+function wofi_connect() {
+  nmcli dev wifi rescan
 
-[ -n "$security" ] \
- && password="$(wofi --dmenu)"
+  network="$(list dmenu | wofi --dmenu)"
 
-[ -n "$security" ] && [ -z "$password" ] \
-  && notify "No password provided" \
-  && exit 1
+  [ -z "$network" ] \
+    && notify "No network selected" \
+    && exit 1
 
-[ -z "$password" ] \
-  && nmcli dev wifi connect "$ssid" name "$ssid" \
-  && notify "Connected to: $ssid" \
-  && exit 0
+  ssid="$(echo "$network" | awk -F':' '{ print $1 }')"
 
-nmcli dev wifi connect "$ssid" password "$password" name "$ssid" \
-  && notify "Connected to: $ssid"
+  nmcli -f NAME connection show | grep -w "$ssid" \
+    && nmcli dev wifi connect "$ssid" \
+    && notify_connected_to "$ssid" \
+    && exit 0
+
+  security="$(echo "$network" | awk -F':' '{ print $3 }')"
+
+  [ -n "$security" ] \
+    && password="$(wofi --dmenu)"
+
+  [ -n "$security" ] && [ -z "$password" ] \
+    && notify "No password provided" \
+    && exit 1
+
+  connect "$ssid" "$password"
+}
+
+
+case $1 in
+  list) list $2 ;;
+  *) wofi_connect ;;
+esac
