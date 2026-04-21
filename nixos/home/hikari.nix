@@ -117,7 +117,7 @@ in
         Service = {
           Type = "exc";
           ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
-          ExecStartPost = "${pkgs.eww}/bin/eww open main-bar --arg orientation=horizontal --arg monitor=0";
+          ExecStartPost = "${pkgs.eww}/bin/eww open main-bar --arg orientation=horizontal --arg monitor='[1,0]'";
           Restart = "always";
           RestartSec = 1;
         };
