@@ -1,8 +1,4 @@
 
-(defvar kb-layout-name "")
-
-(defvar kb-layout-flag '🔤')
-
 (defwidget kb-layout []
   (eventbox
     :tooltip kb-layout-name

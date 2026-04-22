@@ -1,6 +1,4 @@
 
-(defvar ethernet-network-name "")
-
 (defwidget ethernet-icon []
   (image
     :tooltip {ethernet-network-name ?: "Disconnected"}

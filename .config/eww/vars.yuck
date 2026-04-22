@@ -5,3 +5,16 @@
 (defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
 
 (defvar network-entry-height 44)
+
+(defvar ethernet-network-name "")
+
+(defvar kb-layout-name "")
+(defvar kb-layout-flag '🔤')
+
+(defvar memory-usage-colors '["green", "green", "yellow", "orange", "red"]')
+
+(defvar max-volume 151)
+(defvar volume-visible false)
+(defvar volume-level 0)
+(defvar donut-volume-level 0)
+(defvar volume-muted false)

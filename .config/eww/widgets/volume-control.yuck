@@ -1,10 +1,4 @@
 
-(defvar max-volume 151)
-(defvar volume-visible false)
-(defvar volume-level 0)
-(defvar donut-volume-level 0)
-(defvar volume-muted false)
-
 (defwidget volume-changer [?orientation]
   (scale
     :visible volume-visible
