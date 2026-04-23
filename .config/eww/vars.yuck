@@ -1,14 +1,14 @@
 
-(defvar wifi-ssid "Disconnected")
+(defvar wifi-ssid 'Disconnected')
 (defvar wifi-strength-index 0)
 (defvar wifi-strengths '["null", "low", "mid", "full", "off"]')
 (defvar wifi-icon-colors '["red", "orange", "yellow", "green"]')
 
 (defvar network-entry-height 44)
 
-(defvar ethernet-network-name "")
+(defvar ethernet-network-name '')
 
-(defvar kb-layout-name "")
+(defvar kb-layout-name '')
 (defvar kb-layout-flag '🔤')
 
 (defvar memory-usage-colors '["green", "green", "yellow", "orange", "red"]')
@@ -18,3 +18,9 @@
 (defvar volume-level 0)
 (defvar donut-volume-level 0)
 (defvar volume-muted false)
+
+(defvar loading '')
+(defvar loading-start-at 0)
+
+(defvar networker-step-index 0)
+(defvar networker-networks '[]')

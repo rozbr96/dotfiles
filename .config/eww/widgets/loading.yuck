@@ -1,0 +1,9 @@
+
+(include 'widgets/donut.yuck')
+
+(defwidget loading [?style]
+  (donut
+    :value loading-start-at
+    :thickness 20
+    :start-at loading-start-at
+    :style style))

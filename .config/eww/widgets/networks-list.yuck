@@ -1,22 +1,22 @@
 
 (include 'widgets/wireless.yuck')
 
-(defwidget networks-list [networks]
+(defwidget networks-list [?networks]
   (box
     :orientation 'v'
     :space-evenly false
     (scroll
       :vscroll true
-      :height {min(arraylength(networks) * network-entry-height, network-entry-height * 10)}
+      :height {min(arraylength(networks ?: networker-networks) * network-entry-height, network-entry-height * 10)}
       (box
         :orientation 'v'
         :space-evenly false
-        (for network in networks
+        (for network in {networks ?: networker-networks}
           (wireless :network network))))
     (eventbox
       :class 'hover'
       :cursor 'pointer'
-      :onclick `${EWW_CMD} close networker`
+      :onclick `networker dismiss`
       (box
         :height network-entry-height
         :orientation 'h'

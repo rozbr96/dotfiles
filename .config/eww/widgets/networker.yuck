@@ -1,7 +1,14 @@
 
-
 (include 'widgets/networks-list.yuck')
+(include 'widgets/loading.yuck')
 
-(defwidget networker [networks]
+(defwidget networker []
   (stack
-    (networks-list :networks networks)))
+    :transition 'crossfade'
+    :selected networker-step-index
+    (centerbox
+      :height 88
+      (label)
+      (loading)
+      (label))
+    (networks-list)))
