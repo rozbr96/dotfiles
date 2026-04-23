@@ -30,9 +30,15 @@ dismiss() {
   eww update networker-step-index=0
 }
 
+connect() {
+  dismiss
+
+  wifi connect_if_exists "$1"
+}
 
 case "$1" in
   start) start ;;
   dismiss) dismiss ;;
+  connect) connect "$2" ;;
 esac
 

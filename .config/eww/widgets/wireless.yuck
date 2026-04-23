@@ -6,7 +6,7 @@
     :class 'wireless hover'
     :cursor 'pointer'
     :tooltip {network.SSID}
-    :onclick `notify-send "${network.SSID}"`
+    :onclick `networker connect "${network.SSID}"`
     (box
       :orientation 'h'
       :space-evenly false

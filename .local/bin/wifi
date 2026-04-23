@@ -41,6 +41,14 @@ function connect() {
     && notify_connected_to "$1"
 }
 
+function is_existing_connection() {
+  nmcli -f NAME connection show | grep -w "$1"
+}
+
+function connect_if_exists() {
+  is_existing_connection "$1" && connect "$1"
+}
+
 function wofi_connect() {
   nmcli dev wifi rescan
 
@@ -52,9 +60,8 @@ function wofi_connect() {
 
   ssid="$(echo "$network" | awk -F':' '{ print $1 }')"
 
-  nmcli -f NAME connection show | grep -w "$ssid" \
-    && nmcli dev wifi connect "$ssid" \
-    && notify_connected_to "$ssid" \
+  is_existing_connection "$ssid" \
+    && connect "$ssid" \
     && exit 0
 
   security="$(echo "$network" | awk -F':' '{ print $3 }')"
@@ -71,6 +78,9 @@ function wofi_connect() {
 
 
 case $1 in
-  list) list $2 ;;
+  list) list "$2" ;;
+  connect) connect "$2" "$3" ;;
+  is_existing_connection) is_existing_connection "$2" ;;
+  connect_if_exists) connect_if_exists "$2" ;;
   *) wofi_connect ;;
 esac
