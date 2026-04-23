@@ -1,18 +1,23 @@
 
 (include 'widgets/wireless.yuck')
 
-(defwidget networks-list [?networks]
+(defwidget networks-list []
   (box
     :orientation 'v'
     :space-evenly false
     (scroll
+      :visible {arraylength(networker-networks) > 0}
       :vscroll true
-      :height {min(arraylength(networks ?: networker-networks) * network-entry-height, network-entry-height * 10)}
+      :height {min(arraylength(networker-networks) * network-entry-height, network-entry-height * 10)}
       (box
         :orientation 'v'
         :space-evenly false
-        (for network in {networks ?: networker-networks}
+        (for network in {networker-networks}
           (wireless :network network))))
+    (label
+      :visible {arraylength(networker-networks) == 0}
+      :height network-entry-height
+      :text 'No Networks Found')
     (eventbox
       :class 'hover'
       :cursor 'pointer'

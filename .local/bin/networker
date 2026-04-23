@@ -3,7 +3,7 @@
 start() {
   eww update loading=true
   eww update networker-step-index=0
-  eww open networker --arg monitor='[1, 0]' --arg networks='[]'
+  eww open networker --arg monitor='[1, 0]'
 
   (
     t=0
@@ -19,10 +19,9 @@ start() {
     done
   ) &
 
-  nmcli dev wifi rescan
-
   eww update networker-networks="$(wifi list json)"
   eww update networker-step-index=1
+  eww update loading=''
 }
 
 dismiss() {

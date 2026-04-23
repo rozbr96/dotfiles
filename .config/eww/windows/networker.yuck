@@ -1,7 +1,7 @@
 
 (include 'widgets/networker.yuck')
 
-(defwindow networker [monitor networks]
+(defwindow networker [monitor]
   :monitor {monitor ?: 1}
   :stacking 'overlay'
   :exclusive false
@@ -9,4 +9,4 @@
               :x 200
               :width 400
               :anchor 'top right')
-  (networker :networks networks))
+  (networker))

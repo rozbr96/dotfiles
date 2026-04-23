@@ -9,20 +9,24 @@ function notify_connected_to() {
 function list() {
   case $1 in
     json)
-      nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list \
+      nmcli -t --escape yes -f SSID,SIGNAL,SECURITY dev wifi list --rescan yes \
         | jq -R -s '
           split("\n")
           | map(select(length > 0))
           | map(
-              capture("(?<SSID>.*):(?<SIGNAL>[0-9]+):(?<SECURITY>.*)")
-              | .SIGNAL |= tonumber
+              split(":")
+              | {
+                  SSID: .[0],
+                  SIGNAL: (.[1] | tonumber),
+                  SECURITY: (.[2] // "")
+                }
               | .STRENGTH_INDEX = ((.SIGNAL - 1) / 25 | floor)
             )
         '
     ;;
 
     dmenu)
-      nmcli -t -f SSID,SIGNAL,SECURITY dev wifi list | tail -n+2
+      nmcli -t --escape yes -f SSID,SIGNAL,SECURITY dev wifi list --rescan yes
     ;;
   esac
 }
