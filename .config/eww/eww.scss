@@ -8,6 +8,13 @@
 
 window {
   background-color: $background-dark;
+  border: 1px solid rgba($primary-color, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+
+  & > * {
+    padding: 14px;
+  }
 
   & .hover {
     background-color: $background-dark;
