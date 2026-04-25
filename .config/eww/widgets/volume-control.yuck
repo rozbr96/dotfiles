@@ -13,6 +13,7 @@
 (defwidget volume-control [?orientation]
   (eventbox
     :tooltip 'Volume'
+    :cursor 'pointer'
     :onhover `${EWW_CMD} update volume-visible=true`
     :onhoverlost `${EWW_CMD} update volume-visible=false`
     (box

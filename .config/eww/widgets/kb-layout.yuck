@@ -1,6 +1,7 @@
 
 (defwidget kb-layout []
   (eventbox
+    :cursor 'pointer'
     :tooltip kb-layout-name
     :onclick `hyprctl switchxkblayout all next`
     kb-layout-flag))

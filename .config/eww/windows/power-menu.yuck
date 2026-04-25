@@ -10,6 +10,7 @@
 
 (defwidget power-menu-option [?include-class ?class monitor title confirmation-button-text cancellation-button-text confirmation-command cancellation-command]
   (eventbox
+    :cursor 'pointer'
     :onclick `${EWW_CMD} close power-menu && ${EWW_CMD} open confirmation --arg monitor=${monitor} --arg title="${title}" --arg confirmation-button-text="${confirmation-button-text}" --arg cancellation-button-text="${cancellation-button-text}" --arg confirmation-command="${confirmation-command}" --arg cancellation-command="${cancellation-command}"`
     :class {(include-class ?: true) ? "power-menu-option ${class}" : "${class}"}
     (box
@@ -90,6 +91,7 @@
       (eventbox
         :onclick power-menu-close-command
         (eventbox
+          :cursor 'pointer'
           :onclick `${EWW_CMD} close power-menu`
           (box
             :valign 'center'

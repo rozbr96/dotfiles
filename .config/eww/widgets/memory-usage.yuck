@@ -1,6 +1,7 @@
 
 (defwidget memory-usage []
   (eventbox
+    :cursor 'pointer'
     :onclick `kitty -e btop &`
     :tooltip 'RAM usage'
     (overlay

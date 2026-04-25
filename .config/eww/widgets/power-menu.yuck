@@ -3,5 +3,6 @@
 
 (defwidget power-menu [monitor]
   (eventbox
+    :cursor 'pointer'
     :onclick `${EWW_CMD} open power-menu --arg monitor=${monitor}`
     (power-menu-icon)))
