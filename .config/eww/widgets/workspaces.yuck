@@ -21,4 +21,5 @@
       :space-evenly false
       (for workspace in active-workspaces
         (workspace
-          :id {workspace.id})))))
+          :id {workspace.id}
+          :name {workspace.name})))))
