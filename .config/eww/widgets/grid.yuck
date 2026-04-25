@@ -1,0 +1,16 @@
+
+(defwidget grid [cols rows ?spacing-x ?spacing-y]
+  (box
+    :class 'grid'
+    :orientation 'v'
+    :spacing {spacing-y ?: 0}
+    (for row in {jq(rows, '[range(.)]')}
+      (box
+        :class 'row'
+        :orientation 'h'
+        :spacing {spacing-x ?: 0}
+        (for col in {jq(cols, '[range(.)]')}
+          (box
+            :class 'cell'
+            (children :nth {row * cols + col})))))))
+
