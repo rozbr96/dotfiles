@@ -6,7 +6,7 @@
 (include "widgets/icons/close.yuck")
 (include "widgets/icons/exit.yuck")
 
-(defvar power-menu-close-command "eww close power-menu")
+(defvar power-menu-close-command "${EWW_CMD} close power-menu")
 
 (defwidget power-menu-option [?include-class ?class monitor title confirmation-button-text cancellation-button-text confirmation-command cancellation-command]
   (eventbox
