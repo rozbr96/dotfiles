@@ -1,5 +1,41 @@
 #!/run/current-system/sw/bin/zsh
 
+function options_for() {
+  device_type="$1"
+  default_device="$(pactl get-default-${device_type})"
+
+  pactl -f json list "${device_type}s" | jq --arg default "$default_device" '
+    map(
+      select(.name | endswith(".monitor") | not)
+      | select(any(.ports[]?; .type != "HDMI"))
+      | . as $device
+      | $device.ports[]
+      | select(.type != "HDMI")
+      | {
+        device: $device.name,
+        label: $device.description,
+        port: .name,
+        port_description: .description,
+        port_type: .type,
+
+        icon: (
+          if (.type == "Mic" and ($device.description | test("headset"; "i")))
+          then "headset"
+          else (.type | ascii_downcase)
+          end
+        ),
+
+        port_active_for_device: (.name == $device.active_port),
+        device_is_default: ($device.name == $default),
+        active: (
+          $device.name == $default
+          and .name == $device.active_port
+        )
+      }
+    )
+  '
+}
+
 case $1 in
   monitor)
     pw-mon | grep --line-buffered sink | while read -r; do
@@ -12,6 +48,34 @@ case $1 in
       eww update volume-level=$volume_level
       eww update donut-volume-level=$donut_volume_level
     done
+  ;;
+
+  mixer)
+    case "$2" in
+      open)
+        eww open mixer --arg sinks="$(options_for sink)" --arg sources="$(options_for source)" --arg monitor='[1, 0]'
+      ;;
+
+      close)
+        eww close mixer
+      ;;
+
+      set)
+        case "$3" in
+          sink)
+            pactl set-sink-port "$4" "$5"
+            pactl set-default-sink "$4"
+            eww close mixer
+          ;;
+
+          source)
+            pactl set-source-port "$4" "$5"
+            pactl set-default-source "$4"
+            eww close mixer
+          ;;
+        esac
+      ;;
+    esac
   ;;
 
   mute)

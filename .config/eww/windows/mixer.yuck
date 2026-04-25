@@ -1,0 +1,62 @@
+
+(include 'widgets/grid.yuck')
+
+(defwidget audio-devices [devices type]
+  (box
+    :orientation 'v'
+    (for device in devices
+      (eventbox
+        :cursor 'pointer'
+        :class 'hover'
+        :tooltip {device.label}
+        :onclick `volume mixer set "${type}" "${device.device}" "${device.port}"`
+        (box
+          :orientation 'h'
+          :space-evenly false
+          :spacing 5
+          (image
+            :path "assets/icons/${device.icon}.svg"
+            :fill-svg {device.active ? '#00bcd4' : 'white'})
+          (label
+            :text {device.label}
+            :class {device.active ? 'active' : ''}
+            :truncate true))))))
+
+(defwindow mixer [monitor sinks sources]
+  :class 'mixer'
+  :monitor {monitor ?: '[1, 0]'}
+  :stacking 'overlay'
+  :exclusive false
+  :geometry (geometry
+              :x 320
+              :width 400
+              :anchor 'top right')
+  (box
+    :orientation 'v'
+    :space-evenly false
+    (label
+      :text 'Sinks'
+      :valign 'center')
+    (audio-devices
+      :devices sinks
+      :type 'sink')
+    (label
+      :text 'Sources'
+      :valign 'center')
+    (audio-devices
+      :devices sources
+      :type 'source')
+    (eventbox
+      :class 'hover'
+      :cursor 'pointer'
+      :onclick `${EWW_CMD} close mixer`
+      (box
+        :orientation 'h'
+        :spacing 10
+        (image
+          :path 'assets/icons/close.svg'
+          :fill-svg '#ffffff'
+          :halign 'end')
+        (label
+          :text 'Cancel'
+          :halign 'start')))))

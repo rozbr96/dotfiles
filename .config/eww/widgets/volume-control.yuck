@@ -16,6 +16,7 @@
     :cursor 'pointer'
     :onhover `${EWW_CMD} update volume-visible=true`
     :onhoverlost `${EWW_CMD} update volume-visible=false`
+    :onrightclick `volume mixer open`
     (box
       :space-evenly false
       :orientation {orientation ?: 'vertical'}

@@ -5,3 +5,4 @@
 (include 'windows/power-menu.yuck')
 (include 'windows/confirmation.yuck')
 (include 'windows/networker.yuck')
+(include 'windows/mixer.yuck')

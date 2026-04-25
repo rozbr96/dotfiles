@@ -1,0 +1,12 @@
+
+.mixer {
+  padding-top: 16px;
+
+  & .active {
+    color: $primary-color;
+  }
+
+  & box {
+    padding: 10px;
+  }
+}

@@ -6,7 +6,20 @@
   color: $text-color;
 }
 
+window {
+  background-color: $background-dark;
+
+  & .hover {
+    background-color: $background-dark;
+
+    &:hover {
+      background-color: $background-light;
+    }
+  }
+}
+
 @import "assets/styles/main-bar.scss"
 @import "assets/styles/power-menu.scss"
 @import "assets/styles/confirmation.scss"
 @import "assets/styles/networker.scss"
+@import "assets/styles/mixer.scss"
