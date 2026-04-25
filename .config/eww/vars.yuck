@@ -24,3 +24,9 @@
 
 (defvar networker-step-index 0)
 (defvar networker-networks '[]')
+
+(defpoll time
+  :interval '1s'
+  `date '+%T %d %b %a'`)
+
+(defvar calendar-state 'closed')

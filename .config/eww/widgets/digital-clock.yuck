@@ -1,15 +1,14 @@
 
-(defpoll time
-  :interval '1s'
-  `date '+%T %d %b %a'`)
-
 (defwidget digital-clock [?orientation]
-  (box
-    :orientation {orientation ?: 'horizontal'}
-    "${substring(time, 0, 2)}"
-    "${substring(time, 3, 2)}"
-    "${substring(time, 6, 2)}"
-    {orientation == 'horizontal' ? '|' : '----'}
-    "${substring(time, 9, 2)}"
-    "${substring(time, 12, 3)}${orientation == 'horizontal' ? ' ' : ''}"
-    "${substring(time, 16, 3)}"))
+  (eventbox
+    :cursor 'pointer'
+    :onclick `calendar toggle`
+    (box
+      :orientation {orientation ?: 'horizontal'}
+      "${substring(time, 0, 2)}"
+      "${substring(time, 3, 2)}"
+      "${substring(time, 6, 2)}"
+      {orientation == 'horizontal' ? '|' : '----'}
+      "${substring(time, 9, 2)}"
+      "${substring(time, 12, 3)}${orientation == 'horizontal' ? ' ' : ''}"
+      "${substring(time, 16, 3)}")))

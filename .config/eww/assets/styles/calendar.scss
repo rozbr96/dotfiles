@@ -1,0 +1,53 @@
+calendar {
+  all: unset;
+  background: $background-dark;
+  color: $text-color;
+  font-family: $font-family;
+  border: 1px solid rgba($primary-color, 0.25);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+calendar.button {
+  all: unset;
+  color: $secondary-text;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+
+  min-width: 30px;
+  min-height: 30px;
+
+  padding: 6px 0;
+}
+
+calendar.button:hover {
+  background: rgba($primary-color, 0.10);
+  color: $accent-color;
+}
+
+calendar:selected {
+  background: $primary-color;
+  color: $background-dark;
+  border-radius: 6px;
+}
+
+calendar:selected:hover {
+  background: $accent-color;
+  color: $background-dark;
+}
+
+calendar.highlight {
+  color: $primary-color;
+  font-weight: 600;
+}
+
+calendar.highlight:selected {
+  background: $accent-color;
+  color: $background-dark;
+}
+
+calendar:indeterminate {
+  color: rgba($secondary-text, 0.35);
+}

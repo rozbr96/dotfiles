@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/zsh
+
+function open() {
+  eww update calendar-state="open"
+  eww open calendar --arg monitor='[1, 0]'
+}
+
+function close() {
+  eww update calendar-state="closed"
+  eww close calendar
+}
+
+function toggle() {
+  [ "$(eww get calendar-state)" = "open" ] && close || open
+}
+
+case "$1" in
+  open) open ;;
+  close) close ;;
+  toggle) toggle ;;
+esac
