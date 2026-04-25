@@ -1,6 +1,6 @@
 
 (defwidget ethernet-icon []
   (image
-    :tooltip {ethernet-network-name ?: "Disconnected"}
+    :tooltip {ethernet-network-name ?: 'Disconnected'}
     :path 'assets/icons/ethernet.svg'
     :fill-svg {ethernet-network-name == '' ? 'red' : 'green'}))

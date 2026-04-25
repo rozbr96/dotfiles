@@ -2,7 +2,7 @@
 (defwidget memory-usage []
   (eventbox
     :onclick `kitty -e btop &`
-    :tooltip "RAM usage"
+    :tooltip 'RAM usage'
     (overlay
       (donut
         :value {EWW_RAM.used_mem_perc}

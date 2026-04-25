@@ -1,5 +1,5 @@
 
 (defwidget exit-icon []
   (image
-    :path "assets/icons/exit.svg"
-    :fill-svg "white"))
+    :path 'assets/icons/exit.svg'
+    :fill-svg 'white'))

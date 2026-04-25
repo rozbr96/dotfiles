@@ -3,24 +3,24 @@
   (scale
     :visible volume-visible
     :max max-volume
-    :height {orientation == "vertical" ? max-volume : 36}
-    :width {orientation == "vertical" ? 36 : max-volume}
+    :height {orientation == 'vertical' ? max-volume : 36}
+    :width {orientation == 'vertical' ? 36 : max-volume}
     :value volume-level
-    :flipped {orientation == "vertical"}
-    :orientation {orientation ?: "vertical"}
+    :flipped {orientation == 'vertical'}
+    :orientation {orientation ?: 'vertical'}
     :onchange `volume set {}`))
 
 (defwidget volume-control [?orientation]
   (eventbox
-    :tooltip "Volume"
-    :onhover "${EWW_CMD} update volume-visible=true"
-    :onhoverlost "${EWW_CMD} update volume-visible=false"
+    :tooltip 'Volume'
+    :onhover `${EWW_CMD} update volume-visible=true`
+    :onhoverlost `${EWW_CMD} update volume-visible=false`
     (box
       :space-evenly false
-      :orientation {orientation ?: "vertical"}
+      :orientation {orientation ?: 'vertical'}
       (revealer
-        :duration "100ms"
-        :transition {orientation == "vertical" ? "slideup" : "slideleft"}
+        :duration '100ms'
+        :transition {orientation == 'vertical' ? 'slideup' : 'slideleft'}
         :reveal volume-visible
         (volume-changer :orientation orientation))
       (eventbox
@@ -33,5 +33,5 @@
             :text volume-level
             :visible {!volume-muted})
           (label
-            :text "🚫"
+            :text '🚫'
             :visible volume-muted))))))

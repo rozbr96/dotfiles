@@ -1,7 +1,7 @@
 
 (defvar active-workspace-id 1)
 
-(defvar active-workspaces "[]")
+(defvar active-workspaces '[]')
 
 (defwidget workspace [?name id]
   (eventbox

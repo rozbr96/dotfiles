@@ -1,14 +1,14 @@
 
-(include "widgets/donut.yuck")
+(include 'widgets/donut.yuck')
 
-(include "widgets/digital-clock.yuck")
-(include "widgets/volume-control.yuck")
-(include "widgets/workspaces.yuck")
-(include "widgets/power-menu.yuck")
-(include "widgets/kb-layout.yuck")
-(include "widgets/wifi.yuck")
-(include "widgets/memory-usage.yuck")
-(include "widgets/icons/ethernet.yuck")
+(include 'widgets/digital-clock.yuck')
+(include 'widgets/volume-control.yuck')
+(include 'widgets/workspaces.yuck')
+(include 'widgets/power-menu.yuck')
+(include 'widgets/kb-layout.yuck')
+(include 'widgets/wifi.yuck')
+(include 'widgets/memory-usage.yuck')
+(include 'widgets/icons/ethernet.yuck')
 
 (defwidget main-bar [orientation monitor]
   (box
@@ -19,14 +19,14 @@
       :spacing 3
       (image
         :image-height 36
-        :path {orientation == "horizontal" ? "assets/icons/hyprheader.svg" : "assets/icons/hypr.svg"})
+        :path {orientation == 'horizontal' ? 'assets/icons/hyprheader.svg' : 'assets/icons/hypr.svg'})
       (workspaces :orientation orientation))
     (box 
       :spacing 16
       :space-evenly false
       :orientation orientation
-      :valign "end"
-      :halign "end"
+      :valign 'end'
+      :halign 'end'
       (volume-control :orientation orientation)
       (memory-usage)
       (wifi)

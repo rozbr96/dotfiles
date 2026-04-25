@@ -1,15 +1,15 @@
 
 (defpoll time
-  :interval "1s"
+  :interval '1s'
   `date '+%T %d %b %a'`)
 
 (defwidget digital-clock [?orientation]
   (box
-    :orientation {orientation ?: "horizontal"}
+    :orientation {orientation ?: 'horizontal'}
     "${substring(time, 0, 2)}"
     "${substring(time, 3, 2)}"
     "${substring(time, 6, 2)}"
-    {orientation == "horizontal" ? "|" : "----"}
+    {orientation == 'horizontal' ? '|' : '----'}
     "${substring(time, 9, 2)}"
-    "${substring(time, 12, 3)}${orientation == "horizontal" ? " " : ""}"
+    "${substring(time, 12, 3)}${orientation == 'horizontal' ? ' ' : ''}"
     "${substring(time, 16, 3)}"))

@@ -1,5 +1,5 @@
 
-(include "widgets/main-bar.yuck")
+(include 'widgets/main-bar.yuck')
 
 (defwindow main-bar [orientation monitor]
   :monitor monitor
