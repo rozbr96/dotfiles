@@ -14,10 +14,14 @@
 (defvar memory-usage-colors '["green", "green", "yellow", "orange", "red"]')
 
 (defvar max-volume 151)
-(defvar volume-visible false)
-(defvar volume-level 0)
-(defvar donut-volume-level 0)
-(defvar volume-muted false)
+(defvar sink-volume-visible false)
+(defvar source-volume-visible false)
+(defvar sink-volume-level 0)
+(defvar source-volume-level 0)
+(defvar donut-sink-volume-level 0)
+(defvar donut-source-volume-level 0)
+(defvar sink-volume-muted false)
+(defvar source-volume-muted false)
 
 (defvar loading '')
 (defvar loading-start-at 0)

@@ -36,17 +36,29 @@ function options_for() {
   '
 }
 
+function update_eww_vars_for() {
+  type="$1"
+
+  if [ "$type" = "sink" ]; then
+    volume_status="$(wpctl get-volume @DEFAULT_SINK@)"
+  else
+    volume_status="$(wpctl get-volume @DEFAULT_SOURCE@)"
+  fi
+
+  volume_level=$(awk '{ print $2 * 100 }' <<< "$volume_status")
+  donut_volume_level=$(bc <<< "$volume_level / 1.5")
+  volume_muted=$(grep -qi muted <<< "$volume_status" && echo true || echo false)
+
+  eww update "${type}-volume-muted=$volume_muted"
+  eww update "${type}-volume-level=$volume_level"
+  eww update "donut-${type}-volume-level=$donut_volume_level"
+}
+
 case $1 in
   monitor)
-    pw-mon | grep --line-buffered sink | while read -r; do
-      volume_status=$(wpctl get-volume @DEFAULT_SINK@)
-      volume_level=$(echo "$volume_status" | awk '{ print $2 * 100 }')
-      donut_volume_level=$(echo "$volume_level / 1.5" | bc)
-      volume_muted=$(echo "$volume_status" | grep -i muted > /dev/null && echo true || echo false)
-
-      eww update volume-muted=$volume_muted
-      eww update volume-level=$volume_level
-      eww update donut-volume-level=$donut_volume_level
+    pactl subscribe | grep --line-buffered -E 'sink|source' | while read -r _; do
+      update_eww_vars_for "sink"
+      update_eww_vars_for "source"
     done
   ;;
 
@@ -79,30 +91,45 @@ case $1 in
   ;;
 
   mute)
-    case $2 in
-      toggle)
-        wpctl set-mute @DEFAULT_SINK@ toggle
+    case "$2" in
+      sink)
+        case "$3" in
+          toggle) wpctl set-mute @DEFAULT_SINK@ toggle ;;
+          on) wpctl set-mute @DEFAULT_SINK@ 1 ;;
+          off) wpctl set-mute @DEFAULT_SINK@ 0 ;;
+        esac
       ;;
 
-      on)
-        wpctl set-mute @DEFAULT_SINK@ 1
-      ;;
-
-      off)
-        wpctl set-mute @DEFAULT_SINK@ 0
+      source)
+        case "$3" in
+          toggle) wpctl set-mute @DEFAULT_SOURCE@ toggle ;;
+          on) wpctl set-mute @DEFAULT_SOURCE@ 1 ;;
+          off) wpctl set-mute @DEFAULT_SOURCE@ 0 ;;
+        esac
       ;;
     esac
+
   ;;
 
   increase)
-    wpctl set-volume @DEFAULT_SINK@ ${2:-5}%+
+    case "$2" in
+      sink) wpctl set-volume @DEFAULT_SINK@ ${3:-5}%+ ;;
+      source) wpctl set-volume @DEFAULT_SOURCE@ ${3:-5}%+;;
+    esac
+    
   ;;
 
   decrease)
-    wpctl set-volume @DEFAULT_SINK@ ${2:-5}%-
+    case "$2" in
+      sink) wpctl set-volume @DEFAULT_SINK@ ${3:-5}%- ;;
+      source) wpctl set-volume @DEFAULT_SOURCE@ ${3:-5}%- ;;
+    esac
   ;;
 
   set)
-    wpctl set-volume @DEFAULT_SINK@ $2%
+    case "$2" in
+      sink) wpctl set-volume @DEFAULT_SINK@ $3% ;;
+      source) wpctl set-volume @DEFAULT_SOURCE@ $3% ;;
+    esac
   ;;
 esac

@@ -27,7 +27,8 @@
       :orientation orientation
       :valign 'end'
       :halign 'end'
-      (volume-control :orientation orientation)
+      (volume-control :orientation orientation :kind 'source')
+      (volume-control :orientation orientation :kind 'sink')
       (memory-usage)
       (wifi)
       (ethernet-icon)

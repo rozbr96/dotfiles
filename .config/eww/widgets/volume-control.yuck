@@ -1,21 +1,21 @@
 
-(defwidget volume-changer [?orientation]
+(defwidget volume-changer [?orientation kind]
   (scale
-    :visible volume-visible
+    :visible {kind == 'source' ? source-volume-visible : sink-volume-visible}
     :max max-volume
     :height {orientation == 'vertical' ? max-volume : 36}
     :width {orientation == 'vertical' ? 36 : max-volume}
-    :value volume-level
+    :value {kind == 'source' ? source-volume-level : sink-volume-level}
     :flipped {orientation == 'vertical'}
     :orientation {orientation ?: 'vertical'}
-    :onchange `volume set {}`))
+    :onchange `volume set ${kind} {}`))
 
-(defwidget volume-control [?orientation]
+(defwidget volume-control [?orientation kind]
   (eventbox
     :tooltip 'Volume'
     :cursor 'pointer'
-    :onhover `${EWW_CMD} update volume-visible=true`
-    :onhoverlost `${EWW_CMD} update volume-visible=false`
+    :onhover `${EWW_CMD} update ${kind}-volume-visible=true`
+    :onhoverlost `${EWW_CMD} update ${kind}-volume-visible=false`
     :onrightclick `volume mixer open`
     (box
       :space-evenly false
@@ -23,17 +23,17 @@
       (revealer
         :duration '100ms'
         :transition {orientation == 'vertical' ? 'slideup' : 'slideleft'}
-        :reveal volume-visible
-        (volume-changer :orientation orientation))
+        :reveal {kind == 'source' ? source-volume-visible : sink-volume-visible}
+        (volume-changer :orientation orientation :kind kind))
       (eventbox
-        :onclick `volume mute toggle`
+        :onclick `volume mute ${kind} toggle`
         (overlay
           (donut
-            :value donut-volume-level
+            :value {kind == 'source' ? donut-source-volume-level : donut-sink-volume-level}
             :thickness 20)
           (label
-            :text volume-level
-            :visible {!volume-muted})
+            :text {kind == 'source' ? source-volume-level : sink-volume-level}
+            :visible {kind == 'source' ? !source-volume-muted : !sink-volume-muted})
           (label
             :text '🚫'
-            :visible volume-muted))))))
+            :visible {kind == 'source' ? source-volume-muted : sink-volume-muted}))))))
