@@ -24,7 +24,7 @@
 
 (defwindow mixer [monitor sinks sources]
   :class 'mixer'
-  :monitor {monitor ?: '[1, 0]'}
+  :monitor monitor
   :stacking 'overlay'
   :exclusive false
   :geometry (geometry

@@ -1,6 +1,6 @@
 
 (defwindow calendar [monitor]
-  :monitor {monitor ?: '[1, 0]'}
+  :monitor monitor
   :stacking 'overlay'
   :exclusive false
   :geometry (geometry

@@ -2,7 +2,7 @@
 (include 'widgets/networker.yuck')
 
 (defwindow networker [monitor]
-  :monitor {monitor ?: 1}
+  :monitor monitor
   :stacking 'overlay'
   :exclusive false
   :geometry (geometry

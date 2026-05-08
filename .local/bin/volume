@@ -65,7 +65,7 @@ case $1 in
   mixer)
     case "$2" in
       open)
-        eww open mixer --arg sinks="$(options_for sink)" --arg sources="$(options_for source)" --arg monitor='[1, 0]'
+        eww open mixer --arg sinks="$(options_for sink)" --arg sources="$(options_for source)" --arg monitor="$(eww get monitors)"
       ;;
 
       close)

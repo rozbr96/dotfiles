@@ -1,4 +1,6 @@
 
+(defvar monitors '["Odyssey G5", "24G2W1G5", "DP-2", "HDMI-A-1", 1, 0]')
+
 (defvar wifi-ssid 'Disconnected')
 (defvar wifi-strength-index 0)
 (defvar wifi-strengths '["null", "low", "mid", "full", "off"]')

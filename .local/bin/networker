@@ -3,7 +3,7 @@
 start() {
   eww update loading=true
   eww update networker-step-index=0
-  eww open networker --arg monitor='[1, 0]'
+  eww open networker --arg monitor="$(eww get monitors)"
 
   (
     t=0
