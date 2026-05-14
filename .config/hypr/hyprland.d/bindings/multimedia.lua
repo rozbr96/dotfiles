@@ -7,8 +7,8 @@ hl.bind('XF86AudioLowerVolume', hl.dsp.exec_cmd('volume decrease sink'), { repea
 hl.bind('XF86AudioMute', hl.dsp.exec_cmd('volume mute sink toggle'))
 hl.bind('SHIFT + XF86AudioRaiseVolume', hl.dsp.exec_cmd('volume increase sink 20'), { repeating = true })
 hl.bind('SHIFT + XF86AudioLowerVolume', hl.dsp.exec_cmd('volume decrease sink 20'), { repeating = true })
-hl.bind('CONTROL + XF86AudioRaiseVolume', hl.dsp.exec_cmd('volume set sink 100'), { repeating = true })
-hl.bind('CONTROL + XF86AudioLowerVOlume', hl.dsp.exec_cmd('volume set sink 50'), { repeating = true })
+hl.bind('CONTROL + XF86AudioRaiseVolume', hl.dsp.exec_cmd('volume set sink 100'), { repeating = false })
+hl.bind('CONTROL + XF86AudioLowerVOlume', hl.dsp.exec_cmd('volume set sink 50'), { repeating = false })
 
 hl.bind('Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh monitor both'))
 hl.bind('CONTROL + Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh full both'))

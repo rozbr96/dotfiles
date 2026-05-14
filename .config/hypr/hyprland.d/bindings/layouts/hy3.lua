@@ -1,35 +1,32 @@
-hl.bind(HYPR.vars.mainMod .. ' + Q', hl.dsp.exec_cmd('hyprctl dispatch hy3:killactive'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + Space', hl.dsp.exec_cmd('hyprctl dispatch hy3:togglefocuslayer'))
+local hy3 = hl.plugin.hy3
 
-hl.bind(HYPR.vars.mainMod .. ' + A', hl.dsp.exec_cmd('hyprctl dispatch hy3:changefocus raise'))
-hl.bind(HYPR.vars.mainMod .. ' + S', hl.dsp.exec_cmd('hyprctl dispatch hy3:changefocus lower'))
+hl.bind(HYPR.vars.mainMod .. ' + Q', hy3.kill_active())
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + Space', hy3.toggle_focus_layer())
 
-hl.bind(HYPR.vars.mainMod .. ' + V', hl.dsp.exec_cmd('hyprctl dispatch hy3:makegroup v'))
-hl.bind(HYPR.vars.mainMod .. ' + H', hl.dsp.exec_cmd('hyprctl dispatch hy3:makegroup h'))
-hl.bind(HYPR.vars.mainMod .. ' + T', hl.dsp.exec_cmd('hyprctl dispatch hy3:changegroup toggletab'))
-hl.bind(HYPR.vars.mainMod .. ' + Z', hl.dsp.exec_cmd('hyprctl dispatch hy3:changegroup opposite'))
+hl.bind(HYPR.vars.mainMod .. ' + A', hy3.change_focus('raise'))
+hl.bind(HYPR.vars.mainMod .. ' + S', hy3.change_focus('lower'))
 
-hl.bind(HYPR.vars.mainMod .. ' + left', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus l'))
-hl.bind(HYPR.vars.mainMod .. ' + right', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus r'))
-hl.bind(HYPR.vars.mainMod .. ' + up', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus u'))
-hl.bind(HYPR.vars.mainMod .. ' + down', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus d'))
+hl.bind(HYPR.vars.mainMod .. ' + V', hy3.make_group('v'))
+hl.bind(HYPR.vars.mainMod .. ' + H', hy3.make_group('h'))
+hl.bind(HYPR.vars.mainMod .. ' + T', hy3.change_group('toggletab'))
+hl.bind(HYPR.vars.mainMod .. ' + Z', hy3.change_group('opposite'))
 
-hl.bind(HYPR.vars.mainMod .. ' + L', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus r'))
-hl.bind(HYPR.vars.mainMod .. ' + K', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus d'))
-hl.bind(HYPR.vars.mainMod .. ' + J', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus l'))
-hl.bind(HYPR.vars.mainMod .. ' + I', hl.dsp.exec_cmd('hyprctl dispatch hy3:movefocus u'))
+hl.bind(HYPR.vars.mainMod .. ' + left', hy3.move_focus('l'))
+hl.bind(HYPR.vars.mainMod .. ' + right', hy3.move_focus('r'))
+hl.bind(HYPR.vars.mainMod .. ' + up', hy3.move_focus('u'))
+hl.bind(HYPR.vars.mainMod .. ' + down', hy3.move_focus('d'))
 
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + L', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow r'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + J', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow l'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + I', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow u'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + K', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow d'))
+hl.bind(HYPR.vars.mainMod .. ' + L', hy3.move_focus('r'))
+hl.bind(HYPR.vars.mainMod .. ' + K', hy3.move_focus('d'))
+hl.bind(HYPR.vars.mainMod .. ' + J', hy3.move_focus('l'))
+hl.bind(HYPR.vars.mainMod .. ' + I', hy3.move_focus('u'))
 
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + right', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow r'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + left', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow l'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + up', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow u'))
-hl.bind(HYPR.vars.mainMod .. ' + SHIFT + down', hl.dsp.exec_cmd('hyprctl dispatch hy3:movewindow d'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + L', hy3.move_window('r'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + J', hy3.move_window('l'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + I', hy3.move_window('u'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + K', hy3.move_window('d'))
 
-for i = 1, 10 do
-  local key = i % 10
-  hl.bind(HYPR.vars.mainMod .. ' + SHIFT + ' .. key, hl.dsp.exec_cmd('hyprctl dispatch hy3:movetoworkspace ' .. i))
-end
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + right', hy3.move_window('r'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + left', hy3.move_window('l'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + up', hy3.move_window('u'))
+hl.bind(HYPR.vars.mainMod .. ' + SHIFT + down', hy3.move_window('d'))
