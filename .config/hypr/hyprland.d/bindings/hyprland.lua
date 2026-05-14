@@ -1,4 +1,4 @@
-hl.bind(HYPR.keys.mod .. ' + F', hl.dsp.exec_cmd('hyprctl dispatch fullscreen 0'))
+hl.bind(HYPR.keys.mod .. ' + F', hl.dsp.window.fullscreen())
 
 for i = 1, 10 do
   local key = i % 10
