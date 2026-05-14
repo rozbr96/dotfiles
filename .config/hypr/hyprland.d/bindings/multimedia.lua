@@ -10,7 +10,7 @@ hl.bind('SHIFT + XF86AudioLowerVolume', hl.dsp.exec_cmd('volume decrease sink 20
 hl.bind('CONTROL + XF86AudioRaiseVolume', hl.dsp.exec_cmd('volume set sink 100'), { repeating = false })
 hl.bind('CONTROL + XF86AudioLowerVOlume', hl.dsp.exec_cmd('volume set sink 50'), { repeating = false })
 
-hl.bind('Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh monitor both'))
-hl.bind('CONTROL + Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh full both'))
-hl.bind('ALT + Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh window both'))
-hl.bind('SHIFT + Print', hl.dsp.exec_cmd(HYPR.vars.binpath .. '/screenshot.sh region both'))
+hl.bind('Print', hl.dsp.exec_cmd(HYPR.paths.bin .. '/screenshot.sh monitor both'))
+hl.bind('CONTROL + Print', hl.dsp.exec_cmd(HYPR.paths.bin .. '/screenshot.sh full both'))
+hl.bind('ALT + Print', hl.dsp.exec_cmd(HYPR.paths.bin .. '/screenshot.sh window both'))
+hl.bind('SHIFT + Print', hl.dsp.exec_cmd(HYPR.paths.bin .. '/screenshot.sh region both'))

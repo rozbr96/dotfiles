@@ -1,11 +1,16 @@
 HYPR = {
   layout = 'hy3',
-  vars = {
-    terminal = 'kitty',
-    fileManager = 'kitty -e ranger',
+  keys = {
+    mod = 'SUPER'
+  },
+  paths = {
+    bin = '~/.local/bin',
+  },
+  programs = {
     browser = 'google-chrome-stable',
+    file_manager = 'kitty -e ranger',
     menu = 'wofi --show run',
-    binpath = '~/.local/bin',
-    mainMod = 'SUPER'
+    task_manager = 'btop',
+    terminal = 'kitty'
   }
 }
