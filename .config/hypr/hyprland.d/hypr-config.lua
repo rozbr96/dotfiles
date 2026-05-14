@@ -4,11 +4,11 @@ hl.config({
   },
 
   input = {
-    kb_layout = "us,br",
-    kb_variant = "",
-    kb_model = "",
-    kb_options = "grp:win_space_toggle",
-    kb_rules = "",
+    kb_layout = 'us,br',
+    kb_variant = '',
+    kb_model = '',
+    kb_options = 'grp:win_space_toggle',
+    kb_rules = '',
 
     numlock_by_default = true,
     follow_mouse = 1,
@@ -25,12 +25,12 @@ hl.config({
     gaps_out = 5,
     border_size = 2,
     col = {
-      active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-      inactive_border = "rgba(595959aa)",
+      active_border = { colors = { 'rgba(33ccffee)', 'rgba(00ff99ee)' }, angle = 45 },
+      inactive_border = 'rgba(595959aa)',
     },
     allow_tearing = false,
 
-    layout = "hy3",
+    layout = 'hy3',
   },
 
   decoration = {
