@@ -1,8 +1,3 @@
-hl.config({
-  general = { layout = 'master' },
-  master = { orientation = 'center' },
-})
-
 hl.bind(HYPR.keys.mod .. ' + Q', hl.dsp.window.kill())
 
 hl.bind(HYPR.keys.mod .. ' + left', hl.dsp.focus({ direction = 'l' }))
