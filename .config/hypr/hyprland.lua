@@ -1,0 +1,16 @@
+function load(filepath)
+  dofile('/home/hikari/.config/hypr/hyprland.d/' .. filepath .. '.lua')
+end
+
+load('vars')
+load('env')
+load('monitors')
+load('hypr-config')
+load('animations')
+load('workspaces')
+load('startup')
+load('bindings/system')
+load('bindings/apps')
+load('bindings/multimedia')
+load('bindings/hyprland')
+load('layouts/' .. HYPR.layout)

@@ -4,7 +4,7 @@
 
   [[ ! -n $window ]] && exit
 
-  window_address=$(echo $window | awk -F ' --- ' '{ print $2 }')
+  window_address=$(echo "$window" | awk -F ' --- ' '{ print $2 }')
 
-  hyprctl dispatch focuswindow address:"$window_address"
+  hyprctl dispatch "hl.dsp.focus({ window = 'address:$window_address' })"
 }

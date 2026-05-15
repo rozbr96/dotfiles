@@ -6,10 +6,10 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.55.1";
 
     hy3 = {
-      url = "github:outfoxxed/hy3/hl0.53.0";
+      url = "github:outfoxxed/hy3/hl0.55.0";
       inputs.hyprland.follows = "hyprland";
     };
   };
