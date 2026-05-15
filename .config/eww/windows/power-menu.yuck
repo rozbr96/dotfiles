@@ -53,7 +53,7 @@
           :title 'Logout?'
           :confirmation-button-text 'Logout'
           :cancellation-button-text 'No'
-          :confirmation-command `hyprctl dispatch exit`
+          :confirmation-command `hyprctl dispatch 'hl.dsp.exit()'`
           :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
           :class 'logout'
           (exit-icon)
