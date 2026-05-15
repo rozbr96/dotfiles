@@ -10,12 +10,12 @@
     (button
       :height 36
       :width 36
-      :onclick `hyprctl dispatch workspace ${id}`
+      :onclick `hyprctl dispatch 'hl.dsp.focus({ workspace = ${id} })'`
       {name ?: id})))
 
 (defwidget workspaces [?orientation]
   (eventbox
-    :onscroll `echo "{}" | sed s/down/m+1/ | sed s/up/m-1/ | xargs hyprctl dispatch workspace`
+    :onscroll `echo "{}" | sed s/down/m+1/ | sed s/up/m-1/ | xargs -I X hyprctl dispatch 'hl.dsp.focus({ workspace = "X" })'`
     (box
       :orientation {orientation ?: 'vertical'}
       :space-evenly false
