@@ -17,7 +17,7 @@ in
 
     file = {
       ".config/eww".source = "${dotfiles}/.config/eww";
-      # ".config/hypr".source = "${dotfiles}/.config/hypr";
+      ".config/hypr".source = "${dotfiles}/.config/hypr";
       ".config/kitty".source = "${dotfiles}/.config/kitty";
       ".config/mako".source = "${dotfiles}/.config/mako";
       ".config/nvim".source = "${dotfiles}/.config/nvim";
