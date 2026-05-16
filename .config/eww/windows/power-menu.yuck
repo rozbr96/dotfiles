@@ -6,12 +6,10 @@
 (include 'widgets/icons/close.yuck')
 (include 'widgets/icons/exit.yuck')
 
-(defvar power-menu-close-command 'eww close power-menu')
-
 (defwidget power-menu-option [?include-class ?class monitor title confirmation-button-text cancellation-button-text confirmation-command cancellation-command]
   (eventbox
     :cursor 'pointer'
-    :onclick `${EWW_CMD} close power-menu && ${EWW_CMD} open confirmation --arg monitor=${monitor} --arg title="${title}" --arg confirmation-button-text="${confirmation-button-text}" --arg cancellation-button-text="${cancellation-button-text}" --arg confirmation-command="${confirmation-command}" --arg cancellation-command="${cancellation-command}"`
+    :onclick `power-menu close && power-menu confirm "${title}" "${confirmation-button-text}" "${cancellation-button-text}" "${confirmation-command}" "${cancellation-command}"`
     :class {(include-class ?: true) ? "power-menu-option ${class}" : "${class}"}
     (box
       :valign 'center'
@@ -29,7 +27,7 @@
               :width '80%'
               :height '60%')
   (eventbox
-    :onrightclick power-menu-close-command
+    :onrightclick `power-menu close`
     (centerbox
       :orientation 'vertical'
       (label
@@ -44,7 +42,7 @@
           :confirmation-button-text 'Lock'
           :cancellation-button-text 'No'
           :confirmation-command `hyprlock`
-          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
+          :cancellation-command `power-menu`
           :class 'lock'
           (lock-icon)
           'Lock')
@@ -54,7 +52,7 @@
           :confirmation-button-text 'Logout'
           :cancellation-button-text 'No'
           :confirmation-command `hyprctl dispatch 'hl.dsp.exit()'`
-          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
+          :cancellation-command `power-menu`
           :class 'logout'
           (exit-icon)
           'Logout')
@@ -64,7 +62,7 @@
           :confirmation-button-text 'Sleep'
           :cancellation-button-text 'No'
           :confirmation-command `sleep-command`
-          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
+          :cancellation-command `power-menu`
           :class 'sleep'
           (sleep-icon)
           'Sleep')
@@ -74,7 +72,7 @@
           :confirmation-button-text 'Restart'
           :cancellation-button-text 'No'
           :confirmation-command `systemctl reboot`
-          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
+          :cancellation-command `power-menu`
           :class 'restart'
           (restart-icon)
           'Reboot')
@@ -84,18 +82,16 @@
           :confirmation-button-text 'Poweroff'
           :cancellation-button-text 'No'
           :confirmation-command `systemctl poweroff`
-          :cancellation-command `${EWW_CMD} open power-menu --arg monitor="${monitor}"`
+          :cancellation-command `power-menu`
           :class 'poweroff'
           (power-menu-icon)
           'Poweroff'))
       (eventbox
-        :onclick power-menu-close-command
-        (eventbox
-          :cursor 'pointer'
-          :onclick `${EWW_CMD} close power-menu`
-          (box
-            :valign 'center'
-            :orientation 'vertical'
-            :space-evenly false
-            (close-icon)
-            'Cancel'))))))
+        :onclick `power-menu close`
+        :cursor 'pointer'
+        (box
+          :valign 'center'
+          :orientation 'vertical'
+          :space-evenly false
+          (close-icon)
+          'Cancel')))))

@@ -11,7 +11,7 @@
               :height '400px'
               :anchor 'center')
   (eventbox
-    :onrightclick `${EWW_CMD} close confirmation`
+    :onrightclick `power-menu close_confirmation`
     (box
       :orientation 'vertical'
       (label
@@ -26,7 +26,7 @@
           :width 200
           :cursor 'pointer'
           :class 'confirmation-option cancel'
-          :onclick `${EWW_CMD} close confirmation; ${cancellation-command == '' ? '' : "${cancellation-command} &"}`
+          :onclick `power-menu close_confirmation; ${cancellation-command == '' ? '' : "${cancellation-command} &"}`
           (box
             :orientation 'vertical'
             :space-evenly false
@@ -37,7 +37,7 @@
           :width 200
           :cursor 'pointer'
           :class 'confirmation-option confirm'
-          :onclick `${EWW_CMD} close confirmation; ${confirmation-command} &`
+          :onclick `power-menu close_confirmation; ${confirmation-command} &`
           (box
             :orientation 'vertical'
             :space-evenly false

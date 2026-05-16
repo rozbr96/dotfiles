@@ -1,0 +1,32 @@
+
+function open() {
+  eww open power-menu --arg monitor="$(eww get monitors)"
+}
+
+function close() {
+  eww close power-menu
+}
+
+function open_confirmation() {
+  eww open confirmation \
+    --arg monitor="$(eww get monitors)" \
+    --arg title="$1" \
+    --arg confirmation-button-text="$2" \
+    --arg cancellation-button-text="$3" \
+    --arg confirmation-command="$4" \
+    --arg cancellation-command="$5"
+}
+
+function close_confirmation() {
+  eww close confirmation
+}
+
+[ -z "$1" ] && open && exit
+
+case "$1" in
+  open) open ;;
+  close) close ;;
+  confirm) open_confirmation "$2" "$3" "$4" "$5" "$6" ;;
+  close_confirmation) close_confirmation ;;
+esac
+
