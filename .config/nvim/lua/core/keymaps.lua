@@ -135,7 +135,6 @@ local bindings_per_mode = {
 
     -- sorting
     { keys = 'S',          command = ':sort<CR>' },
-    { keys = 's',          command = ':sort<CR>' },
   },
 }
 
