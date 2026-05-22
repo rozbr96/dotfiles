@@ -132,6 +132,10 @@ local bindings_per_mode = {
     { keys = '<A-Down>',   command = ":m '>+1<CR>gv=gv" },
     { keys = '<A-k>',      command = ":m '<-2<CR>gv=gv" },
     { keys = '<A-Up>',     command = ":m '<-2<CR>gv=gv" },
+
+    -- sorting
+    { keys = 'S',          command = ':sort<CR>' },
+    { keys = 's',          command = ':sort<CR>' },
   },
 }
 
