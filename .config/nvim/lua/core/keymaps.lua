@@ -42,6 +42,7 @@ local bindings_per_mode = {
     { keys = '<leader>cc',        command = ':FzfLua commands<CR>' },
     { keys = '<leader>ch',        command = ':FzfLua command_history<CR>' },
     { keys = '<leader>cm',        command = ':FzfLua manpages<CR>' },
+    { keys = '<leader>?',         command = function() require('which-key').show({ global = false }) end },
 
     -- buffers (plain vim)
     { keys = '<leader>vv',        command = ':split<CR>' },
