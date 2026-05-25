@@ -1,4 +1,3 @@
-
 local ft = require('Comment.ft')
 
 require('Comment').setup {

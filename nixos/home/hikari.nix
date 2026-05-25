@@ -6,7 +6,8 @@
 }:
 
 let
-  dotfiles = ../..;
+  dotfiles = "${config.home.homeDirectory}/Workspace/dotfiles";
+  system = pkgs.stdenv.hostPlatform.system;
 in
 {
   home = {
@@ -42,7 +43,8 @@ in
     ];
 
     sessionVariables = {
-      LIB_HY3_PATH = "${inputs.hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3}/lib/libhy3.so";
+      LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
+      HYPR_LSP_STUBS_PATH = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
     };
   };
 

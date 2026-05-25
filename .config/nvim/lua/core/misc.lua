@@ -1,6 +1,5 @@
-
 function ReloadConfig()
-  for name,_ in pairs(package.loaded) do
+  for name, _ in pairs(package.loaded) do
     if name:match('^core') or name:match('^lsp') or name:match('^ui') or name:match('^git') then
       package.loaded[name] = nil
     end
