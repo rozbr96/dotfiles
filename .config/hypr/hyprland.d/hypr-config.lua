@@ -29,8 +29,6 @@ hl.config({
       inactive_border = 'rgba(595959aa)',
     },
     allow_tearing = false,
-
-    layout = 'hy3',
   },
 
   decoration = {
@@ -40,10 +38,6 @@ hl.config({
       size = 3,
       passes = 1,
     },
-  },
-
-  animations = {
-    enabled = true,
   },
 
   misc = {
