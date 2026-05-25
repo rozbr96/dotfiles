@@ -25,7 +25,8 @@ return {
       workspace = {
         checkThirdParty = false,
         library = {
-          vim.env.VIMRUNTIME
+          vim.env.VIMRUNTIME,
+          vim.fn.expand("$HYPR_LSP_STUBS_PATH")
         }
       }
     })
