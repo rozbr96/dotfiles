@@ -36,3 +36,5 @@
   `date '+%T %d %b %a'`)
 
 (defvar calendar-state 'closed')
+
+(defvar batteries-data '[]')
