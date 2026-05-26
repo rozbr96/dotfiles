@@ -1,0 +1,19 @@
+
+(defwidget battery [battery]
+  (eventbox
+    :tooltip "${battery.name} | ${battery.capacity}%"
+    :visible {battery.status != "Unknown"}
+    (box
+      :orientation 'h'
+      (image
+        :path "assets/icons/${battery.status == 'Charging' ? 'charging-' : ''}bat-${10 * floor(battery.capacity / 10)}.svg"
+        :fill-svg {battery-colors[min(10, floor(battery.capacity / 10))]})
+      (label :text "${battery.capacity}%"))))
+
+(defwidget batteries []
+  (box
+    :orientation 'h'
+    :spacing 10
+    (for battery-data in batteries-data
+      (battery
+        :battery battery-data))))

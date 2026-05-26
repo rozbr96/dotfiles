@@ -1,0 +1,47 @@
+#!/run/current-system/sw/bin/zsh
+
+monitor() {
+  udevadm monitor --subsystem-match power_supply | \
+    grep --line-buffered KERNEL | \
+      while read -r line; do
+        eww update batteries-data="$(list)"
+      done
+}
+
+list() {
+  for b in /sys/class/power_supply/*; do
+    [ -f "$b/type" ] || continue
+    [ "$(cat "$b/type")" = "Battery" ] || continue
+
+    real_name="$(basename "$b")"
+
+    if [[ "$real_name" == BAT* ]]; then
+      display_name="$real_name"
+    else
+      display_name="$(cat "$b/model_name" 2>/dev/null || echo "$real_name")"
+    fi
+
+    jq -n \
+      --arg name "$display_name" \
+      --arg real_name "$real_name" \
+      --arg status "$(cat "$b/status")" \
+      --arg model "$(cat "$b/model_name" 2>/dev/null)" \
+      --argjson capacity "$(cat "$b/capacity")" \
+      '[
+        {
+          name: $name,
+          real_name: $real_name,
+          capacity: $capacity,
+          status: $status,
+          model: $model
+        }
+      ]'
+  done | jq -s 'add'
+}
+
+[ -z "$1" ] && list && exit 0
+
+case "$1" in
+  list) list ;;
+  monitor) monitor ;;
+esac
