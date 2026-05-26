@@ -37,4 +37,18 @@
 
 (defvar calendar-state 'closed')
 
+(defvar battery-colors '[
+                         "#ff3b30",
+                         "#ff5a1f",
+                         "#ff7a00",
+                         "#ff9800",
+                         "#ffb300",
+                         "#ffcc00",
+                         "#d4d700",
+                         "#a3d700",
+                         "#6fd200",
+                         "#34c759",
+                         "#00c853"]
+ ')
+
 (defvar batteries-data '[]')
