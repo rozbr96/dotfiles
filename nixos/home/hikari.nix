@@ -173,6 +173,20 @@ in
           RestartSec = 1;
         };
       };
+
+      batteries-monitor = {
+        Unit = {
+          Description = "Batteries Monitor";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/battery monitor";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
     };
   };
 }
