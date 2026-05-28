@@ -47,6 +47,7 @@
       alsa-utils
       btop
       busybox
+      catdoc
       cliphist
       curl
       docker
@@ -54,6 +55,7 @@
       eww
       fd
       feh
+      ffmpegthumbnailer
       fzf
       gawk
       gcc
@@ -72,8 +74,10 @@
       neovim
       nixd
       nixfmt
+      pandoc
       pavucontrol
       playerctl
+      poppler-utils
       pulseaudioFull
       ranger
       ripgrep
