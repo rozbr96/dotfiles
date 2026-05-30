@@ -4,6 +4,7 @@
 (defwindow networker [monitor]
   :monitor monitor
   :stacking 'overlay'
+  :focusable 'ondemand'
   :exclusive false
   :geometry (geometry
               :x 200

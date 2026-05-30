@@ -30,6 +30,7 @@
 
 (defvar networker-step-index 0)
 (defvar networker-networks '[]')
+(defvar networker-tmp-network '')
 
 (defpoll time
   :interval '1s'
