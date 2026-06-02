@@ -1,6 +1,7 @@
 
 (include 'widgets/networks-list.yuck')
 (include 'widgets/loading.yuck')
+(include 'widgets/network-password-input.yuck')
 
 (defwidget networker []
   (stack
@@ -11,4 +12,5 @@
       (label)
       (loading)
       (label))
-    (networks-list)))
+    (networks-list)
+    (network-password-input)))

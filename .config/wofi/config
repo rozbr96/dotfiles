@@ -1,10 +1,10 @@
-
-show-icons=true
-insensitive=true
-allow-markup=true
 allow-images=true
-term=kitty
-prompt=❯❯
-width=600
+allow-markup=true
+columns=3
+insensitive=true
 matching=fuzzy
 normal_window=false
+prompt=❯❯
+show-icons=true
+term=kitty
+width=1200

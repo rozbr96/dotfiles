@@ -31,14 +31,24 @@ dismiss() {
 }
 
 connect() {
+  wifi is_existing_connection "$1" && dismiss_and_connect "$1" || ask_password_for "$1"
+}
+
+dismiss_and_connect() {
   dismiss
 
-  wifi connect_if_exists "$1"
+  wifi connect "$1" "$2"
+}
+
+ask_password_for() {
+  eww update networker-tmp-network="$1"
+  eww update networker-step-index=2
 }
 
 case "$1" in
   start) start ;;
   dismiss) dismiss ;;
   connect) connect "$2" ;;
+  connect_with_password) dismiss_and_connect "$2" "$3" ;;
 esac
 
