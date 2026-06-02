@@ -22,13 +22,14 @@
     }:
     let
       system = "x86_64-linux";
+      nix_channel = "26.05";
     in
     {
       nixosConfigurations = {
         Helios = nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs nix_channel; };
 
           modules = [
             ./nixos/hosts/helios/system.nix
@@ -36,7 +37,7 @@
             {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit inputs;
+                  inherit inputs nix_channel;
                 };
 
                 users.hikari = import ./nixos/home/hikari.nix;

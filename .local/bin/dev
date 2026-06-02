@@ -48,9 +48,47 @@ function enter_shell() {
 if [ ! -z "$1" ]; then
   case $1 in
     create|init)
-      [ -z "$2" ] && filename="shell.nix" || filename="$2.nix"
+      channel="${DEV_NIX_CHANNEL:-26.05}"
+      filename="shell.nix"
 
-      echo -e "\nwith import <nixpkgs> { };\n\nmkShell {\n  buildInputs = [\n  ];\n}" > "$filename"
+      shift
+
+      while [ "$#" -gt 0 ]; do
+        case "$1" in
+          --channel)
+            [ -z "$2" ] && echo "Missing channel after --channel" && exit 1
+            channel="$2"
+            shift 2
+          ;;
+
+          *)
+            filename="$1.nix"
+            shift
+          ;;
+        esac
+      done
+
+      case "$channel" in
+        unstable)
+          branch="nixos-unstable"
+        ;;
+        *)
+          branch="nixos-$channel"
+        ;;
+      esac
+
+      cat > "$filename" <<EOF
+let
+  pkgs = import (fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/${branch}.tar.gz";
+  }) { config.allowUnfree = true; };
+in
+
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+  ];
+}
+EOF
     ;;
 
     edit)
