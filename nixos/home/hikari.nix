@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  nix_channel,
   ...
 }:
 
@@ -43,6 +44,7 @@ in
     ];
 
     sessionVariables = {
+      DEV_NIX_CHANNEL = nix_channel;
       LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
       HYPR_LSP_STUBS_PATH = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
     };

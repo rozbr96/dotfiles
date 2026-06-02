@@ -1,20 +1,20 @@
 
 dev_path=~/Workspace/dotfiles/nixos/dev
-shell_files=($(basename "$(pwd).nix") default.nix shell.nix)
+shell_files=("$(basename "$(pwd).nix")" default.nix shell.nix)
 
 function file_full_path() {
   echo "$(pwd)/$1"
 }
 
 function nearest_shell() {
-  if [ -z $1 ]; then
-    for shell_file in ${shell_files[@]}; do
-      file="$(file_full_path $shell_file)"
+  if [ -z "$1" ]; then
+    for shell_file in "${shell_files[@]}"; do
+      file="$(file_full_path "$shell_file")"
 
       [ -f "$file" ] && echo "$file" && exit 0
     done
   else
-    file="$(file_full_path $1.nix)"
+    file="$(file_full_path "$1.nix")"
 
     [ -f "$file" ] && echo "$file" && exit 0
   fi
@@ -30,11 +30,11 @@ function nearest_shell() {
 
   cd ..
 
-  echo "$(nearest_shell $1)"
+  nearest_shell "$1"
 }
 
 function enter_shell() {
-  shell_file="$(nearest_shell $1)"
+  shell_file="$(nearest_shell "$1")"
 
   [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
@@ -42,19 +42,57 @@ function enter_shell() {
 
   echo "Entering shell from: $shell_file"
 
-  nix-shell --run "DEV_PROMPT=$dev_environment zsh" $shell_file
+  nix-shell --run "DEV_PROMPT=$dev_environment zsh" "$shell_file"
 }
 
-if [ ! -z $1 ]; then
+if [ ! -z "$1" ]; then
   case $1 in
     create|init)
-      [ -z "$2" ] && filename="shell.nix" || filename="$2.nix"
+      channel="${DEV_NIX_CHANNEL:-26.05}"
+      filename="shell.nix"
 
-      echo -e "\nwith import <nixpkgs> { };\n\nmkShell {\n  buildInputs = [\n  ];\n}" > $filename
+      shift
+
+      while [ "$#" -gt 0 ]; do
+        case "$1" in
+          --channel)
+            [ -z "$2" ] && echo "Missing channel after --channel" && exit 1
+            channel="$2"
+            shift 2
+          ;;
+
+          *)
+            filename="$1.nix"
+            shift
+          ;;
+        esac
+      done
+
+      case "$channel" in
+        unstable)
+          branch="nixos-unstable"
+        ;;
+        *)
+          branch="nixos-$channel"
+        ;;
+      esac
+
+      cat > "$filename" <<EOF
+let
+  pkgs = import (fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/${branch}.tar.gz";
+  }) { config.allowUnfree = true; };
+in
+
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+  ];
+}
+EOF
     ;;
 
     edit)
-      shell_file="$(nearest_shell $2)"
+      shell_file="$(nearest_shell "$2")"
 
       [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
@@ -62,7 +100,7 @@ if [ ! -z $1 ]; then
     ;;
 
     delete|deinit|remove)
-      shell_file="$(nearest_shell $2)"
+      shell_file="$(nearest_shell "$2")"
 
       [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
@@ -74,7 +112,7 @@ if [ ! -z $1 ]; then
     ;;
 
     show)
-      shell_file="$(nearest_shell $2)"
+      shell_file="$(nearest_shell "$2")"
 
       [ ! -f "$shell_file" ] && echo "No suitable shell file could be found!" && exit 1
 
@@ -84,21 +122,21 @@ if [ ! -z $1 ]; then
     ;;
 
     enter)
-      [ -z $2 ] && exit 1
+      [ -z "$2" ] && exit 1
 
       dev_environment=$2
 
-      enter_shell $2
+      enter_shell "$2"
     ;;
 
     *)
       dev_environment=$1
 
-      enter_shell $1
+      enter_shell "$1"
     ;;
   esac
 else
-  dev_environment=$(basename $(pwd))
+  dev_environment=$(basename "$(pwd)")
 
   enter_shell
 fi
