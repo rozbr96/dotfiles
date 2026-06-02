@@ -45,10 +45,23 @@ ask_password_for() {
   eww update networker-step-index=2
 }
 
+delete() {
+  network_removal_command="nmcli connection delete \"$1\""
+
+  eww open confirmation \
+    --arg monitor="$(eww get monitors)" \
+    --arg title="Remove network [$1]?" \
+    --arg confirmation-button-text="Yay" \
+    --arg cancellation-button-text="Nay" \
+    --arg confirmation-command="$network_removal_command" \
+    --arg cancellation-command="eww close confirmation"
+}
+
 case "$1" in
   start) start ;;
   dismiss) dismiss ;;
   connect) connect "$2" ;;
   connect_with_password) dismiss_and_connect "$2" "$3" ;;
+  delete) delete "$2" ;;
 esac
 
