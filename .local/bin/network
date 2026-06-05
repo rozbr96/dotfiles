@@ -21,27 +21,4 @@ update_eww_vars() {
 
 case $1 in
   update_vars) update_eww_vars ;;
-
-  monitor)
-    dbus-monitor --system \
-      "type='signal',sender='org.freedesktop.NetworkManager',interface='org.freedesktop.NetworkManager.Device'" \
-        | while read -r; do
-            IFS=: read -r ssid strength_index < <(
-              nmcli -t -f ACTIVE,SSID,SIGNAL dev wifi \
-                | awk -F: '$1=="yes"{ print $2":"int(($3 - 1)/25); exit }'
-            )
-
-            ethernet_network_name="$(
-              nmcli -t -f type,state,connection dev status \
-                | awk -F: '$1=="ethernet"&&$2=="connected"{ print $3 }'
-            )"
-
-            [[ -z $ssid ]] && ssid="disconnected"
-            [[ -z $ethernet_network_name ]] && ethernet_network_name=""
-
-            eww update wifi-ssid="$ssid"
-            eww update wifi-strength-index=$strength_index
-            eww update ethernet-network-name="$ethernet_network_name"
-          done
-  ;;
 esac

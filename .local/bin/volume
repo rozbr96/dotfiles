@@ -55,13 +55,6 @@ function update_eww_vars_for() {
 }
 
 case $1 in
-  monitor)
-    pactl subscribe | grep --line-buffered -E 'sink|source' | while read -r _; do
-      update_eww_vars_for "sink"
-      update_eww_vars_for "source"
-    done
-  ;;
-
   mixer)
     case "$2" in
       open)
