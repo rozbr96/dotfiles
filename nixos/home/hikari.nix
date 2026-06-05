@@ -157,7 +157,7 @@ in
 
         Service = {
           Type = "exec";
-          ExecStart = "${config.home.homeDirectory}/.local/bin/volume monitor";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/monitor volume";
           Restart = "always";
           RestartSec = 1;
         };
@@ -170,7 +170,7 @@ in
 
         Service = {
           Type = "exec";
-          ExecStart = "${config.home.homeDirectory}/.local/bin/network monitor";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/monitor network";
           Restart = "always";
           RestartSec = 1;
         };
@@ -183,7 +183,7 @@ in
 
         Service = {
           Type = "exec";
-          ExecStart = "${config.home.homeDirectory}/.local/bin/battery monitor";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/monitor batteries";
           Restart = "always";
           RestartSec = 1;
         };
