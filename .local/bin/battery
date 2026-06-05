@@ -39,9 +39,14 @@ list() {
   done | jq -s 'add'
 }
 
+update_eww_vars() {
+  eww update batteries-data="$(list)"
+}
+
 [ -z "$1" ] && list && exit 0
 
 case "$1" in
   list) list ;;
   monitor) monitor ;;
+  update_vars) update_eww_vars ;;
 esac

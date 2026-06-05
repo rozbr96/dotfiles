@@ -132,4 +132,8 @@ case $1 in
       source) wpctl set-volume @DEFAULT_SOURCE@ $3% ;;
     esac
   ;;
+
+  update_vars)
+    update_eww_vars_for "$2"
+  ;;
 esac
