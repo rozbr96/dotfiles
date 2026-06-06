@@ -1,0 +1,26 @@
+#!/run/current-system/sw/bin/zsh
+
+case $1 in
+  network)
+    dbus-monitor --system \
+      "type='signal',sender='org.freedesktop.NetworkManager',interface='org.freedesktop.NetworkManager.Device'" \
+        | while read -r; do
+            network update_vars
+          done
+  ;;
+
+  volume)
+    pactl subscribe | grep --line-buffered -E 'sink|source' | while read -r; do
+      volume update_vars "sink"
+      volume update_vars "source"
+    done
+  ;;
+
+  batteries)
+    udevadm monitor --subsystem-match power_supply | \
+      grep --line-buffered KERNEL | \
+        while read -r; do
+          battery update_vars
+        done
+  ;;
+esac

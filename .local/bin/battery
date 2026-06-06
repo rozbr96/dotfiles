@@ -1,13 +1,5 @@
 #!/run/current-system/sw/bin/zsh
 
-monitor() {
-  udevadm monitor --subsystem-match power_supply | \
-    grep --line-buffered KERNEL | \
-      while read -r line; do
-        eww update batteries-data="$(list)"
-      done
-}
-
 list() {
   for b in /sys/class/power_supply/*; do
     [ -f "$b/type" ] || continue
@@ -39,9 +31,14 @@ list() {
   done | jq -s 'add'
 }
 
+update_eww_vars() {
+  eww update batteries-data="$(list)"
+}
+
 [ -z "$1" ] && list && exit 0
 
 case "$1" in
   list) list ;;
   monitor) monitor ;;
+  update_vars) update_eww_vars ;;
 esac
