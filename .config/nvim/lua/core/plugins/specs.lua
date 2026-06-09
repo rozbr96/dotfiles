@@ -2,13 +2,6 @@ return {
   { 'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   { 'windwp/nvim-autopairs' },
   { 'lewis6991/gitsigns.nvim' },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
-  },
   { 'ibhagwan/fzf-lua' },
   {
     'hrsh7th/nvim-cmp',
@@ -29,7 +22,6 @@ return {
   { 'rozbr96/spec_runner' },
   { 'sindrets/diffview.nvim' },
   { 'nvim-lualine/lualine.nvim',                  dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  { 'nvim-treesitter/nvim-treesitter-context' },
   { 'olrtg/emmet-language-server' },
   { 'stevearc/conform.nvim' },
   { 'catppuccin/nvim',                            name = 'catppuccin',                                           priority = 1000 },
@@ -39,8 +31,4 @@ return {
   { 'folke/which-key.nvim' },
   { 'folke/noice.nvim',                           dependencies = { 'MunifTanjim/nui.nvim' } },
   { 'hat0uma/csvview.nvim' },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-  },
-}
+ }
