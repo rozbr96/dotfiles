@@ -119,7 +119,7 @@ in
         };
 
         Service = {
-          Type = "exc";
+          Type = "exec";
           ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
           ExecStartPost = ''
             ${pkgs.eww}/bin/eww open main-bar \
