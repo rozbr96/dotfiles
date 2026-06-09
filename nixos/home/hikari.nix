@@ -2,12 +2,12 @@
   pkgs,
   config,
   inputs,
+  self,
   nix_channel,
   ...
 }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/Workspace/dotfiles";
   system = pkgs.stdenv.hostPlatform.system;
 in
 {
@@ -18,21 +18,27 @@ in
     stateVersion = "25.05";
 
     file = {
-      ".config/eww".source = "${dotfiles}/.config/eww";
-      ".config/hypr".source = "${dotfiles}/.config/hypr";
-      ".config/kitty".source = "${dotfiles}/.config/kitty";
-      ".config/mako".source = "${dotfiles}/.config/mako";
-      ".config/nvim".source = "${dotfiles}/.config/nvim";
-      ".config/ranger/commands.py".source = "${dotfiles}/.config/ranger/commands.py";
-      ".config/ranger/commands_full.py".source = "${dotfiles}/.config/ranger/commands_full.py";
-      ".config/ranger/rc.conf".source = "${dotfiles}/.config/ranger/rc.conf";
-      ".config/ranger/rifle.conf".source = "${dotfiles}/.config/ranger/rifle.conf";
-      ".config/ranger/scope.sh".source = "${dotfiles}/.config/ranger/scope.sh";
-      ".config/wofi".source = "${dotfiles}/.config/wofi";
-      ".gitconfig".source = "${dotfiles}/.gitconfig";
-      ".local/bin".source = "${dotfiles}/.local/bin";
-      ".local/share/icons/volantes".source = "${dotfiles}/.local/share/icons/volantes";
-      ".ssh/config".source = "${dotfiles}/.ssh/config";
+      ".config/eww".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/eww";
+      ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/hypr";
+      ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/kitty";
+      ".config/mako".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/mako";
+      ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/nvim";
+      ".config/ranger/commands.py".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.config/ranger/commands.py";
+      ".config/ranger/commands_full.py".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.config/ranger/commands_full.py";
+      ".config/ranger/rc.conf".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.config/ranger/rc.conf";
+      ".config/ranger/rifle.conf".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.config/ranger/rifle.conf";
+      ".config/ranger/scope.sh".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.config/ranger/scope.sh";
+      ".config/wofi".source = config.lib.file.mkOutOfStoreSymlink "${self}/.config/wofi";
+      ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${self}/.gitconfig";
+      ".local/bin".source = config.lib.file.mkOutOfStoreSymlink "${self}/.local/bin";
+      ".local/share/icons/volantes".source =
+        config.lib.file.mkOutOfStoreSymlink "${self}/.local/share/icons/volantes";
+      ".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "${self}/.ssh/config";
     };
 
     packages = with pkgs; [
