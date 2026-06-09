@@ -83,6 +83,7 @@
       ripgrep
       slurp
       socat
+      tree-sitter
       unzip
       vimPlugins.packer-nvim
       wl-clipboard
