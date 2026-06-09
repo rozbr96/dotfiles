@@ -31,5 +31,10 @@ return {
   { 'folke/which-key.nvim' },
   { 'folke/noice.nvim',                           dependencies = { 'MunifTanjim/nui.nvim' } },
   { 'hat0uma/csvview.nvim' },
-  { 'arborist-ts/arborist.nvim' }
- }
+  { 'arborist-ts/arborist.nvim' },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  { 'nvim-treesitter/nvim-treesitter-context' },
+}
