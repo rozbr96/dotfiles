@@ -2,12 +2,12 @@
   pkgs,
   config,
   inputs,
+  self,
   nix_channel,
   ...
 }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/Workspace/dotfiles";
   system = pkgs.stdenv.hostPlatform.system;
 in
 {
@@ -18,21 +18,21 @@ in
     stateVersion = "25.05";
 
     file = {
-      ".config/eww".source = "${dotfiles}/.config/eww";
-      ".config/hypr".source = "${dotfiles}/.config/hypr";
-      ".config/kitty".source = "${dotfiles}/.config/kitty";
-      ".config/mako".source = "${dotfiles}/.config/mako";
-      ".config/nvim".source = "${dotfiles}/.config/nvim";
-      ".config/ranger/commands.py".source = "${dotfiles}/.config/ranger/commands.py";
-      ".config/ranger/commands_full.py".source = "${dotfiles}/.config/ranger/commands_full.py";
-      ".config/ranger/rc.conf".source = "${dotfiles}/.config/ranger/rc.conf";
-      ".config/ranger/rifle.conf".source = "${dotfiles}/.config/ranger/rifle.conf";
-      ".config/ranger/scope.sh".source = "${dotfiles}/.config/ranger/scope.sh";
-      ".config/wofi".source = "${dotfiles}/.config/wofi";
-      ".gitconfig".source = "${dotfiles}/.gitconfig";
-      ".local/bin".source = "${dotfiles}/.local/bin";
-      ".local/share/icons/volantes".source = "${dotfiles}/.local/share/icons/volantes";
-      ".ssh/config".source = "${dotfiles}/.ssh/config";
+      ".config/eww".source = "${self}/.config/eww";
+      ".config/hypr".source = "${self}/.config/hypr";
+      ".config/kitty".source = "${self}/.config/kitty";
+      ".config/mako".source = "${self}/.config/mako";
+      ".config/nvim".source = "${self}/.config/nvim";
+      ".config/ranger/commands.py".source = "${self}/.config/ranger/commands.py";
+      ".config/ranger/commands_full.py".source = "${self}/.config/ranger/commands_full.py";
+      ".config/ranger/rc.conf".source = "${self}/.config/ranger/rc.conf";
+      ".config/ranger/rifle.conf".source = "${self}/.config/ranger/rifle.conf";
+      ".config/ranger/scope.sh".source = "${self}/.config/ranger/scope.sh";
+      ".config/wofi".source = "${self}/.config/wofi";
+      ".gitconfig".source = "${self}/.gitconfig";
+      ".local/bin".source = "${self}/.local/bin";
+      ".local/share/icons/volantes".source = "${self}/.local/share/icons/volantes";
+      ".ssh/config".source = "${self}/.ssh/config";
     };
 
     packages = with pkgs; [

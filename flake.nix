@@ -18,6 +18,7 @@
     inputs@{
       nixpkgs,
       home-manager,
+      self,
       ...
     }:
     let
@@ -29,7 +30,7 @@
         Helios = nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = { inherit inputs nix_channel; };
+          specialArgs = { inherit inputs nix_channel self; };
 
           modules = [
             ./nixos/hosts/helios/system.nix
@@ -37,7 +38,7 @@
             {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit inputs nix_channel;
+                  inherit inputs nix_channel self;
                 };
 
                 users.hikari = import ./nixos/home/hikari.nix;
