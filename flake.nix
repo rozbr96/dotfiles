@@ -48,6 +48,24 @@
             }
           ];
         };
+
+        Raspbian = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+
+          modules = [
+            ./nixos/hosts/raspbian/system.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                extraSpecialArgs = {
+                  inherit inputs dev;
+                };
+
+                users.rasp = import ./nixos/home/rasp.nix;
+              };
+            }
+          ];
+        };
       };
     };
 }

@@ -1,0 +1,8 @@
+set $mod Mod4
+
+exec --no-startup-id brave --kiosk https://tv.acesse.net.br
+
+bindsym $mod+Return exec kitty
+bindsym $mod+b exec brave
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exit
