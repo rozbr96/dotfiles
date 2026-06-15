@@ -4,7 +4,7 @@ RASPBIAN_USER := rasp
 RASPBIAN_IP := 10.3.152.18
 RASPBIAN_ADDR := $(RASPBIAN_USER)@$(RASPBIAN_IP)
 
-system:
+helios:
 ifeq ($(IS_NIXOS),1)
 	@sudo nixos-rebuild switch --flake .#Helios
 else
@@ -22,4 +22,3 @@ upgrade: flake_update system
 hypr:
 	@hyprctl reload
 
-all: system hypr
