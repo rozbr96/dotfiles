@@ -70,4 +70,7 @@ handle() {
   esac
 }
 
+update_active_layout "$(hyprctl devices -j | jq -r '.keyboards | .[] | select(.main == true) | .active_keymap')"
+update_active_workspaces
+
 socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done
