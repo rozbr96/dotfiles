@@ -1,7 +1,14 @@
 #!/run/current-system/sw/bin/zsh
 
+update_volume_vars() {
+  volume update_vars "sink"
+  volume update_vars "source"
+}
+
 case $1 in
   network)
+    network update_vars
+
     dbus-monitor --system \
       "type='signal',sender='org.freedesktop.NetworkManager',interface='org.freedesktop.NetworkManager.Device'" \
         | while read -r; do
@@ -10,13 +17,16 @@ case $1 in
   ;;
 
   volume)
+    update_volume_vars
+
     pactl subscribe | grep --line-buffered -E 'sink|source' | while read -r; do
-      volume update_vars "sink"
-      volume update_vars "source"
+      update_volume_vars
     done
   ;;
 
   batteries)
+    battery update_vars
+
     udevadm monitor --subsystem-match power_supply | \
       grep --line-buffered KERNEL | \
         while read -r; do
