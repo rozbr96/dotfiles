@@ -84,6 +84,7 @@
       slurp
       socat
       tree-sitter
+      udisks
       unzip
       vimPlugins.packer-nvim
       wl-clipboard
@@ -203,6 +204,8 @@
     printing.enable = true;
 
     seatd.enable = true;
+
+    udisks2.enable = true;
 
     xserver = {
       enable = true;
