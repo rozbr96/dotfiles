@@ -7,3 +7,4 @@
 (include 'windows/networker.yuck')
 (include 'windows/mixer.yuck')
 (include 'windows/calendar.yuck')
+(include 'windows/disks.yuck')

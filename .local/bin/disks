@@ -1,5 +1,14 @@
 #!/run/current-system/sw/bin/zsh
 
+open() {
+  eww update disks="$(list)"
+  eww open disks --arg monitor="$(eww get monitors)"
+}
+
+close() {
+  eww close disks
+}
+
 list() {
   lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS | jq '.blockdevices'
 }
@@ -15,8 +24,8 @@ unmount() {
 [ -z "$1" ] && list && exit 0
 
 case "$1" in
-  list) list ;;
-  mount) mount "$2" ;;
-  unmount) unmount "$2" ;;
+  open|close|list|mount|unmount)
+    "$1" "$2"
+  ;;
 esac
 

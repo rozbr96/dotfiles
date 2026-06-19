@@ -1,0 +1,19 @@
+
+(defwidget partition [partition]
+  (label :text {partition.name}))
+
+(defwidget disk [disk]
+  (box
+    :orientation 'v'
+    (label :text {disk.name})
+    (box
+      :orientation 'h'
+      (for partition in {disk.children}
+        (partition :partition partition)))))
+
+(defwidget disks []
+  (box
+    :orientation 'v'
+    (for disk in disks
+      (disk :disk disk))))
+
