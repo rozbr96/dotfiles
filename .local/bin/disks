@@ -10,7 +10,7 @@ close() {
 }
 
 list() {
-  lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS | jq '.blockdevices'
+  lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS,TRAN,HOTPLUG | jq '.blockdevices'
 }
 
 mount() {

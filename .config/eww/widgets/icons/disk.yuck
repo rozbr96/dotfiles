@@ -1,0 +1,11 @@
+
+(defwidget disk-icon []
+  (eventbox
+    :cursor 'pointer'
+    :tooltip 'Disks'
+    :onclick 'disks open'
+    :onrightclick 'disks close'
+    (image
+      :image-height 36
+      :fill-svg '#33ccff'
+      :path 'assets/icons/disk.svg')))

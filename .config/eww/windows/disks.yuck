@@ -6,6 +6,7 @@
  :stacking 'overlay'
  :exclusive false
  :geometry (geometry
-            :width 320
-            :anchor 'center')
+            :width 440
+            :x 320
+            :anchor 'top right')
  (disks))
