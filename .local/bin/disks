@@ -1,0 +1,22 @@
+#!/run/current-system/sw/bin/zsh
+
+list() {
+  lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS | jq '.blockdevices'
+}
+
+mount() {
+  udisksctl mount -b "$1"
+}
+
+unmount() {
+  udisksctl unmount -b "$1"
+}
+
+[ -z "$1" ] && list && exit 0
+
+case "$1" in
+  list) list ;;
+  mount) mount "$2" ;;
+  unmount) unmount "$2" ;;
+esac
+
