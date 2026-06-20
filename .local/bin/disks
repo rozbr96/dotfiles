@@ -1,7 +1,10 @@
-#!/run/current-system/sw/bin/zsh
+
+update() {
+  eww update disks="$(list)"
+}
 
 open() {
-  eww update disks="$(list)"
+  update
   eww open disks --arg monitor="$(eww get monitors)"
 }
 
@@ -10,11 +13,46 @@ close() {
 }
 
 list() {
-  lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS,TRAN,HOTPLUG | jq '.blockdevices'
+  lsblk -J -o NAME,PATH,LABEL,FSTYPE,MOUNTPOINTS,TRAN,HOTPLUG | jq '
+    .blockdevices | map(
+      .children |= map(
+        select(
+          .fstype | IN(
+            "ext4",
+            "ext3",
+            "ext2",
+            "xfs",
+            "btrfs",
+            "ntfs",
+            "ntfs3",
+            "exfat",
+            "vfat",
+            "f2fs"
+          )
+        ) | . + {
+          mountpoint: (
+            [.mountpoints[] | select(. != null)] | last
+          )
+        }
+      )
+    )
+  '
 }
 
 mount() {
   udisksctl mount -b "$1"
+}
+
+explore() {
+  kitty -e ranger "$1" &
+
+  close
+}
+
+mount_and_explore() {
+  path=$(mount "$1" | awk -F" at " '{ print $2 }')
+
+  explore "$path"
 }
 
 unmount() {
@@ -24,8 +62,15 @@ unmount() {
 [ -z "$1" ] && list && exit 0
 
 case "$1" in
-  open|close|list|mount|unmount)
+  open) open ;;
+  update) update ;;
+  close) close ;;
+  list) list ;;
+
+  mount|unmount|mount_and_explore|explore)
     "$1" "$2"
+
+    update
   ;;
 esac
 

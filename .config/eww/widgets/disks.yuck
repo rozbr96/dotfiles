@@ -13,6 +13,8 @@
   (eventbox
     :cursor 'pointer'
     :tooltip "${partition.label ?: partition.name} (${partition.path})"
+    :onclick {partition.mountpoints == [] ? `disks mount_and_explore "${partition.path}" &` : `disks explore "${partition.mountpoint}"`}
+    :onrightclick `disks unmount "${partition.path}"`
     (box
       :width 100
       :orientation 'v'
