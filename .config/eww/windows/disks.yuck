@@ -7,6 +7,6 @@
  :exclusive false
  :geometry (geometry
             :width 440
-            :x 320
+            :x 290
             :anchor 'top right')
  (disks))

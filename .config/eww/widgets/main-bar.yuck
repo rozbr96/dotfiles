@@ -31,8 +31,8 @@
       :halign 'end'
       (volume-control :orientation orientation :kind 'source')
       (volume-control :orientation orientation :kind 'sink')
-      (disk-icon)
       (batteries)
+      (disk-icon)
       (memory-usage)
       (wifi)
       (ethernet-icon)
