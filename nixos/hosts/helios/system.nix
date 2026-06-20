@@ -84,6 +84,7 @@
       slurp
       socat
       tree-sitter
+      udisks
       unzip
       vimPlugins.packer-nvim
       wl-clipboard
@@ -176,7 +177,22 @@
   };
 
   security = {
-    polkit.enable = true;
+    polkit = {
+      enable = true;
+
+      extraConfig = ''
+        polkit.addRule(function(action, subject) {
+          if (
+            action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+            action.id == "org.freedesktop.udisks2.filesystem-unmount-others" ||
+            action.id == "org.freedesktop.udisks2.eject-media"
+          ) {
+            return polkit.Result.YES;
+          }
+        });
+      '';
+    };
+
     rtkit.enable = true;
   };
 
@@ -203,6 +219,8 @@
     printing.enable = true;
 
     seatd.enable = true;
+
+    udisks2.enable = true;
 
     xserver = {
       enable = true;

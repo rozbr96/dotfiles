@@ -1,0 +1,12 @@
+
+(include 'widgets/disks.yuck')
+
+(defwindow disks [monitor]
+ :monitor monitor
+ :stacking 'overlay'
+ :exclusive false
+ :geometry (geometry
+            :width 440
+            :x 290
+            :anchor 'top right')
+ (disks))

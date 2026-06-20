@@ -10,6 +10,7 @@
 (include 'widgets/memory-usage.yuck')
 (include 'widgets/icons/ethernet.yuck')
 (include 'widgets/batteries.yuck')
+(include 'widgets/icons/disk.yuck')
 
 (defwidget main-bar [orientation monitor]
   (box
@@ -31,6 +32,7 @@
       (volume-control :orientation orientation :kind 'source')
       (volume-control :orientation orientation :kind 'sink')
       (batteries)
+      (disk-icon)
       (memory-usage)
       (wifi)
       (ethernet-icon)

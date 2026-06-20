@@ -1,0 +1,55 @@
+(defvar disk-colors '{
+                      "nvme": "#00BCD4",
+                      "sata": "#7C4DFF",
+                      "usb":  "#26A69A",
+                      "mmc":  "#FFB300",
+                      "loop": "#78909C",
+                      "dm":   "#EC407A",
+                      "zram": "#EF5350",
+                      "sr":   "#8D8D8D"}
+                     ')
+
+(defwidget partition [partition]
+  (eventbox
+    :cursor 'pointer'
+    :tooltip "${partition.label ?: partition.name} (${partition.path})"
+    :onclick {partition.mountpoints == [] ? `disks mount_and_explore "${partition.path}" &` : `disks explore "${partition.mountpoint}"`}
+    :onrightclick `disks unmount "${partition.path}"`
+    (box
+      :width 100
+      :orientation 'v'
+      (image
+        :image-width 36
+        :path "assets/icons/${partition.tran}.svg"
+        :fill-svg {partition.mountpoints == [] ? "grey" : "green"})
+      (label
+        :text {partition.label ?: partition.name}))))
+
+(defwidget disk [disk]
+  (box
+    :height 150
+    :orientation 'v'
+    (box
+      :spacing 10
+      :orientation 'h'
+      :space-evenly false
+      (image
+        :image-width 36
+        :fill-svg {disk-colors[disk.tran]}
+        :path "assets/icons/${disk.tran}.svg")
+      (label :text {disk.name}))
+    (scroll
+      :hscroll true
+      (box
+        :orientation 'h'
+        :space-evenly false
+        (for partition in {disk.children}
+          (partition :partition partition))))))
+
+(defwidget disks []
+  (box
+    :orientation 'v'
+    :space-evenly false
+    (for disk in disks
+      (disk :disk disk))))
+

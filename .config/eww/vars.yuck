@@ -53,3 +53,5 @@
  ')
 
 (defvar batteries-data '[]')
+
+(defvar disks '[]')
