@@ -1,4 +1,8 @@
 
+notify() {
+  notify-send -t 3000 "$1"
+}
+
 update() {
   eww update disks="$(list)"
 }
@@ -40,7 +44,7 @@ list() {
 }
 
 mount() {
-  udisksctl mount -b "$1"
+  udisksctl mount -b "$1" && notify "Mounted [$1] successfully!" || notify "Failed to mount [$1]!"
 }
 
 explore() {
@@ -56,7 +60,7 @@ mount_and_explore() {
 }
 
 unmount() {
-  udisksctl unmount -b "$1"
+  udisksctl unmount -b "$1" && notify "Unmounted [$1] successfully!" || notify "Failed to unmount [$1]!"
 }
 
 [ -z "$1" ] && list && exit 0
