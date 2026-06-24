@@ -33,4 +33,12 @@ case $1 in
           battery update_vars
         done
   ;;
+
+  media)
+    playerctl metadata --follow \
+      --format '{"status": "{{status}}","title": "{{title}}","length": "{{duration(mpris:length)}}", "position": "{{duration(position)}}", "raw_length": "{{mpris:length}}", "raw_position": "{{position}}"}' \
+    |  while read -r data; do
+      eww update media-metadata="$(echo "$data" | jq -c '. + {is_live: .raw_length == "9223372036854775807"}')"
+    done
+  ;;
 esac

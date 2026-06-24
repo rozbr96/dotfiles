@@ -55,3 +55,5 @@
 (defvar batteries-data '[]')
 
 (defvar disks '[]')
+
+(defvar media-metadata '{}')

@@ -192,6 +192,18 @@ in
         };
       };
 
+      media-monitor = {
+        Unit = {
+          Description = "Media Monitor";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = "${config.home.homeDirectory}/.local/bin/monitor media";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
     };
   };
 }
