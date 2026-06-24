@@ -34,7 +34,7 @@ require 'lualine'.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
+    lualine_c = { 'vim.fn.expand("%:.")' },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
@@ -50,8 +50,9 @@ require 'lualine'.setup {
   tabline = {
     lualine_a = { 'vim.fn.fnamemodify(vim.fn.getcwd(), ":t")' },
     lualine_b = { 'filename' },
-    lualine_c = { 'lsp_status' },
-    lualine_y = { 'tabs' },
+    lualine_c = { { 'windows', mode = 2, use_mode_colors = true } },
+    lualine_y = { 'lsp_status' },
+    lualine_x = { 'tabs' },
     lualine_z = { 'datetime' },
   },
   winbar = {},
