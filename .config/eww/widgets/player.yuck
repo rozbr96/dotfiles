@@ -1,0 +1,40 @@
+
+(defvar media-control-icon-size 32)
+
+(defwidget player []
+  (eventbox
+    :tooltip {media-metadata.title}
+    (box
+      :orientation 'h'
+      :space-evenly false
+      :spacing 10
+      :visible {media-metadata.status == 'Playing' || media-metadata.status == 'Paused'}
+      (image
+        :path 'assets/icons/music.svg'
+        :fill-svg 'white'
+        :image-height media-control-icon-size)
+      (label :text {substring(media-metadata.title, 0, 30)})
+      (eventbox
+        :cursor 'pointer'
+        :tooltip 'Play Prev'
+        :onclick `playerctl previous`
+        (image
+          :path 'assets/icons/play-previous.svg'
+          :fill-svg 'white'
+          :image-height media-control-icon-size))
+      (eventbox
+        :cursor 'pointer'
+        :onclick `playerctl play-pause`
+        :tooltip {media-metadata.status == 'Playing' ? 'Pause' : 'Play'}
+        (image
+          :path "assets/icons/play${media-metadata.status == 'Playing' ? '-pause': ''}.svg"
+          :fill-svg 'white'
+          :image-height media-control-icon-size))
+      (eventbox
+        :cursor 'pointer'
+        :onclick `playerctl next`
+        :tooltip 'Play Next'
+        (image
+          :path 'assets/icons/play-next.svg'
+          :fill-svg 'white'
+          :image-height media-control-icon-size)))))
