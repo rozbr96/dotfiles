@@ -11,10 +11,12 @@
 (include 'widgets/icons/ethernet.yuck')
 (include 'widgets/batteries.yuck')
 (include 'widgets/icons/disk.yuck')
+(include 'widgets/player.yuck')
 
 (defwidget main-bar [orientation monitor]
-  (box
+  (centerbox
     :orientation orientation
+    :space-evenly false
     (box
       :orientation orientation
       :space-evenly false
@@ -23,6 +25,7 @@
         :image-height 36
         :path {orientation == 'horizontal' ? 'assets/icons/hyprheader.svg' : 'assets/icons/hypr.svg'})
       (workspaces :orientation orientation))
+    (player)
     (box 
       :spacing 16
       :space-evenly false
