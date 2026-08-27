@@ -83,7 +83,6 @@ let
     url = "https://github.com/NixOS/nixpkgs/archive/${branch}.tar.gz";
   }) { config.allowUnfree = true; };
 in
-
 pkgs.mkShell {
   buildInputs = with pkgs; [
   ];
