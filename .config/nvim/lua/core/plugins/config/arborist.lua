@@ -1,1 +1,5 @@
-require('arborist').setup {}
+require('arborist').setup {
+  disable = {
+    indent = { "python" },
+  },
+}
