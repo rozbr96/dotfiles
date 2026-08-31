@@ -15,6 +15,7 @@
 
 (defwidget main-bar [monitor]
   (centerbox
+    :class main-bar-class
     :orientation 'horizontal'
     :space-evenly false
     (box

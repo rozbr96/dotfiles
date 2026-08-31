@@ -1,6 +1,30 @@
 
 .main-bar {
-  padding: 0.5em;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+
+  &.hidden {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 0;
+
+    & * {
+      opacity: 0;
+    }
+  }
+
+  &.display {
+    padding: 0.5em;
+    background-color: $background-dark;
+    border: 1px solid rgba($primary-color, 0.25);
+    border-radius: 14px;
+
+    & * {
+      opacity: 1;
+    }
+  }
 }
 
 .workspace {
