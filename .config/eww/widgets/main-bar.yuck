@@ -14,32 +14,35 @@
 (include 'widgets/player.yuck')
 
 (defwidget main-bar [monitor]
-  (centerbox
-    :class main-bar-class
-    :orientation 'horizontal'
-    :space-evenly false
-    (box
+  (eventbox
+    :onhover `${EWW_CMD} update main-bar-class="main-bar display"`
+    :onhoverlost `${EWW_CMD} update main-bar-class="main-bar hidden"`
+    (centerbox
+      :class main-bar-class
       :orientation 'horizontal'
       :space-evenly false
-      :spacing 3
-      (image
-        :image-height main-bar-height
-        :path 'assets/icons/hyprheader.svg')
-      (workspaces))
-    (player)
-    (box 
-      :spacing 16
-      :space-evenly false
-      :orientation 'horizontal'
-      :valign 'end'
-      :halign 'end'
-      (volume-control :kind 'source')
-      (volume-control :kind 'sink')
-      (batteries)
-      (disk-icon)
-      (memory-usage)
-      (wifi)
-      (ethernet-icon)
-      (kb-layout)
-      (digital-clock)
-      (power-menu :monitor monitor))))
+      (box
+        :orientation 'horizontal'
+        :space-evenly false
+        :spacing 3
+        (image
+          :image-height main-bar-height
+          :path 'assets/icons/hyprheader.svg')
+        (workspaces))
+      (player)
+      (box
+        :spacing 16
+        :space-evenly false
+        :orientation 'horizontal'
+        :valign 'end'
+        :halign 'end'
+        (volume-control :kind 'source')
+        (volume-control :kind 'sink')
+        (batteries)
+        (disk-icon)
+        (memory-usage)
+        (wifi)
+        (ethernet-icon)
+        (kb-layout)
+        (digital-clock)
+        (power-menu :monitor monitor)))))
