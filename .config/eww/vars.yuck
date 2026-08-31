@@ -1,6 +1,7 @@
 
 (defvar monitors '["Odyssey G5", "24G2W1G5", "DP-2", "HDMI-A-1", 1, 0]')
 
+(defvar main-bar-y -36)
 (defvar main-bar-height 36)
 
 (defvar wifi-ssid 'Disconnected')

@@ -9,7 +9,7 @@ update() {
 
 open() {
   update
-  eww open disks --arg monitor="$(eww get monitors)"
+  eww open disks --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
 }
 
 close() {
@@ -77,4 +77,3 @@ case "$1" in
     update
   ;;
 esac
-
