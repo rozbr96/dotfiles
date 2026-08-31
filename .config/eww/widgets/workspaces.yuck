@@ -8,8 +8,8 @@
     :cursor 'pointer'
     :class 'workspace ${active-workspace-id == id ? "active" : ""}'
     (button
-      :height 36
-      :width 36
+      :height main-bar-height
+      :width main-bar-height
       :onclick `hyprctl dispatch 'hl.dsp.focus({ workspace = ${id} })'`
       {name ?: id})))
 

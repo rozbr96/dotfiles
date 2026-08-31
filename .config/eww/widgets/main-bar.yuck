@@ -22,7 +22,7 @@
       :space-evenly false
       :spacing 3
       (image
-        :image-height 36
+        :image-height main-bar-height
         :path 'assets/icons/hyprheader.svg')
       (workspaces))
     (player)

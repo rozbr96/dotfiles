@@ -3,7 +3,7 @@
   (scale
     :visible {kind == 'source' ? source-volume-visible : sink-volume-visible}
     :max max-volume
-    :height 36
+    :height main-bar-height
     :width max-volume
     :value {kind == 'source' ? source-volume-level : sink-volume-level}
     :flipped false

@@ -6,6 +6,7 @@
     :onclick 'disks open'
     :onrightclick 'disks close'
     (image
-      :image-height 36
+      :image-height main-bar-height
+      :image-width main-bar-height
       :fill-svg '#33ccff'
       :path 'assets/icons/disk.svg')))
