@@ -1,0 +1,16 @@
+
+get() {
+  eww get main-bar-hover-count
+}
+
+increase() {
+  eww update main-bar-hover-count=$(( $(get) + 1 ))
+}
+
+decrease() {
+  eww update main-bar-hover-count=$(( $(get) - 1 ))
+}
+
+case "$1" in
+  get|increase|decrease) $1 ;;
+esac

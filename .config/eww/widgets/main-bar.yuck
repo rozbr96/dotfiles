@@ -15,10 +15,10 @@
 
 (defwidget main-bar [monitor]
   (eventbox
-    :onhover `${EWW_CMD} update main-bar-class="main-bar display"`
-    :onhoverlost `${EWW_CMD} update main-bar-class="main-bar hidden"`
+    :onhover `${EWW_CMD} update main-bar-is-hover=true`
+    :onhoverlost `${EWW_CMD} update main-bar-is-hover=false`
     (centerbox
-      :class main-bar-class
+      :class "main-bar ${main-bar-is-hover || main-bar-hover-count == 0 ? 'display' : 'hidden'}"
       :orientation 'horizontal'
       :space-evenly false
       (box
