@@ -13,32 +13,32 @@
 (include 'widgets/icons/disk.yuck')
 (include 'widgets/player.yuck')
 
-(defwidget main-bar [orientation monitor]
+(defwidget main-bar [monitor]
   (centerbox
-    :orientation orientation
+    :orientation 'horizontal'
     :space-evenly false
     (box
-      :orientation orientation
+      :orientation 'horizontal'
       :space-evenly false
       :spacing 3
       (image
         :image-height 36
-        :path {orientation == 'horizontal' ? 'assets/icons/hyprheader.svg' : 'assets/icons/hypr.svg'})
-      (workspaces :orientation orientation))
+        :path 'assets/icons/hyprheader.svg')
+      (workspaces))
     (player)
     (box 
       :spacing 16
       :space-evenly false
-      :orientation orientation
+      :orientation 'horizontal'
       :valign 'end'
       :halign 'end'
-      (volume-control :orientation orientation :kind 'source')
-      (volume-control :orientation orientation :kind 'sink')
+      (volume-control :kind 'source')
+      (volume-control :kind 'sink')
       (batteries)
       (disk-icon)
       (memory-usage)
       (wifi)
       (ethernet-icon)
       (kb-layout)
-      (digital-clock :orientation orientation)
+      (digital-clock)
       (power-menu :monitor monitor))))

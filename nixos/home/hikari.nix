@@ -132,7 +132,6 @@ in
           ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
           ExecStartPost = ''
             ${pkgs.eww}/bin/eww open main-bar \
-              --arg orientation=horizontal \
               --arg monitor='["Odyssey G5", "24G2W1G5", "DP-2", "HDMI-A-1", 1, 0]'
           '';
           Restart = "always";
