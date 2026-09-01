@@ -1,0 +1,10 @@
+{
+  "workspace": {
+    "library": [
+      "path to hypr/stubs goes here"
+    ]
+  },
+  "diagnostics": {
+    "globals": ["hl"]
+  }
+}
