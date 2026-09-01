@@ -17,19 +17,21 @@
   (eventbox
     :onhover `${EWW_CMD} update main-bar-is-hover=true`
     :onhoverlost `${EWW_CMD} update main-bar-is-hover=false`
-    (centerbox
+    (box
       :class "main-bar ${main-bar-is-hover || main-bar-hover-count == 0 ? 'display' : 'hidden'}"
       :orientation 'horizontal'
-      :space-evenly false
+      :space-evenly true
       (box
         :orientation 'horizontal'
-        :space-evenly false
-        :spacing 3
-        (image
-          :image-height main-bar-height
-          :path 'assets/icons/hyprheader.svg')
-        (workspaces))
-      (player)
+        (box
+          :orientation 'horizontal'
+          :space-evenly false
+          :spacing 3
+          (image
+            :image-height main-bar-height
+            :path 'assets/icons/hyprheader.svg')
+          (workspaces))
+        (player))
       (box
         :spacing 16
         :space-evenly false
