@@ -1,10 +1,11 @@
 
-(defwindow calendar [monitor]
+(defwindow calendar [monitor popup-y]
   :monitor monitor
   :stacking 'overlay'
   :exclusive false
   :geometry (geometry
               :x 20
+              :y popup-y
               :width 320
               :anchor 'top right')
   (calendar))

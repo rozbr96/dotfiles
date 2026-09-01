@@ -13,32 +13,36 @@
 (include 'widgets/icons/disk.yuck')
 (include 'widgets/player.yuck')
 
-(defwidget main-bar [orientation monitor]
-  (centerbox
-    :orientation orientation
-    :space-evenly false
-    (box
-      :orientation orientation
+(defwidget main-bar [monitor]
+  (eventbox
+    :onhover `${EWW_CMD} update main-bar-is-hover=true`
+    :onhoverlost `${EWW_CMD} update main-bar-is-hover=false`
+    (centerbox
+      :class "main-bar ${main-bar-is-hover || main-bar-hover-count == 0 ? 'display' : 'hidden'}"
+      :orientation 'horizontal'
       :space-evenly false
-      :spacing 3
-      (image
-        :image-height 36
-        :path {orientation == 'horizontal' ? 'assets/icons/hyprheader.svg' : 'assets/icons/hypr.svg'})
-      (workspaces :orientation orientation))
-    (player)
-    (box 
-      :spacing 16
-      :space-evenly false
-      :orientation orientation
-      :valign 'end'
-      :halign 'end'
-      (volume-control :orientation orientation :kind 'source')
-      (volume-control :orientation orientation :kind 'sink')
-      (batteries)
-      (disk-icon)
-      (memory-usage)
-      (wifi)
-      (ethernet-icon)
-      (kb-layout)
-      (digital-clock :orientation orientation)
-      (power-menu :monitor monitor))))
+      (box
+        :orientation 'horizontal'
+        :space-evenly false
+        :spacing 3
+        (image
+          :image-height main-bar-height
+          :path 'assets/icons/hyprheader.svg')
+        (workspaces))
+      (player)
+      (box
+        :spacing 16
+        :space-evenly false
+        :orientation 'horizontal'
+        :valign 'end'
+        :halign 'end'
+        (volume-control :kind 'source')
+        (volume-control :kind 'sink')
+        (batteries)
+        (disk-icon)
+        (memory-usage)
+        (wifi)
+        (ethernet-icon)
+        (kb-layout)
+        (digital-clock)
+        (power-menu :monitor monitor)))))

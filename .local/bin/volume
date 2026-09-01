@@ -58,7 +58,7 @@ case $1 in
   mixer)
     case "$2" in
       open)
-        eww open mixer --arg sinks="$(options_for sink)" --arg sources="$(options_for source)" --arg monitor="$(eww get monitors)"
+        eww open mixer --arg sinks="$(options_for sink)" --arg sources="$(options_for source)" --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
       ;;
 
       close)

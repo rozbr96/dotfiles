@@ -2,7 +2,7 @@
 
 function open() {
   eww update calendar-state="open"
-  eww open calendar --arg monitor="$(eww get monitors)"
+  eww open calendar --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
 }
 
 function close() {

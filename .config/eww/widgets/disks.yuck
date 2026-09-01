@@ -9,6 +9,8 @@
                       "sr":   "#8D8D8D"}
                      ')
 
+(defvar disk-icon-size 36)
+
 (defwidget partition [partition]
   (eventbox
     :cursor 'pointer'
@@ -19,7 +21,8 @@
       :width 100
       :orientation 'v'
       (image
-        :image-width 36
+        :image-height disk-icon-size
+        :image-width disk-icon-size
         :path "assets/icons/${partition.tran}.svg"
         :fill-svg {partition.mountpoints == [] ? "grey" : "green"})
       (label
@@ -34,7 +37,8 @@
       :orientation 'h'
       :space-evenly false
       (image
-        :image-width 36
+        :image-height disk-icon-size
+        :image-width disk-icon-size
         :fill-svg {disk-colors[disk.tran]}
         :path "assets/icons/${disk.tran}.svg")
       (label :text {disk.name}))
@@ -52,4 +56,3 @@
     :space-evenly false
     (for disk in disks
       (disk :disk disk))))
-

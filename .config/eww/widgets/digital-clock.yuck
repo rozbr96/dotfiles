@@ -1,14 +1,14 @@
 
-(defwidget digital-clock [?orientation]
+(defwidget digital-clock []
   (eventbox
     :cursor 'pointer'
     :onclick `calendar toggle`
     (box
-      :orientation {orientation ?: 'horizontal'}
+      :orientation 'horizontal'
       "${substring(time, 0, 2)}"
       "${substring(time, 3, 2)}"
       "${substring(time, 6, 2)}"
-      {orientation == 'horizontal' ? '|' : '----'}
+      "|"
       "${substring(time, 9, 2)}"
-      "${substring(time, 12, 3)}${orientation == 'horizontal' ? ' ' : ''}"
+      "${substring(time, 12, 3)} "
       "${substring(time, 16, 3)}")))

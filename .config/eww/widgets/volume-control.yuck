@@ -1,16 +1,16 @@
 
-(defwidget volume-changer [?orientation kind]
+(defwidget volume-changer [kind]
   (scale
     :visible {kind == 'source' ? source-volume-visible : sink-volume-visible}
     :max max-volume
-    :height {orientation == 'vertical' ? max-volume : 36}
-    :width {orientation == 'vertical' ? 36 : max-volume}
+    :height main-bar-height
+    :width max-volume
     :value {kind == 'source' ? source-volume-level : sink-volume-level}
-    :flipped {orientation == 'vertical'}
-    :orientation {orientation ?: 'vertical'}
+    :flipped false
+    :orientation 'horizontal'
     :onchange `volume set ${kind} {}`))
 
-(defwidget volume-control [?orientation kind]
+(defwidget volume-control [kind]
   (eventbox
     :tooltip 'Volume'
     :cursor 'pointer'
@@ -19,12 +19,12 @@
     :onrightclick `volume mixer open`
     (box
       :space-evenly false
-      :orientation {orientation ?: 'vertical'}
+      :orientation 'horizontal'
       (revealer
         :duration '100ms'
-        :transition {orientation == 'vertical' ? 'slideup' : 'slideleft'}
+        :transition 'slideleft'
         :reveal {kind == 'source' ? source-volume-visible : sink-volume-visible}
-        (volume-changer :orientation orientation :kind kind))
+        (volume-changer :kind kind))
       (eventbox
         :onclick `volume mute ${kind} toggle`
         (overlay

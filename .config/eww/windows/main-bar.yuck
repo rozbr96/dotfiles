@@ -1,12 +1,13 @@
 
 (include 'widgets/main-bar.yuck')
 
-(defwindow main-bar [orientation monitor]
+(defwindow main-bar [monitor]
   :monitor monitor
   :stacking 'fg'
   :exclusive true
   :geometry (geometry
-              :width {orientation == 'horizontal' ? '100%' : '36px'}
-              :height {orientation == 'horizontal' ? '36px' : '100%'}
-              :anchor {orientation == 'horizontal' ? 'top center' : 'center left'})
-  (main-bar :orientation orientation :monitor monitor))
+              :x '5%'
+              :y '30px'
+              :width '90%'
+              :height '36px')
+  (main-bar :monitor monitor))

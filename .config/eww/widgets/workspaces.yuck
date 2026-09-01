@@ -8,16 +8,16 @@
     :cursor 'pointer'
     :class 'workspace ${active-workspace-id == id ? "active" : ""}'
     (button
-      :height 36
-      :width 36
+      :height main-bar-height
+      :width main-bar-height
       :onclick `hyprctl dispatch 'hl.dsp.focus({ workspace = ${id} })'`
       {name ?: id})))
 
-(defwidget workspaces [?orientation]
+(defwidget workspaces []
   (eventbox
     :onscroll `echo "{}" | sed s/down/m+1/ | sed s/up/m-1/ | xargs -I X hyprctl dispatch 'hl.dsp.focus({ workspace = "X" })'`
     (box
-      :orientation {orientation ?: 'vertical'}
+      :orientation 'horizontal'
       :space-evenly false
       (for workspace in active-workspaces
         (workspace
