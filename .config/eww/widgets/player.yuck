@@ -13,7 +13,6 @@
         :path 'assets/icons/music.svg'
         :fill-svg 'white'
         :image-height media-control-icon-size)
-      (label :text {substring(media-metadata.title, 0, 30)})
       (eventbox
         :cursor 'pointer'
         :tooltip 'Play Prev'
@@ -37,4 +36,5 @@
         (image
           :path 'assets/icons/play-next.svg'
           :fill-svg 'white'
-          :image-height media-control-icon-size)))))
+          :image-height media-control-icon-size))
+      (label :text {substring(media-metadata.title, 0, 40)}))))
