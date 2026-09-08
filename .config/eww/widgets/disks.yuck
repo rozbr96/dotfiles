@@ -11,7 +11,7 @@
 
 (defvar disk-icon-size 36)
 
-(defwidget partition [partition]
+(defwidget partition [partition disk-tran]
   (eventbox
     :cursor 'pointer'
     :tooltip "${partition.label ?: partition.name} (${partition.path})"
@@ -23,7 +23,7 @@
       (image
         :image-height disk-icon-size
         :image-width disk-icon-size
-        :path "assets/icons/${partition.tran}.svg"
+        :path "assets/icons/${partition.tran ?: disk-tran}.svg"
         :fill-svg {partition.mountpoints == [] ? "grey" : "green"})
       (label
         :text {partition.label ?: partition.name}))))
@@ -48,7 +48,7 @@
         :orientation 'h'
         :space-evenly false
         (for partition in {disk.children}
-          (partition :partition partition))))))
+          (partition :partition partition :disk-tran {disk.tran}))))))
 
 (defwidget disks []
   (box
