@@ -80,6 +80,7 @@
       poppler-utils
       pulseaudioFull
       ranger
+      yazi
       ripgrep
       slurp
       socat
