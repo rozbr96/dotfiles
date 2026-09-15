@@ -2,4 +2,4 @@ hl.config({
   general = { layout = 'hy3' },
 })
 
-load('bindings/layouts/hy3')
+File.include('bindings/layouts/hy3')
