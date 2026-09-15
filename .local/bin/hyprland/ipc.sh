@@ -4,14 +4,6 @@ layouts=("English (US)" "Portuguese (Brazil)")
 layouts_flags=("🇺🇸" "🇧🇷")
 active_window=""
 
-update_active_workspace() {
-  eww update active-workspace-id=$1
-}
-
-update_active_workspaces() {
-  eww update active-workspaces="$(hyprctl -j workspaces | jq '[ .[] | select(.name | contains("special") | not) ] | sort_by(.id)')"
-}
-
 update_active_layout() {
   layout_index=${layouts[(Ie)$1]}
 
@@ -45,32 +37,9 @@ handle() {
       layout="$(echo $data | cut -d',' -f2)"
       update_active_layout "$layout"
     ;;
-
-    workspacev2)
-      workspace_id=$(echo $data | cut -d',' -f1)
-
-      update_active_workspace $workspace_id
-    ;;
-
-    focusedmonv2)
-      workspace_id=$(echo $data | cut -d',' -f2)
-
-      update_active_workspace $workspace_id
-    ;;
-
-    createworkspacev2|destroyworkspacev2)
-      update_active_workspaces
-    ;;
-
-    *)
-      echo "Unknown Event: $event"
-      echo "Input: $1"
-      echo ""
-    ;;
   esac
 }
 
 update_active_layout "$(hyprctl devices -j | jq -r '.keyboards | .[] | select(.main == true) | .active_keymap')"
-update_active_workspaces
 
 socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done
