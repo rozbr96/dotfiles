@@ -12,6 +12,7 @@ let
   home = "/home/${user}";
   system = pkgs.stdenv.hostPlatform.system;
   dotfiles = if dev then "${home}/Workspace/dotfiles" else inputs.self;
+  hyprLuaStubsPath = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
 in
 {
   home = {
@@ -45,7 +46,13 @@ in
     sessionVariables = {
       DEV_NIX_CHANNEL = nix_channel;
       LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
-      HYPR_LSP_STUBS_PATH = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
+      HYPR_LSP_STUBS_PATH = hyprLuaStubsPath;
+    };
+
+    activation = {
+      lua_hypr_stubs_setup = ''
+        sed -Ei "s\\hypr_stubs_path\\${hyprLuaStubsPath}\\" ${home}/Workspace/dotfiles/.luarc.json
+      '';
     };
   };
 
