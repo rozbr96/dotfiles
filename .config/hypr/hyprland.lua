@@ -1,6 +1,8 @@
+local dotfiles_path = os.getenv('DOTFILES_PATH')
+
 File = {
   include = function(filepath)
-    dofile('/home/hikari/.config/hypr/hyprland.d/' .. filepath .. '.lua')
+    dofile(dotfiles_path .. '/.config/hypr/hyprland.d/' .. filepath .. '.lua')
   end
 }
 
