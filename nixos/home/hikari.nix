@@ -137,18 +137,18 @@ in
         };
       };
 
-      hypr-ipc = {
-        Unit = {
-          Description = "Hyprland IPC";
-        };
-
-        Service = {
-          Type = "exec";
-          ExecStart = "${config.home.homeDirectory}/.local/bin/hypr_ipc";
-          Restart = "always";
-          RestartSec = 1;
-        };
-      };
+      # hypr-ipc = {
+      #   Unit = {
+      #     Description = "Hyprland IPC";
+      #   };
+      #
+      #   Service = {
+      #     Type = "exec";
+      #     ExecStart = "${config.home.homeDirectory}/.local/bin/hypr_ipc";
+      #     Restart = "always";
+      #     RestartSec = 1;
+      #   };
+      # };
 
       volume-monitor = {
         Unit = {
