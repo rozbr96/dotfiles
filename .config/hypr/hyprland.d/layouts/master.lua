@@ -3,4 +3,4 @@ hl.config({
   master = { orientation = 'center' },
 })
 
-load('bindings/layouts/master')
+File.include('bindings/layouts/master')

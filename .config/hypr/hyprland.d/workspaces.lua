@@ -1,3 +1,4 @@
+---@type HL.WorkspaceRuleSpec[]
 local workspaces = {
   { workspace = '1', default_name = '一', monitor = 'eDP-1' },
   { workspace = '2', default_name = '二', monitor = 'DP-1' },

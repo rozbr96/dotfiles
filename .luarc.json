@@ -1,7 +1,7 @@
 {
   "workspace": {
     "library": [
-      "path to hypr/stubs goes here"
+      "hypr_stubs_path"
     ]
   },
   "diagnostics": {

@@ -8,7 +8,7 @@ HYPR = {
   },
   programs = {
     browser = 'google-chrome-stable',
-    file_manager = 'kitty -e ranger',
+    file_manager = 'kitty -e yazi',
     menu = 'wofi --show run',
     task_manager = 'btop',
     terminal = 'kitty'

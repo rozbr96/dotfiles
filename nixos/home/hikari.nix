@@ -12,6 +12,7 @@ let
   home = "/home/${user}";
   system = pkgs.stdenv.hostPlatform.system;
   dotfiles = if dev then "${home}/Workspace/dotfiles" else inputs.self;
+  hyprLuaStubsPath = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
 in
 {
   home = {
@@ -26,16 +27,6 @@ in
       ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/kitty";
       ".config/mako".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/mako";
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/nvim";
-      ".config/ranger/commands.py".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/commands.py";
-      ".config/ranger/commands_full.py".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/commands_full.py";
-      ".config/ranger/rc.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/rc.conf";
-      ".config/ranger/rifle.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/rifle.conf";
-      ".config/ranger/scope.sh".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/scope.sh";
       ".config/wofi".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/wofi";
       ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.gitconfig";
       ".local/bin".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.local/bin";
@@ -55,7 +46,14 @@ in
     sessionVariables = {
       DEV_NIX_CHANNEL = nix_channel;
       LIB_HY3_PATH = "${inputs.hy3.packages.${system}.hy3}/lib/libhy3.so";
-      HYPR_LSP_STUBS_PATH = "${inputs.hyprland.packages.${system}.hyprland}/share/hypr/stubs";
+      HYPR_LSP_STUBS_PATH = hyprLuaStubsPath;
+      DOTFILES_PATH = dotfiles;
+    };
+
+    activation = {
+      lua_hypr_stubs_setup = ''
+        sed -Ei "s\\hypr_stubs_path\\${hyprLuaStubsPath}\\" ${home}/Workspace/dotfiles/.luarc.json
+      '';
     };
   };
 

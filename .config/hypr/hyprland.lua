@@ -1,17 +1,22 @@
-function load(filepath)
-  dofile('/home/hikari/.config/hypr/hyprland.d/' .. filepath .. '.lua')
-end
+local dotfiles_path = os.getenv('DOTFILES_PATH')
 
-load('vars')
-load('env')
-load('monitors')
-load('hypr-config')
-load('animations')
-load('workspaces')
-load('startup')
-load('events/init')
-load('bindings/system')
-load('bindings/apps')
-load('bindings/multimedia')
-load('bindings/hyprland')
-load('layouts/' .. HYPR.layout)
+File = {
+  include = function(filepath)
+    dofile(dotfiles_path .. '/.config/hypr/hyprland.d/' .. filepath .. '.lua')
+  end
+}
+
+File.include('vars')
+File.include('env')
+File.include('monitors')
+File.include('hypr-config')
+File.include('animations')
+File.include('workspaces')
+File.include('windows')
+File.include('startup')
+File.include('events/init')
+File.include('bindings/system')
+File.include('bindings/apps')
+File.include('bindings/multimedia')
+File.include('bindings/hyprland')
+File.include('layouts/' .. HYPR.layout)

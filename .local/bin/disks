@@ -48,7 +48,7 @@ mount() {
 }
 
 explore() {
-  kitty -e ranger "$1" &
+  kitty -e yazi "$1" &
 
   close
 }
