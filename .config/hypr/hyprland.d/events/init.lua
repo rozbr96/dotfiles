@@ -3,5 +3,6 @@ local function include(filepath)
 end
 
 include('active-window-focus')
+include('active-workspace')
 include('active-workspaces')
 include('eww-main-bar-hovering-count')
