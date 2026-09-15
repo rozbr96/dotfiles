@@ -26,16 +26,6 @@ in
       ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/kitty";
       ".config/mako".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/mako";
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/nvim";
-      ".config/ranger/commands.py".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/commands.py";
-      ".config/ranger/commands_full.py".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/commands_full.py";
-      ".config/ranger/rc.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/rc.conf";
-      ".config/ranger/rifle.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/rifle.conf";
-      ".config/ranger/scope.sh".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/ranger/scope.sh";
       ".config/wofi".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/wofi";
       ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.gitconfig";
       ".local/bin".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.local/bin";
