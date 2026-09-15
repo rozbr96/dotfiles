@@ -1,4 +1,4 @@
  # Just my stuffs
 
-![Current System Spec](/assets/specs.png)
+![Current System Spec](/assets/preview.png)
 
