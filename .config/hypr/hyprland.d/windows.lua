@@ -1,7 +1,7 @@
 ---@type HL.WindowRuleSpec[]
 local windowRules = {
   {
-    match = { class = 'mpv' },
+    match = { class = 'mpv|kitty' },
     float = true,
   },
 }
