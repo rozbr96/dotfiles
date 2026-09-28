@@ -3,7 +3,7 @@
   (eventbox
     :cursor 'pointer'
     :tooltip 'Disks'
-    :onclick 'disks open'
+    :onclick 'disks toggle'
     :onrightclick 'disks close'
     (image
       :image-height main-bar-height
