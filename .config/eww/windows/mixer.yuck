@@ -22,16 +22,16 @@
             :class {device.active ? 'active' : ''}
             :truncate true))))))
 
-(defwindow mixer [monitor sinks sources popup-y]
+(defwindow mixer [monitor sinks sources popup-x popup-y]
   :class 'mixer'
   :monitor monitor
   :stacking 'overlay'
   :exclusive false
   :geometry (geometry
-              :x 320
+              :x popup-x
               :y popup-y
               :width 400
-              :anchor 'top right')
+              :anchor 'top left')
   (box
     :orientation 'v'
     :space-evenly false

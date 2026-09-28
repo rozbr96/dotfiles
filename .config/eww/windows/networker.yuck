@@ -1,14 +1,14 @@
 
 (include 'widgets/networker.yuck')
 
-(defwindow networker [monitor popup-y]
+(defwindow networker [monitor popup-x popup-y]
   :monitor monitor
   :stacking 'overlay'
   :focusable 'ondemand'
   :exclusive false
   :geometry (geometry
-              :x 200
+              :x popup-x
               :y popup-y
               :width 400
-              :anchor 'top right')
+              :anchor 'top left')
   (networker))

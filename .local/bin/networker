@@ -3,7 +3,7 @@
 start() {
   eww update loading=true
   eww update networker-step-index=0
-  eww open networker --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
+  eww open networker --arg monitor="$(eww get monitors)" --arg popup-x="$(eww_popup_x 400)" --arg popup-y="$(eww_popup_y)"
 
   (
     t=0

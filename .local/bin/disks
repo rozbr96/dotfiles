@@ -9,7 +9,7 @@ update() {
 
 open() {
   update
-  eww open disks --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
+  eww open disks --arg monitor="$(eww get monitors)" --arg popup-x="$(eww_popup_x 440)" --arg popup-y="$(eww_popup_y)"
 }
 
 close() {

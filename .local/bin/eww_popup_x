@@ -1,0 +1,6 @@
+#!/run/current-system/sw/bin/zsh
+
+window_width=${1:-0}
+window_half_width=$(echo $(( window_width / 2 )))
+
+echo $(( $(hyprctl cursorpos | cut -d, -f1) - $(eww get main-bar-x) - $window_half_width ))
