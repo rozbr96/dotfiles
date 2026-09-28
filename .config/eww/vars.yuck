@@ -47,6 +47,7 @@
 
 (defvar calendar-state 'closed')
 (defvar disks-state 'closed')
+(defvar networker-state 'closed')
 
 (defvar battery-colors '[
                          "#ff3b30",
