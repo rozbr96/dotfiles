@@ -1,0 +1,14 @@
+#!/run/current-system/sw/bin/zsh
+
+main_bar_state="$(eww get main-bar-state)"
+
+case "$main_bar_state" in
+  normal) new_state="fixed" ;;
+  fixed) new_state="hidden" ;;
+  hidden) new_state="normal" ;;
+  *) new_state="normal" ;;
+esac
+
+eww update main-bar-state="$new_state"
+
+export main_bar_state_notification_id=$(notify-send -pr "${main_bar_state_notification_id:-0}" "Main Bar Mode Switched to: $new_state")

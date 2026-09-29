@@ -18,7 +18,7 @@
     :onhover `${EWW_CMD} update main-bar-is-hover=true`
     :onhoverlost `${EWW_CMD} update main-bar-is-hover=false`
     (box
-      :class "main-bar ${main-bar-is-hover || main-bar-hover-count == 0 ? 'display' : 'hidden'}"
+      :class "main-bar ${main-bar-state == 'fixed' ? 'display' : (main-bar-state == 'hidden' ? 'hidden' : (main-bar-is-hover || main-bar-hover-count == 0 ? 'display' : 'hidden'))}"
       :orientation 'horizontal'
       :space-evenly true
       (box

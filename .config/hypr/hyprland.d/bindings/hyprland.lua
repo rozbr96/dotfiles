@@ -19,3 +19,4 @@ hl.bind(HYPR.keys.mod .. ' + mouse:273', hl.dsp.window.resize(), { mouse = true 
 
 hl.bind('ALT + SHIFT + Space', hl.dsp.window.float({ action = 'toggle' }))
 hl.bind(HYPR.keys.mod .. ' + SHIFT + S', hl.dsp.window.pin())
+hl.bind(HYPR.keys.mod .. ' + S', hl.dsp.exec_cmd('toggle-main-bar-state'))

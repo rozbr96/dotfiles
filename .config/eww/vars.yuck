@@ -9,6 +9,7 @@
 (defvar main-bar-x 1920)
 (defvar main-bar-y 56)
 (defvar main-bar-height 36)
+(defvar main-bar-state 'normal')
 
 (defvar wifi-ssid 'Disconnected')
 (defvar wifi-strength-index 0)
