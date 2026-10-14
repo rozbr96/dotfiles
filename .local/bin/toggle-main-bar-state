@@ -4,9 +4,16 @@ main_bar_state="$(eww get main-bar-state)"
 
 case "$main_bar_state" in
   normal) new_state="fixed" ;;
-  fixed) new_state="hidden" ;;
-  hidden) new_state="normal" ;;
-  *) new_state="normal" ;;
+
+  fixed)
+    new_state="hidden"
+    eww close main-bar
+  ;;
+
+  hidden|*)
+    new_state="normal"
+    systemctl start --user main-bar
+  ;;
 esac
 
 eww update main-bar-state="$new_state"
