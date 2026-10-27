@@ -1,0 +1,69 @@
+#!/run/current-system/sw/bin/zsh
+
+_echo() { echo "$@" > $OUT }
+
+OUT=/dev/null
+
+while [ $# -gt 1 ]; do
+  case "$1" in
+    -i|--in|--src)
+      SRC="$2"
+      shift 2
+    ;;
+
+    -o|--out|--dst)
+      DST="$2"
+      shift 2
+    ;;
+
+    -v|--verbose)
+      OUT=/dev/tty
+      shift
+    ;;
+
+    *) shift ;;
+  esac
+done
+
+[ -z $SRC ] && SRC="$(pwd)"
+[ -z $DST ] && DST="$SRC/.thumbs"
+
+mkdir -p $DST || exit 1
+
+for image in $SRC/*; do
+  _echo -n "Thumbnailing [$image]... "
+
+  thumb="$DST/$(basename $image)"
+
+  [ -f $thumb ] && _echo "Skipped!" && continue
+
+  magick $image \
+    -auto-orient \
+    -thumbnail '320x180^' \
+    -gravity center \
+    -extent 320x180 \
+    -quality 80 \
+    $thumb && _echo "Done!" && continue
+
+  _echo "Failed!"
+done
+
+jq -n '
+  [
+    inputs | {
+      image: .image,
+      thumb: .thumb
+    }
+  ]
+' < <(
+  find "$SRC" -maxdepth 1 -type f \
+    ! -path "$DST/*" -print0 |
+  while IFS= read -r -d '' image; do
+    name=$(basename "$image")
+
+    jq -cn \
+      --arg image "$image" \
+      --arg thumb "$DST/$name" \
+      '{image: $image, thumb: $thumb}'
+  done
+) > ${1:-~/.thumbs.json}
