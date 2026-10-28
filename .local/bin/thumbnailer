@@ -30,7 +30,7 @@ done
 
 mkdir -p $DST || exit 1
 
-for image in $SRC/*; do
+for image in "$SRC"/*.{png,jpg,jpeg,webp,svg,jxl}; do
   _echo -n "Thumbnailing [$image]... "
 
   thumb="$DST/$(basename $image)"
@@ -56,14 +56,13 @@ jq -n '
     }
   ]
 ' < <(
-  find "$SRC" -maxdepth 1 -type f \
-    ! -path "$DST/*" -print0 |
-  while IFS= read -r -d '' image; do
-    name=$(basename "$image")
+  find "$DST" -maxdepth 1 -type f -print0 |
+    while IFS= read -r -d '' thumb; do
+      name=$(basename "$thumb")
 
-    jq -cn \
-      --arg image "$image" \
-      --arg thumb "$DST/$name" \
-      '{image: $image, thumb: $thumb}'
-  done
+      jq -cn \
+        --arg image "$SRC/$name" \
+        --arg thumb "$thumb" \
+        '{image: $image, thumb: $thumb}'
+    done
 ) > ${1:-~/.thumbs.json}
