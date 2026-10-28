@@ -1,11 +1,14 @@
 #!/run/current-system/sw/bin/zsh
 
-thumbs_file=~/.thumbs.json
-active_workspace_id="$(hyprctl -j monitors | jq '.[] | select(.focused == true) | .id')"
-
 open() {
+  thumbs_file=~/.thumbs.json
+  active_workspace="$(hyprctl -j monitors | jq '.[] | select(.focused == true)')"
+  active_workspace_id="$(echo "$active_workspace" | jq '.id')"
+  active_workspace_name="$(echo "$active_workspace" | jq '.name')"
+
   [ -f $thumbs_file ] && eww update wallpaperer-images="$(cat $thumbs_file)"
 
+  eww update wallpaperer-target-monitor="$active_workspace_name"
   eww open wallpaperer --arg monitor="$active_workspace_id"
 }
 

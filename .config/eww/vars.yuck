@@ -72,3 +72,4 @@
 
 (defvar wallpaperer-selected-range-index 0)
 (defvar wallpaperer-images '[]')
+(defvar wallpaperer-target-monitor '')
