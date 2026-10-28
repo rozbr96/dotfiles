@@ -1,0 +1,13 @@
+
+(include 'widgets/wallpaperer.yuck')
+
+(defwindow wallpaperer [monitor]
+  :monitor monitor
+  :stacking 'fg'
+  :exclusive false
+  :geometry (geometry
+              :width 1660
+              :height 340
+              :y '5%'
+              :anchor 'center bottom')
+  (wallpaperer))

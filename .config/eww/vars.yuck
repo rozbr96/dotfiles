@@ -69,3 +69,6 @@
 (defvar disks '[]')
 
 (defvar media-metadata '{}')
+
+(defvar wallpaperer-selected-range-index 0)
+(defvar wallpaperer-images '[]')

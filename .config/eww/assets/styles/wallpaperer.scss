@@ -1,0 +1,11 @@
+
+.wallpaperer {
+  & .image-wrapper {
+    &:hover {
+      & > image {
+        -gtk-icon-transform: scale(1.2);
+      }
+    }
+  }
+}
+

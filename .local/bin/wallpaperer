@@ -1,0 +1,38 @@
+#!/run/current-system/sw/bin/zsh
+
+thumbs_file=~/.thumbs.json
+active_workspace_id="$(hyprctl -j monitors | jq '.[] | select(.focused == true) | .id')"
+
+open() {
+  [ -f $thumbs_file ] && eww update wallpaperer-images="$(cat $thumbs_file)"
+
+  eww open wallpaperer --arg monitor="$active_workspace_id"
+}
+
+close() {
+  eww close wallpaperer
+}
+
+scroll() {
+  index=$(eww get wallpaperer-selected-range-index)
+
+  case "$1" in
+    up) index=$(( index - 1 )) ;;
+    down) index=$(( index + 1 )) ;;
+  esac
+
+  max_index=$(eww get wallpaperer-images | jq 'length')
+
+  [ $index -lt 0 ] && index=0
+  [ $max_index -gt 4 ] && [ $index -ge $(( max_index - 4 )) ] && index=$(( max_index - 4 ))
+
+  eww update wallpaperer-selected-range-index=$index
+}
+
+action="${1:-open}"
+
+[ $# -gt 0 ] && shift
+
+case "$action" in
+  open|close|scroll) "$action" "$@" ;;
+esac
