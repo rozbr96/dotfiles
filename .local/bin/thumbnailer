@@ -1,5 +1,7 @@
 #!/run/current-system/sw/bin/zsh
 
+setopt nullglob nocaseglob
+
 _echo() { echo "$@" > $OUT }
 
 OUT=/dev/null
@@ -51,6 +53,7 @@ done
 jq -n '
   [
     inputs | {
+      name:  .name,
       image: .image,
       thumb: .thumb
     }
@@ -61,8 +64,9 @@ jq -n '
       name=$(basename "$thumb")
 
       jq -cn \
+        --arg name "$name" \
         --arg image "$SRC/$name" \
         --arg thumb "$thumb" \
-        '{image: $image, thumb: $thumb}'
+        '{name: $name, image: $image, thumb: $thumb}'
     done
 ) > ${1:-~/.thumbs.json}

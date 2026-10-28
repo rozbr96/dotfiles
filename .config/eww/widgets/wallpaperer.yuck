@@ -19,6 +19,7 @@
               :class 'image-wrapper'
               :onclick `hyprctl hyprpaper wallpaper ",${image.image}"`
               (image
+                :tooltip {image.name}
                 :path {image.thumb}
                 :image-height 200
                 :image-width 320)))))
