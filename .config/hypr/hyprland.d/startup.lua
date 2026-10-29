@@ -5,13 +5,13 @@ hl.on('hyprland.start', function()
   end
 
   hl.exec_cmd('mako')
-  hl.exec_cmd('hyprpaper')
   hl.exec_cmd('wl-paste --type text --watch cliphist store')
   hl.exec_cmd('wl-paste --type image --watch cliphist store')
   hl.exec_cmd('dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP')
 end)
 
 hl.on('config.reloaded', function()
+  hl.exec_cmd('systemctl --user restart hyprpaper')
   hl.exec_cmd('systemctl --user restart hypr-ipc')
   hl.exec_cmd('systemctl --user restart eww')
   hl.exec_cmd('systemctl --user restart network-monitor')

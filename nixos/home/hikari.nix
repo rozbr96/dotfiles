@@ -212,6 +212,20 @@ in
           RestartSec = 1;
         };
       };
+
+      hyprpaper = {
+        Unit = {
+          Description = "Hyprpaper";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStartPre = "${pkgs.zsh}/bin/zsh -c '${pkgs.busybox}/bin/cat ${config.home.homeDirectory}/.config/hypr/hyprpaper.d/*.conf > ${config.home.homeDirectory}/.config/hypr/hyprpaper.d/.config.conf'";
+          ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
     };
   };
 }
