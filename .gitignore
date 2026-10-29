@@ -2,3 +2,4 @@
 .bin/hyprls
 .bin/eww
 .ssh/
+.config/hypr/hyprpaper.d/*.conf
