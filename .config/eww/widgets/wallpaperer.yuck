@@ -17,7 +17,7 @@
             (eventbox
               :cursor 'pointer'
               :class 'image-wrapper'
-              :onclick `hyprctl hyprpaper wallpaper "${wallpaperer-target-monitor},${image.image}"`
+              :onclick `wallpaperer set "${wallpaperer-target-monitor}" "${image.image}"`
               (image
                 :tooltip {image.name}
                 :path {image.thumb}

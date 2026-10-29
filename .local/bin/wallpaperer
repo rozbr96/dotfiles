@@ -32,10 +32,23 @@ scroll() {
   eww update wallpaperer-selected-range-index=$index
 }
 
+set() {
+  monitor="$1"
+  image_path="$2"
+  config_file=~/.config/hypr/hyprpaper.d/${monitor:-all}.conf
+
+  echo "wallpaper {"             > $config_file
+  echo "    monitor = $monitor" >> $config_file
+  echo "    path = $image_path" >> $config_file
+  echo "}"                      >> $config_file
+
+  hyprctl hyprpaper wallpaper "${monitor},${image_path}"
+}
+
 action="${1:-open}"
 
 [ $# -gt 0 ] && shift
 
 case "$action" in
-  open|close|scroll) "$action" "$@" ;;
+  open|close|scroll|set) "$action" "$@" ;;
 esac
