@@ -6,8 +6,10 @@
 (defvar main-bar-class 'main-bar display')
 
 ;; (defvar main-bar-y -36)
+(defvar main-bar-x 1920)
 (defvar main-bar-y 56)
 (defvar main-bar-height 36)
+(defvar main-bar-state 'normal')
 
 (defvar wifi-ssid 'Disconnected')
 (defvar wifi-strength-index 0)
@@ -45,6 +47,8 @@
   `date '+%T %d %b %a'`)
 
 (defvar calendar-state 'closed')
+(defvar disks-state 'closed')
+(defvar networker-state 'closed')
 
 (defvar battery-colors '[
                          "#ff3b30",
@@ -65,3 +69,7 @@
 (defvar disks '[]')
 
 (defvar media-metadata '{}')
+
+(defvar wallpaperer-selected-range-index 0)
+(defvar wallpaperer-images '[]')
+(defvar wallpaperer-target-monitor '')

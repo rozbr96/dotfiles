@@ -5,3 +5,4 @@ hl.bind('CONTROL + SHIFT + Escape', hl.dsp.exec_cmd(HYPR.programs.terminal .. ' 
 hl.bind(HYPR.keys.mod .. ' + C',
   hl.dsp.exec_cmd('cliphist list | wofi --dmenu --gtk-dark | cliphist decode | wl-copy'))
 hl.bind(HYPR.keys.mod .. ' + Period', hl.dsp.exec_cmd('wofi-emoji'))
+hl.bind(HYPR.keys.mod .. ' + SHIFT + W', hl.dsp.exec_cmd('wallpaperer'))

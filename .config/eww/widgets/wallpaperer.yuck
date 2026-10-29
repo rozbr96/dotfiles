@@ -1,0 +1,40 @@
+
+(defvar scrollcommand `wallpaperer scroll {}`)
+
+(defwidget wallpaperer []
+  (eventbox
+    :onscroll scrollcommand
+    (centerbox
+      :orientation 'v'
+      :spacing 50
+      :space-evenly false
+      (label :text 'Wallpaperer')
+      (eventbox
+        (box
+          :orientation 'h'
+          :spacing 5
+          (for image in {jq(wallpaperer-images, '.[${wallpaperer-selected-range-index}:${wallpaperer-selected-range-index + 4}]')}
+            (eventbox
+              :cursor 'pointer'
+              :class 'image-wrapper'
+              :onclick `wallpaperer set "${wallpaperer-target-monitor}" "${image.image}"`
+              (image
+                :tooltip {image.name}
+                :path {image.thumb}
+                :image-height 200
+                :image-width 320)))))
+      (eventbox
+        :cursor 'pointer'
+        :onclick `${EWW_CMD} close wallpaperer`
+        (box
+          :height 10
+          :orientation 'h'
+          :spacing 10
+          (image
+            :path 'assets/icons/close.svg'
+            :fill-svg '#ffffff'
+            :halign 'end')
+          (label
+            :text 'Cancel'
+            :halign 'start'))))))
+

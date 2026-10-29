@@ -63,6 +63,7 @@
       gnumake
       google-chrome
       grim
+      hyprpaper
       ijq
       jq
       kitty
@@ -79,7 +80,6 @@
       playerctl
       poppler-utils
       pulseaudioFull
-      yazi
       ripgrep
       slurp
       socat
@@ -91,6 +91,7 @@
       wofi
       xdg-user-dirs
       xdg-utils
+      yazi
       zsh
     ];
   };

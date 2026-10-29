@@ -8,3 +8,4 @@
 (include 'windows/mixer.yuck')
 (include 'windows/calendar.yuck')
 (include 'windows/disks.yuck')
+(include 'windows/wallpaperer.yuck')

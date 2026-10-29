@@ -4,5 +4,6 @@
 (defwidget wifi []
   (eventbox
     :cursor 'pointer'
-    :onclick `networker start &`
+    :onclick `networker toggle &`
+    :onrightclick `networker dismiss`
     (wifi-icon)))

@@ -3,6 +3,7 @@
   (eventbox
     :cursor 'pointer'
     :onclick `calendar toggle`
+    :onrightclick `calendar close`
     (box
       :orientation 'horizontal'
       "${substring(time, 0, 2)}"

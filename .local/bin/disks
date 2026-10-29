@@ -9,11 +9,17 @@ update() {
 
 open() {
   update
-  eww open disks --arg monitor="$(eww get monitors)" --arg popup-y="$(eww_popup_y)"
+  eww update disks-state="open"
+  eww open disks --arg monitor="$(eww get monitors)" --arg popup-x="$(eww_popup_x 440)" --arg popup-y="$(eww_popup_y)"
 }
 
 close() {
+  eww update disks-state="closed"
   eww close disks
+}
+
+toggle() {
+  [ "$(eww get disks-state)" = "open" ] && close || open
 }
 
 list() {
@@ -70,6 +76,7 @@ case "$1" in
   update) update ;;
   close) close ;;
   list) list ;;
+  toggle) toggle ;;
 
   mount|unmount|mount_and_explore|explore)
     "$1" "$2"

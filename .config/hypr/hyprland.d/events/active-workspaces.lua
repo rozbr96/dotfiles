@@ -4,7 +4,8 @@ local function handleActiveWorkspacesChange()
   ]])
 end
 
-hl.on('workspace.created', handleActiveWorkspacesChange)
-hl.on('workspace.removed', handleActiveWorkspacesChange)
+hl.on('workspace.active', handleActiveWorkspacesChange)
+-- hl.on('workspace.created', handleActiveWorkspacesChange)
+-- hl.on('workspace.removed', handleActiveWorkspacesChange)
 
 handleActiveWorkspacesChange()

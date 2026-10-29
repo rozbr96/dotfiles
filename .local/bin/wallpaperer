@@ -1,0 +1,54 @@
+#!/run/current-system/sw/bin/zsh
+
+open() {
+  thumbs_file=~/.thumbs.json
+  active_workspace="$(hyprctl -j monitors | jq '.[] | select(.focused == true)')"
+  active_workspace_id="$(echo "$active_workspace" | jq '.id')"
+  active_workspace_name="$(echo "$active_workspace" | jq '.name')"
+
+  [ -f $thumbs_file ] && eww update wallpaperer-images="$(cat $thumbs_file)"
+
+  eww update wallpaperer-target-monitor="$active_workspace_name"
+  eww open wallpaperer --arg monitor="$active_workspace_id"
+}
+
+close() {
+  eww close wallpaperer
+}
+
+scroll() {
+  index=$(eww get wallpaperer-selected-range-index)
+
+  case "$1" in
+    up) index=$(( index - 1 )) ;;
+    down) index=$(( index + 1 )) ;;
+  esac
+
+  max_index=$(eww get wallpaperer-images | jq 'length')
+
+  [ $index -lt 0 ] && index=0
+  [ $max_index -gt 4 ] && [ $index -ge $(( max_index - 4 )) ] && index=$(( max_index - 4 ))
+
+  eww update wallpaperer-selected-range-index=$index
+}
+
+set() {
+  monitor="$1"
+  image_path="$2"
+  config_file=~/.config/hypr/hyprpaper.d/${monitor:-all}.conf
+
+  echo "wallpaper {"             > $config_file
+  echo "    monitor = $monitor" >> $config_file
+  echo "    path = $image_path" >> $config_file
+  echo "}"                      >> $config_file
+
+  hyprctl hyprpaper wallpaper "${monitor},${image_path}"
+}
+
+action="${1:-open}"
+
+[ $# -gt 0 ] && shift
+
+case "$action" in
+  open|close|scroll|set) "$action" "$@" ;;
+esac

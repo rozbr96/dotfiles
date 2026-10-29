@@ -128,12 +128,23 @@ in
         Service = {
           Type = "exec";
           ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
-          ExecStartPost = ''
+          ExecStartPost = "${pkgs.systemd}/bin/systemctl start --user main-bar";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
+      main-bar = {
+        Unit = {
+          Description = "Eww Main Bar";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStart = ''
             ${pkgs.eww}/bin/eww open main-bar \
               --arg monitor='["Odyssey G5", "24G2W1G5", "DP-2", "HDMI-A-1", 1, 0]'
           '';
-          Restart = "always";
-          RestartSec = 1;
         };
       };
 
@@ -197,6 +208,20 @@ in
         Service = {
           Type = "exec";
           ExecStart = "${config.home.homeDirectory}/.local/bin/monitor media";
+          Restart = "always";
+          RestartSec = 1;
+        };
+      };
+
+      hyprpaper = {
+        Unit = {
+          Description = "Hyprpaper";
+        };
+
+        Service = {
+          Type = "exec";
+          ExecStartPre = "-${pkgs.zsh}/bin/zsh -c '${pkgs.busybox}/bin/cat ${config.home.homeDirectory}/.config/hypr/hyprpaper.d/*.conf > ${config.home.homeDirectory}/.config/hypr/hyprpaper.d/.config.conf'";
+          ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
           Restart = "always";
           RestartSec = 1;
         };

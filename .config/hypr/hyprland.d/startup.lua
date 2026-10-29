@@ -11,6 +11,7 @@ hl.on('hyprland.start', function()
 end)
 
 hl.on('config.reloaded', function()
+  hl.exec_cmd('systemctl --user restart hyprpaper')
   hl.exec_cmd('systemctl --user restart hypr-ipc')
   hl.exec_cmd('systemctl --user restart eww')
   hl.exec_cmd('systemctl --user restart network-monitor')
