@@ -205,6 +205,15 @@
 
       ly = {
         enable = true;
+
+        settings = {
+          allow_empty_password = false;
+          animation = "matrix";
+          bigclock = "en";
+          bigclock_seconds = true;
+          box_title = "Welcome, Sir";
+          text_in_center = true;
+        };
       };
     };
 
