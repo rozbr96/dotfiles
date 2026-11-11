@@ -21,7 +21,7 @@
       ...
     }:
     let
-      dev = true;
+      dev = false;
       system = "x86_64-linux";
       nix_channel = "26.05";
     in
