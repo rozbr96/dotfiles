@@ -43,4 +43,8 @@ hl.config({
   misc = {
     force_default_wallpaper = -1,
   },
+
+  render = {
+    cm_auto_hdr = 0,
+  },
 })
