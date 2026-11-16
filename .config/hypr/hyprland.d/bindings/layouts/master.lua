@@ -1,4 +1,4 @@
-hl.bind(HYPR.keys.mod .. ' + Q', hl.dsp.window.kill())
+hl.bind(HYPR.keys.mod .. ' + Q', hl.dsp.window.close())
 
 hl.bind(HYPR.keys.mod .. ' + left', hl.dsp.focus({ direction = 'l' }))
 hl.bind(HYPR.keys.mod .. ' + right', hl.dsp.focus({ direction = 'r' }))

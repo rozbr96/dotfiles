@@ -1,5 +1,6 @@
 HYPR = {
   layout = 'hy3',
+  -- layout = 'master',
   keys = {
     mod = 'SUPER'
   },
